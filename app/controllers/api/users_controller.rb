@@ -1,10 +1,17 @@
 class Api::UsersController < ApplicationController
   def show
-    @user = User.find_by(username: params[:username])
+    @user = User.find(params[:id])
+
+    if @user
+      render :show
+    else
+      render json: @user.errors.full_messages, status: 404
+    end
   end
 
   def new
     @user = User.new
+    render :new
   end
 
   def create
@@ -12,19 +19,17 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user)
-
+      render json: @user
     else
-      flash[:errors] = ["Error"]
-      render :new
+      render json: @user.errors.full_messages, status: 422
     end
   end
 
-  def edit
-  end
-
-  def update
-
-  end
+  # def edit
+  # end
+  #
+  # def update
+  # end
 
   private
   def user_params

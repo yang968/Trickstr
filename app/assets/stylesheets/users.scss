@@ -1,3 +1,146 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html {
+  font-family: "hFont", "gibson", "Helvetica", sans-serif;
+  font-weight: lighter;
+
+}
+
+h1, h2 {
+  margin: 0 auto;
+  color: white;
+}
+
+h1 {
+  font-size: 75px;
+  height: 35px;
+  padding: 0;
+  text-align: center;
+  font-weight: 700;
+  font-family: "tFont";
+  margin: auto;
+}
+
+.signin {
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.subheading {
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 10px;
+  margin-bottom: 28px;
+  text-align: center;
+  font-weight: 100;
+}
+
+input {
+  cursor: text;
+  color: #222;
+}
+
+.user-div {
+  width: 800px;
+  display: block;
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  zoom: 1;
+}
+
+.form-container {
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+.user-input {
+  width: inherit;
+  box-sizing: border-box;
+  font-weight: lighter;
+  padding: 11px 10px 11px 13px;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.top-input {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom: 1px solid #ddd;
+}
+
+.bottom-input {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top: 1px solid #ddd;
+}
+
+.button-user {
+  margin: 0 auto;
+  display: block;
+  width: 300px;
+  height: 45px;
+  padding: 10px 0;
+  border-radius: 2px;
+  margin-top: 12px;
+  font-weight: bold;
+  font-family: "gibson";
+  vertical-align: baseline;
+  cursor: pointer;
+}
+
+.button-main {
+  background-color: #559FCA;
+  color: #FFF;
+  border: 1px solid #529ecc;
+}
+
+.login-link {
+  background-color: #FFF;
+  color: #444444;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 12px;
+}
+
+.login-link:hover {
+  background-color: #FFF;
+  color: #444444;
+}
+
+.background {
+  z-index: 0;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(https://www.onlysp.com/wp-content/uploads/2015/04/1470318.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}

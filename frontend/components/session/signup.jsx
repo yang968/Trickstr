@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -7,10 +8,18 @@ class Signup extends React.Component {
     this.state = {
       username: '',
       email: '',
-      password: ''
+      password: '',
+      getStarted: false
     }
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleGetStarted = this.handleGetStarted.bind(this);
+  }
+
+  handleGetStarted(e) {
+    e.preventDefault();
+    this.setState({ getStarted: true });
   }
 
   handleInput(type) {
@@ -26,29 +35,51 @@ class Signup extends React.Component {
   }
 
   render() {
+    let catchphrase = (
+      <h2 className="subheading" >Come for what you love.<br></br>
+      Stay for what you discover.</h2>
+      )
+    if (this.state.getStarted) {
+      return (
+        <div className="user-div" >
+          <h1>trickstr</h1>
+          {catchphrase}
+
+            <form className="user-form">
+              <div className="form-container" >
+              <input type="text"
+                value={this.state.email}
+                onChange={this.handleInput('email')}
+                placeholder="Email"
+                className="user-input top-input"
+                />
+              <input type="password"
+                value={this.state.password}
+                onChange={this.handleInput('password')}
+                placeholder="Password"
+                className="user-input"
+                />
+              <input type="text"
+                value={this.state.username}
+                onChange={this.handleInput('username')}
+                placeholder="Username"
+                className="user-input bottom-input"
+                />
+              </div>
+              <button className="button-user button-main" onClick={this.handleSubmit}>Sign up</button>
+            </form>
+
+        </div>
+      );
+    }
     return (
-      <div>
-        <p>Come for what you love. Stay for what you discover.</p>
-        <form>
-          <input type="text"
-            value={this.state.email}
-            onChange={this.handleInput('email')}
-            placeholder="Email"
-            />
-          <input type="password"
-            value={this.state.password}
-            onChange={this.handleInput('password')}
-            placeholder="Password"
-            />
-          <input type="text"
-            value={this.state.username}
-            onChange={this.handleInput('username')}
-            placeholder="Username"
-            />
-          <button onClick={this.handleSubmit}>Sign up<button/>
-        </form>
+      <div className="user-div" >
+        <h1>trickstr</h1>
+        {catchphrase}
+        <button className="button-user button-main" onClick={this.handleGetStarted}>Get Started</button>
+        <Link className="button-main login-link button-user" to="/login">Log In</Link>
       </div>
-    );
+    )
   }
 }
 

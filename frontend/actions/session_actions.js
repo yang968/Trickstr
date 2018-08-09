@@ -12,11 +12,11 @@ export const logoutCurrentUser = () => ({
   type: LOGOUT_CURRENT_USER
 });
 
-export const createNewUser = formUser => dispatch => postUser(formUser)
+export const createNewUser = formUser => dispatch => SessionUtil.postUser(formUser)
   .then(user => dispatch(receiveCurrentUser(user)));
 
-export const login = formUser => dispatch => postSession(user)
+export const login = formUser => dispatch => SessionUtil.postSession(formUser)
   .then(user => dispatch(receiveCurrentUser(user)));
 
-export const logout = () => dispatch => deleteSession()
+export const logout = () => dispatch => SessionUtil.deleteSession()
   .then(user => dispatch(logoutCurrentUser()));

@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+@import "normalize.scss";
+@import "users.scss";
+@import "fonts.scss";

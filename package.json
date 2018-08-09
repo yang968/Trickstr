@@ -25,7 +25,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack --watch --mode=development"
+    "webpack": "webpack --watch --mode=development",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/yang968/Trickstr/issues"
+  },
+  "engines": {
+    "node": "10.7.0",
+    "npm": "6.2.0"
   },
   "homepage": "https://github.com/yang968/Trickstr#readme"
 }

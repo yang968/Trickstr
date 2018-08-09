@@ -5,7 +5,6 @@
 html {
   font-family: "hFont", "gibson", "Helvetica", sans-serif;
   font-weight: lighter;
-
 }
 
 h1, h2 {
@@ -130,7 +129,7 @@ input {
 }
 
 .background {
-  z-index: 0;
+  z-index: -1;
   position: absolute;
   margin: 0;
   padding: 0;
@@ -139,8 +138,25 @@ input {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url(https://www.onlysp.com/wp-content/uploads/2015/04/1470318.jpg);
+  background-image: url(https://78.media.tumblr.com/9ec461c4baf2fb921190138db7bdc1a4/tumblr_p5fd5105dp1tuebjjo1_1280.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+}
+
+.user-errors {
+  padding: 0;
+  margin: 15px auto;
+  width: 300px;
+}
+
+.user-errors-list {
+  font-size: 14px;
+  border-radius: 2px;
+  padding: 14px 15px;
+  list-style: none;
+  color: #FEFEFE;
+  background-color: rgba(45, 45, 45, 0.3);
+  text-align: center;
+  margin-bottom: 10px;
 }

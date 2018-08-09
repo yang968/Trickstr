@@ -52,6 +52,9 @@ class Signin extends React.Component {
                 placeholder="Password"
                 className="user-input bottom-input"
                 />
+              <ul className="user-errors" >
+                { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list" >{err}</li>)) }
+              </ul>
               <button className="button-user button-main" onClick={this.handleSubmit}>Log In</button>
             </form>
           </div>
@@ -70,6 +73,9 @@ class Signin extends React.Component {
               className="user-input"
               style={{borderRadius: '2px'}}
               />
+              <ul className="user-errors" >
+                { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list" >{err}</li>)) }
+              </ul>
             <button className="button-user button-main" onClick={this.handleEmail}>Next</button>
           </form>
         </div>

@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 html {
-  font-family: "hFont", "gibson", "Helvetica", sans-serif;
+  font-family: "HelveticaNeue", "gibson", sans-serif;
   font-weight: lighter;
 }
 
@@ -37,7 +37,8 @@ h2 {
   margin-top: 10px;
   margin-bottom: 28px;
   text-align: center;
-  font-weight: 100;
+  font-family: "HelveticaNeue";
+  font-weight: lighter;
 }
 
 input {
@@ -103,7 +104,7 @@ input {
   border-radius: 2px;
   margin-top: 12px;
   font-weight: bold;
-  font-family: "gibson";
+  font-family: "HelveticaNeue";
   vertical-align: baseline;
   cursor: pointer;
 }

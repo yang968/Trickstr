@@ -9,7 +9,7 @@ class Signup extends React.Component {
       username: '',
       email: '',
       password: '',
-      getStarted: false
+      getStarted: false,
     }
 
     this.handleInput = this.handleInput.bind(this);

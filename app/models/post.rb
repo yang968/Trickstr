@@ -2,5 +2,5 @@ class Post < ApplicationRecord
   validates :user_id, :type, presence: true
   belongs_to :user
 
-  has_many_attached :attachment
+  has_one_attached :attachment
 end

@@ -1,17 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-class NavBar extends React.Component {
+class Background extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.setBorderBottom = this.setBorderBottom.bind(this);
+    this.setBackground = this.setBackground.bind(this);
   }
 
-  setBorderBottom(pathname) {
+  setBackground(pathname) {
     switch (pathname) {
       case "/":
-        this.setState({ border: '0px' });
+        this.setState({ color: 'rg' });
         break;
       default:
         this.setState({ border: '1px solid #515e71'});
@@ -20,11 +19,11 @@ class NavBar extends React.Component {
   }
 
   componentDidMount() {
-    this.setBorderBottom(this.props.location.pathname);
+    this.setBackground(this.props.location.pathname);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setBorderBottom(nextProps.location.pathname);
+    this.setBackground(nextProps.location.pathname);
   }
 
   render() {
@@ -33,7 +32,7 @@ class NavBar extends React.Component {
     ) : null;
 
     return (
-      <nav style={{borderBottom: this.state.border}} className="nav-bar">
+      <nav style={{background: this.state.border}} className="nav-bar">
         <div className="logo-container">
           <img className="logo" src={window.images.whiteLogo}></img>
         </div>
@@ -45,4 +44,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default Background;

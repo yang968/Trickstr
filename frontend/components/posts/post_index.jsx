@@ -9,9 +9,9 @@ class PostIndex extends React.Component {
   render(){
     return (
       <div className="main-container" >
-        <ul>
-          { this.props.posts.map(post => <PostIndexItem post={post} />) }
-        </ul>
+        <ol className="main-posts" >
+          { this.props.posts.map(post => <PostIndexItem post={post} key={post.id} />) }
+        </ol>
       </div>
     );
   }

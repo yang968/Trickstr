@@ -11,8 +11,8 @@ export default () => (
   <div>
     <Switch>
       <ProtectedRoute exact path="/posts" component={PostIndexContainer} />
-      <Route exact path="/login" component={SignInContainer} />
-      <Route exact path="/" component={SignUpContainer} />
+      <AuthRoute exact path="/login" component={SignInContainer} />
+      <AuthRoute exact path="/" component={SignUpContainer} />
     </Switch>
     <Route path="/" component={NavBarContainer} />
     <div className="background" ></div>

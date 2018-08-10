@@ -30,7 +30,7 @@ class Signin extends React.Component {
     e.preventDefault();
     let user = { email: this.state.email, password: this.state.password };
     this.props.login(user)
-      .then(() => this.props.history.push('/posts'))
+      .then(() => this.props.history.replace('/posts'))
   }
 
   render() {

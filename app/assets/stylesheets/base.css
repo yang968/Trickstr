@@ -1,11 +1,29 @@
+.background {
+  z-index: -1;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url(https://78.media.tumblr.com/9ec461c4baf2fb921190138db7bdc1a4/tumblr_p5fd5105dp1tuebjjo1_1280.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
 .nav-bar {
   top: 0;
   position: fixed;
   width: 100%;
+  /* max-width: 1580px; */
   height: 54px;
   display: block;
   flex-direction: row;
   justify-content: space-between;
+  /* margin: 0 auto; */
 }
 
 .logo-container {

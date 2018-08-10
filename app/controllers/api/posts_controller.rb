@@ -9,45 +9,33 @@ class Api::PostsController < ApplicationController
     @post = Post.find(params[:id])
    end
 
-  def new
-    @post = Post.new
-  end
-
   def create
     @post = Post.new(post_params)
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      render :show
+    else
+      render json: @post.errors.full_messages, status: 422
     end
   end
 
-  def edit
-
-  end
-
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      render :show
+    else
+      render json: @post.errors.full_messages, status: 422
     end
   end
 
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
+    @post = Post.find(params[:id])
+
+    if @post.destroy
+      render :show
+    else
+      render json: @post.errors.full_messages, status: 422
     end
   end
 

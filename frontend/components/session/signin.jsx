@@ -37,25 +37,25 @@ class Signin extends React.Component {
     if (this.state.validEmail) {
       return (
         <div className="user-div">
-          <h1 className="signin"><span>trickstr</span></h1>
+          <h1 className="signin animated fadeInUp">trickstr</h1>
           <div className="form-container">
             <form className="user-form">
               <input type="text"
                 value={this.state.email}
                 onChange={this.handleInput('email')}
                 placeholder="Email"
-                className="user-input top-input"
+                className="user-input top-input animated fadeInUp"
                 />
               <input type="password"
                 value={this.state.password}
                 onChange={this.handleInput('password')}
                 placeholder="Password"
-                className="user-input bottom-input"
+                className="user-input bottom-input animated fadeInDown"
                 />
               <ul className="user-errors" >
-                { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list" >{err}</li>)) }
+                { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list animated fadeInDown" >{err}</li>)) }
               </ul>
-              <button className="button-user button-main" onClick={this.handleSubmit}>Log In</button>
+              <button className="button-user button-main animated fadeInDown" onClick={this.handleSubmit}>Log In</button>
             </form>
           </div>
         </div>
@@ -63,21 +63,23 @@ class Signin extends React.Component {
     }
     return (
       <div className="user-div" >
-        <h1 className="signin">trickstr</h1>
-        <div className="form-container">
-          <form className="user-form">
-            <input type="text"
-              value={this.state.email}
-              onChange={this.handleInput('email')}
-              placeholder="Email"
-              className="user-input"
-              style={{borderRadius: '2px'}}
-              />
+        <div className="animated fadeInUp" >
+          <h1 className="signin">trickstr</h1>
+          <div className="form-container">
+            <form className="user-form">
+              <input type="text"
+                value={this.state.email}
+                onChange={this.handleInput('email')}
+                placeholder="Email"
+                className="user-input"
+                style={{borderRadius: '2px'}}
+                />
               <ul className="user-errors" >
-                { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list" >{err}</li>)) }
+                { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list animated fadeInDown" >{err}</li>)) }
               </ul>
-            <button className="button-user button-main" onClick={this.handleEmail}>Next</button>
-          </form>
+              <button className="button-user button-main" onClick={this.handleEmail}>Next</button>
+            </form>
+          </div>
         </div>
       </div>
     )

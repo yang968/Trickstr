@@ -1,0 +1,9 @@
+.main-container {
+  padding-top: 54px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #37465c;
+  bottom: 0;
+}

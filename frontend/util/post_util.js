@@ -2,7 +2,7 @@ export const fetchPosts = () => (
   $.ajax({
     method: 'get',
     url: '/api/posts'
-  });
+  })
 );
 
 export const createPost = (post) => (
@@ -10,7 +10,7 @@ export const createPost = (post) => (
     method: 'post',
     url: '/api/posts',
     data: { post }
-  });
+  })
 );
 
 export const updatePost = (post) => (

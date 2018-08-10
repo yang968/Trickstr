@@ -60,25 +60,25 @@ class Signup extends React.Component {
                 value={this.state.email}
                 onChange={this.handleInput('email')}
                 placeholder="Email"
-                className="user-input top-input"
+                className="user-input top-input animated slideInRight"
                 />
               <input type="password"
                 value={this.state.password}
                 onChange={this.handleInput('password')}
                 placeholder="Password"
-                className="user-input"
+                className="user-input animated slideInRight"
                 />
               <input type="text"
                 value={this.state.username}
                 onChange={this.handleInput('username')}
                 placeholder="Username"
-                className="user-input bottom-input"
+                className="user-input bottom-input animated slideInRight"
                 />
               </div>
               <ul className="user-errors" >
-                { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list" >{err}</li>)) }
+                { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list animated fadeInDown" >{err}</li>)) }
               </ul>
-              <button className="button-user button-main" onClick={this.handleSubmit}>Sign up</button>
+              <button className="button-user button-main animated slideInDown" onClick={this.handleSubmit}>Sign up</button>
             </form>
 
         </div>
@@ -86,11 +86,13 @@ class Signup extends React.Component {
     }
     return (
       <div className="user-div" >
-        <h1>trickstr</h1>
-        {catchphrase}
-        <button className="button-user button-main" onClick={this.handleGetStarted}>Get Started</button>
-        <Link className="login-link button-user" to="/login">Log In</Link>
-        <button className="button-user button-main" onClick={this.demoLogin}>Demo Login</button>
+        <div className="animated fadeInUp delay-1s" >
+          <h1>trickstr</h1>
+          {catchphrase}
+          <button className="button-user button-main" onClick={this.handleGetStarted}>Get Started</button>
+          <Link className="login-link button-user" to="/login">Log In</Link>
+          <button className="button-user button-main" onClick={this.demoLogin}>Demo Login</button>
+        </div>
       </div>
     )
   }

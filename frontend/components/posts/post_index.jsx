@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Posts extends React.Component {
+class PostIndex extends React.Component {
   render(){
     return (
       <h1>posts!</h1>
@@ -9,4 +9,4 @@ class Posts extends React.Component {
   }
 }
 
-export default Posts;
+export default PostIndex;

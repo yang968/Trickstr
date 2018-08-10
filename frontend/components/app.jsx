@@ -9,13 +9,12 @@ import { AuthRoute, ProtectedRoute } from '../util/route_utils';
 
 export default () => (
   <div>
-    <h2>Trickstr</h2>
+    <Route path="/" component={NavBarContainer} />
     <Switch>
       <ProtectedRoute exact path="/posts" component={Posts} />
       <Route exact path="/login" component={SignInContainer} />
       <Route exact path="/" component={SignUpContainer} />
     </Switch>
-    <Route path="/" component={NavBarContainer} />
     <div className="background" ></div>
   </div>
 )

@@ -1,11 +1,17 @@
 import React from 'react';
 
 class PostIndex extends React.Component {
+  componentDidMount() {
+    this.props.fetchPosts();
+  }
+
   render(){
     return (
-      <h1>posts!</h1>
-
-    )
+      <div>
+        <ul>
+        </ul>
+      </div>
+    );
   }
 }
 

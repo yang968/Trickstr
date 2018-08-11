@@ -15,33 +15,31 @@ class PostForm extends React.Component {
   }
 
   handleFile(e) {
-    // debugger
     const files = e.currentTarget.files;
-    // let urls = [];
     let contents = [];
-    for (var i = 0; i < files.length; i++) {
-      contents.push(URL.createObjectURL(files[i]));
-    }
-    this.setState({contents});
-    // this.setState({urls});
-    // const fileReader = new FileReader();
-    // for (var i = 0; i < urls.length; i++) {
-    //   // contents.push(URL.revokeObjectURL(urls[i]));
-    //   contents.push(fileReader.readAsDataURL(urls[i]));
-    // }
-    // this.setState({contents});
+    let urls = [];
+    Object.keys(files).forEach(i => {
+      const file = files[i];
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        contents.push(file);
+        urls.push(reader.result);
+      }
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    })
+    this.setState({contents: contents, urls: urls});
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
+
     const formData = new FormData();
     formData.append('post[user_id]', this.props.currentUserId);
     formData.append('post[post_type]', "photo");
     formData.append('post[title]', this.state.title);
-    if (this.state.contents.length > 0) {
-      formData.append('post[contents]', JSON.stringify(this.state.contents));
-    }
+    this.state.contents.forEach(content => formData.append('contents[]', content));
 
     $.ajax({
       method: "post",
@@ -53,9 +51,7 @@ class PostForm extends React.Component {
   }
 
   render() {
-    // console.log(this.state);
-    // const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
-    const previews = this.state.contents.map(url => <img src={url} />)
+    const previews = this.state.urls.map(url => <img src={url} />)
     return (
       <form>
         <input type="text"

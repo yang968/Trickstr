@@ -14,8 +14,7 @@ class Api::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.id = nil
     if @post.save
-      # c = JSON.parse(params[:post][:contents])
-      @post.contents.attach(post_params[:contents])
+      @post.contents.attach(params[:contents])
       render :show
     else
       render json: @post.errors.full_messages, status: 422
@@ -44,6 +43,6 @@ class Api::PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:id, :user_id, :post_type, :title, :description, contents: [])
+      params.require(:post).permit(:user_id, :post_type, :title, :description, contents: [])
     end
 end

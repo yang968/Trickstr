@@ -2,7 +2,13 @@ json.posts do
   @posts.each do |post|
     json.set! post.id do
       json.extract! post, :id, :user_id, :post_type, :title, :description
-      json.srcUrl url_for(post.attachment) if post.attachment.attached?
+
+      if post.contents.attached?
+        json.array! post.contents do |content|
+          json.extract! url_for(content)
+        end
+      end
+      # json.srcUrl url_for(post.contents) if post.contents.attached?
     end
   end
 end

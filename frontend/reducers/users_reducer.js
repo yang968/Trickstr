@@ -6,7 +6,8 @@ const UsersReducer = (state={}, action) => {
 
   switch (action.type) {
     case RECEIVE_ALL_POSTS:
-      return action.payload.users;
+      if (action.payload.users) return action.payload.users;
+      return state;
     default:
       return state;
   }

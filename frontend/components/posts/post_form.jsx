@@ -5,8 +5,8 @@ class PostForm extends React.Component {
     super(props);
     this.state = {
       title: "",
-      photoFile: null,
-      photoUrl: null,
+      contents: [],
+      urls: [],
     };
   }
 
@@ -15,24 +15,32 @@ class PostForm extends React.Component {
   }
 
   handleFile(e) {
-    const file = e.currentTarget.files[0];
-    const fileReader = new FileReader();
-    fileReader.onloadend = () => {
-      this.setState({ photoFile: file, photoUrl: fileReader.result });
+    // debugger
+    const files = e.currentTarget.files;
+    // let urls = [];
+    let contents = [];
+    for (var i = 0; i < files.length; i++) {
+      contents.push(URL.createObjectURL(files[i]));
     }
-    if (file) {
-      fileReader.readAsDataURL(file);
-    }
+    this.setState({contents});
+    // this.setState({urls});
+    // const fileReader = new FileReader();
+    // for (var i = 0; i < urls.length; i++) {
+    //   // contents.push(URL.revokeObjectURL(urls[i]));
+    //   contents.push(fileReader.readAsDataURL(urls[i]));
+    // }
+    // this.setState({contents});
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    debugger;
     const formData = new FormData();
     formData.append('post[user_id]', this.props.currentUserId);
     formData.append('post[post_type]', "photo");
     formData.append('post[title]', this.state.title);
-    if (this.state.photoFile) {
-      formData.append('post[attachment]', this.state.photoFile);
+    if (this.state.contents.length > 0) {
+      formData.append('post[contents]', JSON.stringify(this.state.contents));
     }
 
     $.ajax({
@@ -46,15 +54,16 @@ class PostForm extends React.Component {
 
   render() {
     // console.log(this.state);
-    const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
+    // const preview = this.state.photoUrl ? <img src={this.state.photoUrl} /> : null;
+    const previews = this.state.contents.map(url => <img src={url} />)
     return (
       <form>
         <input type="text"
           value={this.state.title}
           onChange={this.handleChange.bind(this)} />
-        <input type="file"
+        <input type="file" multiple
           onChange={this.handleFile.bind(this)} />
-        {preview}
+        {previews}
         <button onClick={this.handleSubmit.bind(this)}>Post</button>
       </form>
     )

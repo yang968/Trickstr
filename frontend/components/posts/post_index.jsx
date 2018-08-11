@@ -1,5 +1,6 @@
 import React from 'react';
 import PostIndexItem from './post_index_item';
+import PostForm from './post_form';
 
 class PostIndex extends React.Component {
   componentDidMount() {
@@ -9,8 +10,9 @@ class PostIndex extends React.Component {
   render(){
     return (
       <div className="main-container" >
+        <PostForm currentUserId={this.props.currentUserId} />
         <ol className="main-posts" >
-          { this.props.posts.map(post => <PostIndexItem post={post} key={post.id} />) }
+          { this.props.posts.map(post => <PostIndexItem users={this.props.users} post={post} key={post.id} />) }
         </ol>
       </div>
     );

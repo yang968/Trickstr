@@ -37,11 +37,9 @@ class Signup extends React.Component {
 
   demoLogin(e) {
     e.preventDefault();
-    console.log(this.props.history);
     let demoUser = { email: 'guest@guest.com', password: 'guestguest'}
     this.props.login(demoUser)
       .then(() => {
-        console.log(this.props.history);
         this.props.history.replace('/posts')
       })
   }

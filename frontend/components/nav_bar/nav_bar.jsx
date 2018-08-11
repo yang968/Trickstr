@@ -5,40 +5,41 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
-    this.setBorderBottom = this.setBorderBottom.bind(this);
+    this.setStyle = this.setStyle.bind(this);
   }
 
-  setBorderBottom(pathname) {
+  setStyle(pathname) {
     switch (pathname) {
+      case "/login":
       case "/":
-        this.setState({ border: '0px' });
+        this.setState({ borderBottom: '0px', backgroundColor: 'rgba(0,0,0,0)' });
         break;
       default:
-        this.setState({ border: '1px solid #515e71'});
+        this.setState({ borderBottom: '1px solid #515e71', backgroundColor: '#37465c' });
         break;
     }
   }
 
   componentDidMount() {
-    this.setBorderBottom(this.props.location.pathname);
+    this.setStyle(this.props.location.pathname);
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setBorderBottom(nextProps.location.pathname);
+    this.setStyle(nextProps.location.pathname);
   }
 
   render() {
-    const display = (this.props.currentUser) ? (
+    const rightButton = (this.props.currentUser) ? (
       <button className="session-button" onClick={this.props.logout}>Log out</button>
     ) : null;
 
     return (
-      <nav style={{borderBottom: this.state.border}} className="nav-bar">
+      <nav style={this.state} className="nav-bar">
         <div className="logo-container">
           <img className="logo" src={window.images.whiteLogo}></img>
         </div>
         <div className="right" >
-          {display}
+          {rightButton}
         </div>
       </nav>
     );

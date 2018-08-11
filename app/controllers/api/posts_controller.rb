@@ -5,13 +5,13 @@ class Api::PostsController < ApplicationController
     render :index
   end
 
-  def show
-    @post = Post.find(params[:id])
-   end
+  # def show
+  #   @post = Post.find(params[:post][:id])
+  #  end
 
   def create
     @post = Post.new(post_params)
-
+    @post.id = nil
     if @post.save
       render :show
     else
@@ -20,7 +20,7 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post][:id])
 
     if @post.update(post_params)
       render :show
@@ -41,6 +41,6 @@ class Api::PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:user_id, :type, :title, :description)
+      params.require(:post).permit(:id, :user_id, :post_type, :title, :description, :attachment)
     end
 end

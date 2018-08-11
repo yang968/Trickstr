@@ -9,12 +9,8 @@ const ErrorReducer = (state=[], action) => {
       return action.errors;
     case CLEAR_ERRORS:
       return [];
-    case RECEIVE_CURRENT_USER:
-      return [];
-    case LOGOUT_CURRENT_USER:
-      return [];
     default:
-      return state;
+      return [];
   }
 }
 

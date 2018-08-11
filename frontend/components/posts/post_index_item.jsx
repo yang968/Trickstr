@@ -13,10 +13,9 @@ class PostIndexItem extends React.Component {
     if (this.state.post.srcUrl) {
       item = (<img className="post-image" src={this.state.post.srcUrl} alt="IMAGE" />)
     }
-    console.log(this.state);
     return (
       <li className='main-post' >
-        <h3 className='post-username' >{this.state.post.username}</h3>
+        <h3 className='post-username' >{this.props.users[this.state.post.user_id].username}</h3>
         {item}
         <h5>{this.state.post.title}</h5>
         <p>{this.state.post.description}</p>
@@ -26,5 +25,3 @@ class PostIndexItem extends React.Component {
 }
 
 export default PostIndexItem;
-
-// this.props.users[this.state.post.userId].username

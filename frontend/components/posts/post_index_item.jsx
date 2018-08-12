@@ -4,7 +4,6 @@ class PostIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { post: this.props.post };
-    console.log(this.state);
   }
 
   render() {
@@ -16,13 +15,29 @@ class PostIndexItem extends React.Component {
     }
     return (
       <li className='main-post' >
-        <h3 className='post-username' >{this.props.users[this.state.post.user_id].username}</h3>
-        {
-          this.state.post.contents.length > 0 &&
-          this.state.post.contents.map(file => <img className="post-image" src={file.url} alt="IMAGE" />)
-        }
-        <h5>{this.state.post.title}</h5>
-        <p>{this.state.post.description}</p>
+        <div className="post-avatar" >
+        </div>
+        <div className="post-content" >
+          <div className="username">
+            <a>{this.props.users[this.state.post.user_id].username}</a>
+          </div>
+          {
+            this.state.post.contents.length > 0 &&
+            this.state.post.contents.map(file => <img className="post-image" src={file.url} alt="IMAGE" />)
+          }
+          <div className="title">
+            {this.state.post.title}
+          </div>
+          <div className="description">
+            <p >{this.state.post.description}</p>
+          </div>
+          <div className="tags">
+          </div>
+          <div className="source">
+          </div>
+          <div className="footer">
+          </div>
+        </div>
       </li>
     )
   }

@@ -15,6 +15,7 @@ export default () => (
       <AuthRoute exact path="/" component={SignUpContainer} />
     </Switch>
     <Route path="/" component={NavBarContainer} />
-    <div className="background" ></div>
+
   </div>
 )
+// <Route exact path="/" render={<div className="background" ></div>} />

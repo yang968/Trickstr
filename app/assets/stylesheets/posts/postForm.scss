@@ -1,0 +1,88 @@
+.new-post-wrapper {
+  display: inline-grid;
+  grid-template-columns: repeat(7, 1fr);
+  padding-left: 7px;
+  padding-right: 1px;
+  text-align: center;
+  height: 100%;
+}
+
+.post-link {
+  width: 75px;
+  padding: 12px 14px 18px 14px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.one, .two, .three, .four, .five, .six, .seven {
+  grid-row: 1;
+}
+
+.one, .two, .three, .four, .five, .six {
+  border-width: 0 1px 0 0;
+  border-style: solid;
+  border-image: linear-gradient(#fff, #eee, #fff) 1;
+}
+
+.one {
+  grid-column: 1;
+}
+.two {
+  grid-column: 2;
+}
+.three {
+  grid-column: 3;
+}
+.four {
+  grid-column: 4;
+}
+.five {
+  grid-column: 5;
+}
+.six {
+  grid-column: 6;
+}
+.seven {
+  grid-column: 7;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  font-size: 48px;
+  line-height: 48px;
+  font-family: "icon-font";
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0 auto;
+  font-style: normal;
+}
+
+.text-icon {
+  color: #444;
+}
+
+.photo-icon {
+  color: #d95e40;
+}
+
+.quote-icon {
+  color: #f2992e;
+}
+
+.link-icon {
+  color: #56bc8a;
+}
+
+.chat-icon {
+  color: #529ecc;
+}
+
+.audio-icon {
+  color: #a77dc2;
+}
+
+.video-icon {
+  color: #748089;
+}

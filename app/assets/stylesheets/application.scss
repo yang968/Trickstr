@@ -16,7 +16,8 @@
 
 @import "normalize.css";
 @import "fonts.scss";
-@import "base.css";
+@import "base.scss";
 @import "users.scss";
 @import "animate.css";
-@import "main.css";
+@import "./posts/posts.scss";
+@import "./posts/postForm.scss";

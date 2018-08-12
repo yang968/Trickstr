@@ -10,10 +10,15 @@ class PostIndex extends React.Component {
   render(){
     return (
       <div className="main-container" >
-        <PostForm currentUserId={this.props.currentUserId} />
-        <ol className="main-posts" >
-          { this.props.posts.map(post => <PostIndexItem users={this.props.users} post={post} key={post.id} />) }
-        </ol>
+        <div className="left-column" >
+          <PostForm currentUserId={this.props.currentUserId} />
+          <ol className="main-posts" >
+            { this.props.posts.map(post => <PostIndexItem users={this.props.users} post={post} key={post.id} />) }
+          </ol>
+        </div>
+        <div className="right-column">
+          <p>Hellow!!</p>
+        </div>
       </div>
     );
   }

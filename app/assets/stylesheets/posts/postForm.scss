@@ -8,11 +8,17 @@
 }
 
 .post-link {
-  width: 75px;
+  width: 76px;
   padding: 12px 14px 18px 14px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.post-link:hover {
+  background: white;
 }
 
 .one, .two, .three, .four, .five, .six, .seven {
@@ -85,4 +91,14 @@
 
 .video-icon {
   color: #748089;
+}
+
+.new-post-span {
+  display: block;
+  color: #696969;
+  font-weight: 400;
+  font-size: 15px;
+  opacity: 0.9;
+  height: 21px;
+  vertical-align: baseline;
 }

@@ -36,6 +36,17 @@ class PostIndexItem extends React.Component {
           <div className="source">
           </div>
           <div className="footer">
+            <div >
+              <span classNames="notes">notes</span>
+            </div>
+            <div className="controls" >
+              <i className="control-icon reblog">&#xea8f;</i>
+              <i className="control-icon like">
+                <span>
+                  &#xea4e;
+                </span>
+              </i>
+            </div>
           </div>
         </div>
       </li>

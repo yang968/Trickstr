@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .main-container {
+  // margin-top: 92px;
   padding-top: 92px;
   padding-left: 5px;
   padding-right: 5px;
@@ -11,8 +12,14 @@
   bottom: 0;
   margin: 0 auto;
   overflow: hidden;
-  box-sizing: border-box;
   max-width: 990px;
+}
+
+.main-content {
+  zoom: 1;
+  padding: 0 8px;
+  border-radius: 15px;
+  position: relative;
 }
 
 ol {
@@ -54,6 +61,7 @@ ol {
   float: right;
   height: 500px;
   border: 1px solid yellow;
+  margin-top: -5px;
 }
 
 .post-avatar {
@@ -73,16 +81,6 @@ ol {
   /* border: 2px solid orange; */
 }
 
-.new-post-span {
-  display: block;
-  color: #444;
-  font-weight: 400;
-  font-size: 15px;
-  opacity: 0.9;
-  height: 21px;
-  vertical-align: baseline;
-}
-
 .post-form-container {
   position: relative;
   background-color: white;
@@ -91,7 +89,6 @@ ol {
   height: 99px;
   min-width: 540px;
   margin-left: 85px;
-  opacity: 0.9;
 }
 
 .username {
@@ -115,6 +112,8 @@ ol {
 .title {
   font-size: 20px;
   font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .description {
@@ -130,5 +129,39 @@ ol {
 }
 
 .footer {
-  
+  display: flex;
+  flex-direction: rows;
+  justify-content: space-between;
+  height: 45px;
+  line-height: 45px;
+  font-weight: bold;
+  color: #8f8f8f;
+}
+
+.notes {
+  vertical-align: baseline;
+}
+
+.controls {
+  min-width: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.control-icon {
+  font-family: "icon-font";
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.reblog:hover {
+  color: #5ABB8B;
+}
+
+.like:hover {
+  color: #D75F45;
 }

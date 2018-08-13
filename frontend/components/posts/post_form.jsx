@@ -1,70 +1,68 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import TextForm from './forms/text';
+import PhotoForm from './forms/photo';
 
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "",
-      contents: [],
-      urls: [],
+      post_type: 0
+    };
+
+    this.setPostType = this.setPostType.bind(this);
+    this.cancelPost = this.cancelPost.bind(this);
+    this.getForm = this.getForm.bind(this);
+  }
+
+  setPostType(type) {
+    return (e) => {
+      this.setState({ post_type: type });
     };
   }
 
-  handleChange(e) {
-    this.setState({title: e.currentTarget.value});
+  cancelPost() {
+    return (e) => {
+      let mainDiv = document.getElementById('mainDiv');
+      mainDiv.classList.remove("mainDiv-show", "fadeIn");
+      this.setState({ post_type: 0 });
+    };
   }
 
-  handleFile(e) {
-    const files = e.currentTarget.files;
-    Object.keys(files).forEach(i => {
-      let contents = this.state.contents;
-      let urls = this.state.urls;
-      const file = files[i];
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        contents.push(file);
-        urls.push(reader.result);
-        this.setState({ contents: contents, urls: urls });
-      }
-      if (file) {
-        reader.readAsDataURL(file);
-      }
-    });
-    // console.log("here");
-    // this.setState({ contents: contents, urls: urls });
-    // console.log(this.state);
-  }
+  getForm() {
+    let mainDiv = document.getElementById('mainDiv');
+    mainDiv.classList.add("mainDiv-show", "fadeIn");
 
-  handleSubmit(e) {
-    e.preventDefault();
-
-    const formData = new FormData();
-    formData.append('post[user_id]', this.props.currentUserId);
-    formData.append('post[post_type]', "photo");
-    formData.append('post[title]', this.state.title);
-    this.state.contents.forEach(content => formData.append('contents[]', content));
-
-    $.ajax({
-      method: "post",
-      url: "/api/posts",
-      data: formData,
-      contentType: false,
-      processData: false
-    }).then((response) => console.log(response));
+    switch (this.state.post_type) {
+      case 1:
+        return <TextForm cancelPost={this.cancelPost.bind(this)}
+                  userId={this.props.currentUserId}
+                  username={this.props.username}/>;
+      case 2:
+        return <PhotoForm cancelPost={this.cancelPost.bind(this)}
+                  userId={this.props.currentUserId}
+                  username={this.props.username}/>;
+      default:
+        return null;
+    }
   }
 
   render() {
-    const previews = this.state.urls.map(url => <img className="post-image" src={url} />)
+    if (this.state.post_type > 0) {
+      return (
+        this.getForm()
+      );
+    }
     return (
       <div className="post-form-container">
         <div className="post-avatar" >
         </div>
         <div className="new-post-wrapper">
-          <a className="post-link one">
+          <a className="post-link one" onClick={this.setPostType(1)}>
             <i className="text-icon icon">&#60023;</i>
             <span className="new-post-span">Text</span>
           </a>
-          <a className="post-link two">
+          <a className="post-link two" onClick={this.setPostType(2)}>
             <i className="photo-icon icon">&#60019;</i>
             <span className="new-post-span">Photo</span>
           </a>
@@ -90,7 +88,7 @@ class PostForm extends React.Component {
           </a>
         </div>
       </div>
-    )
+    );
   }
 }
 

@@ -3,7 +3,7 @@ import PostIndex from './post_index';
 import { fetchPosts, updatePost, deletePost } from '../../actions/post_actions';
 
 const mapStateToProps = state => ({
-  currentUserId: state.session.currentUser.id,
+  currentUser: state.session.currentUser,
   posts: Object.values(state.entities.posts),
   users: state.entities.users
 });

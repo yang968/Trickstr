@@ -55,7 +55,6 @@ class Signup extends React.Component {
         <div className="user-div" >
           <h1>trickstr</h1>
           {catchphrase}
-
             <form className="user-form">
               <div className="form-container" >
               <input type="text"

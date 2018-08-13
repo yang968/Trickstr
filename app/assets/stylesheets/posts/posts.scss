@@ -13,6 +13,8 @@
   margin: 0 auto;
   overflow: hidden;
   max-width: 990px;
+  min-width: 990px;
+  z-index: 5;
 }
 
 .main-content {
@@ -77,18 +79,15 @@ ol {
   left: -85px;
 }
 
-.post-content {
-  /* border: 2px solid orange; */
-}
-
 .post-form-container {
   position: relative;
   background-color: white;
   border-radius: 3px;
   margin-bottom: 20px;
-  height: 99px;
+  min-height: 99px;
   min-width: 540px;
   margin-left: 85px;
+  height: auto;
 }
 
 .username {
@@ -96,7 +95,11 @@ ol {
   margin-bottom: 13px;
 }
 
-.username, .tags, .notes, .title, .description, .source, .footer {
+a:hover {
+  cursor: pointer;
+}
+
+.username, .tags, .notes, .title, .description, .source, .footer, .caption {
   color: #444;
   font-family: "gibson";
   padding: 0 20px;
@@ -143,7 +146,7 @@ ol {
 }
 
 .controls {
-  min-width: 60px;
+  min-width: 96px;
   display: flex;
   justify-content: space-between;
 }
@@ -158,10 +161,39 @@ ol {
   cursor: pointer;
 }
 
+.follow:hover {
+  color: #599EC8;
+}
+
 .reblog:hover {
   color: #5ABB8B;
 }
 
 .like:hover {
   color: #D75F45;
+}
+
+.mainDiv {
+  z-index: -5;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(54, 70, 93, 0.95);
+  visibility: hidden;
+}
+
+.mainDiv-show {
+  visibility: visible;
+  z-index: 500;
+}
+
+.caption {
+  font-size: 14px;
+  margin-top: 15px;
+  padding: 0 20px;
 }

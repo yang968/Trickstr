@@ -12,9 +12,8 @@ class Api::PostsController < ApplicationController
   def create
     debugger
     @post = Post.new(post_params)
-    @post.id = nil
     if @post.save
-      @post.contents.attach(params[:contents])
+      @post.contents.attach(params[:contents]) if params[:contents]
       render :show
     else
       render json: @post.errors.full_messages, status: 422

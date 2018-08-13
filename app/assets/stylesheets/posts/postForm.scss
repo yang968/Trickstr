@@ -63,6 +63,12 @@
   text-align: center;
   margin: 0 auto;
   font-style: normal;
+  transition-property: line-height;
+  transition-duration: 0.08s;
+}
+
+.post-link:hover .icon {
+  line-height: 40px;
 }
 
 .text-icon {
@@ -101,4 +107,113 @@
   opacity: 0.9;
   height: 21px;
   vertical-align: baseline;
+}
+
+input, textarea {
+  border: 0;
+  height: auto;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+}
+
+.text-form-container {
+  z-index: 1000;
+  position: relative;
+  background-color: white;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  min-height: 289px;
+  min-width: 540px;
+  margin-left: 85px;
+}
+
+.text-form-content {
+  position: relative;
+  padding: 0px 20px;
+  width: 500px;
+}
+
+.form-header {
+  height: 45px;
+  margin: 0;
+  padding: 15px 15px 13px 20px;
+  box-sizing: border-box;
+}
+
+.form-title {
+  font-size: 36px;
+  line-height: 47px;
+  width: 100%;
+  min-height: 42px;
+  word-wrap: break-word;
+}
+
+.form-title > span {
+  min-height: 47px;
+  color: #444;
+  box-sizing: border-box;
+}
+
+.form-desc {
+  min-height: 80px;
+  line-height: 21px;
+  word-wrap: break-word;
+  width: 500px;
+}
+
+.form-desc p {
+  font-size: 14px;
+  color: #444;
+  min-height: 80px;
+}
+
+.form-tags {
+  padding: 5px 0 10px 0;
+}
+
+.form-tags > p {
+  margin: 0;
+}
+
+.form-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding: 15px 20px;
+}
+
+.form-button {
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  padding: 5px 7px;
+  border-radius: 2px;
+}
+
+.close-button {
+  border: 1px solid #9da6af;
+  background-color: #9da6af;
+  color: #fff;
+}
+
+.post-button {
+  border: 1px solid #529ecc;
+  background-color: #529ecc;
+  color: #fff;
+}
+
+.glass {
+  position: fixed;
+  width: 100vw;
+  height: 10vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }

@@ -53,7 +53,11 @@ class PhotoForm extends React.Component {
       data: formData,
       contentType: false,
       processData: false
-    }).then((response) => console.log(response));
+    }).then(() => {
+      let mainDiv = document.getElementById('mainDiv');
+      mainDiv.classList.remove("mainDiv-show", "fadeIn");
+      window.location.reload();
+    });
   }
 
   render() {

@@ -32,7 +32,6 @@ class TextForm extends React.Component {
     formData.append('post[post_type]', "text");
     formData.append('post[title]', this.state.title);
     formData.append('post[description]', this.state.description);
-    // formData.append('contents[]', []);
 
     $.ajax({
       method: "post",
@@ -40,7 +39,11 @@ class TextForm extends React.Component {
       data: formData,
       contentType: false,
       processData: false
-    }).then(response => console.log(response));
+    }).then(() => {
+      let mainDiv = document.getElementById('mainDiv');
+      mainDiv.classList.remove("mainDiv-show", "fadeIn");
+      window.location.reload();
+    });
   }
 
   render() {

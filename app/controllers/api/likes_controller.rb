@@ -1,6 +1,16 @@
 class Api::LikesController < ApplicationController
   def index
-    @likes = Like.where(user_id: params[:user_id])
+    if (params[:user_id])
+      @likes = Like.where(user_id: params[:user_id])
+    elsif (params[:post_id])
+      @likes = Like.where(user_id: params[:post_id])
+    end
+
+    if @likes
+      render :index
+    else
+      render json: "Does Not Exist", status: 404
+    end
   end
 
   def create

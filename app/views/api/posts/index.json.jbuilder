@@ -23,3 +23,15 @@ json.users do
     end
   end
 end
+
+json.currentUser do
+  json.extract! @current_user, :username, :title, :description
+
+  json.posts do
+    json.array! @current_user.posts.collect{ |post| post.id }
+  end
+
+  json.likes do
+    json.array! @current_user.liked_posts.collect{ |post| post.id }
+  end
+end

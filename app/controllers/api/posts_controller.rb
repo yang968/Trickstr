@@ -1,7 +1,9 @@
 class Api::PostsController < ApplicationController
 
   def index
+    debugger
     @posts = Post.all
+    @current_user = current_user
     render :index
   end
 

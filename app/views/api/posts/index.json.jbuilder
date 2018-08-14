@@ -8,6 +8,10 @@ json.posts do
           json.url url_for(content)
         end
       end
+
+      json.likers do
+        json.array! post.likers.collect{ |liker| liker.id }
+      end
     end
   end
 end

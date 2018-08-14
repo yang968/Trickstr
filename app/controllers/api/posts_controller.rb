@@ -10,7 +10,6 @@ class Api::PostsController < ApplicationController
   #  end
 
   def create
-    # debugger
     @post = Post.new(post_params)
     if @post.save
       @post.contents.attach(params[:contents]) if params[:contents]

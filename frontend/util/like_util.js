@@ -9,16 +9,7 @@ export const likePost = (post_id, user_id) => (
 export const fetchLikes = (user_id) => (
   $.ajax({
     method: 'get',
-    url: `/api/users/${user_id}/likes`,
-    data: { user_id }
-  })
-);
-
-export const fetchLikers = (post_id) => (
-  $.ajax({
-    method: 'get',
-    url: `/api/posts/${post_id}/likes`,
-    data: { post}
+    url: `/api/users/${user_id}/likes`
   })
 );
 
@@ -28,3 +19,12 @@ export const deleteLike = (like_id) => (
     url: `/api/likes/${like_id}`
   })
 );
+
+// Postponed for later implementations.
+// export const fetchLikers = (post_id) => (
+//   $.ajax({
+//     method: 'get',
+//     url: `/api/posts/${post_id}/likes`,
+//     data: { post}
+//   })
+// );

@@ -151,6 +151,12 @@ a:hover {
   justify-content: space-between;
 }
 
+.controls-self {
+  min-width: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+
 .control-icon {
   font-family: "icon-font";
   font-style: normal;
@@ -171,6 +177,10 @@ a:hover {
 
 .like:hover {
   color: #D75F45;
+}
+
+.gear:hover {
+  color: silver;
 }
 
 .mainDiv {

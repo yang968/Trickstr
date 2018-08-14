@@ -33,7 +33,12 @@ class PostIndex extends React.Component {
             <div className="left-column" >
               <PostFormWithRef ref={mainDivRef}/>
               <ol className="main-posts" >
-                { this.props.posts.map(post => <PostIndexItem users={this.props.users} post={post} key={post.id} />) }
+                { this.props.posts.map(post => (
+                  <PostIndexItem users={this.props.users}
+                    currentUserId={currentUserId}
+                    post={post}
+                    key={post.id} />
+                ))}
               </ol>
             </div>
             <div className="right-column">

@@ -7,6 +7,7 @@ class PostIndexItem extends React.Component {
 
     this.getTitle = this.getTitle.bind(this);
     this.getDescription = this.getDescription.bind(this);
+    this.getControls = this.getControls.bind(this);
   }
 
   getTitle() {
@@ -40,6 +41,24 @@ class PostIndexItem extends React.Component {
     return null;
   }
 
+  getControls() {
+    if (this.state.post.user_id === this.props.currentUserId) {
+      return (
+        <div className="controls-self" >
+          <i className="control-icon reblog">&#xea8f;</i>
+          <i className="control-icon gear">&#xea9a;</i>
+        </div>
+      )
+    }
+    return (
+      <div className="controls" >
+        <i className="control-icon follow">&#xea45;</i>
+        <i className="control-icon reblog">&#xea8f;</i>
+        <i className="control-icon like">&#xea4e;</i>
+      </div>
+    )
+  }
+
   render() {
     // let user
     // if !user return null (or loading component)
@@ -50,6 +69,7 @@ class PostIndexItem extends React.Component {
 
     let title = this.getTitle();
     let description = this.getDescription();
+    let controls = this.getControls();
     return (
       <li className='main-post' >
         <div className="post-avatar" >
@@ -72,15 +92,7 @@ class PostIndexItem extends React.Component {
             <div >
               <span className="notes">notes</span>
             </div>
-            <div className="controls" >
-              <i className="control-icon follow">&#xea45;</i>
-              <i className="control-icon reblog">&#xea8f;</i>
-              <i className="control-icon like">
-                <span>
-                  &#xea4e;
-                </span>
-              </i>
-            </div>
+            { controls }
           </div>
         </div>
       </li>

@@ -5,12 +5,12 @@
 
 @font-face {
   font-family: "tFont";
-  src: url('t_font.woff2') format('woff2');
+  src: font-url('t_font.woff2') format('woff2');
 }
 
 @font-face {
   font-family: "HelveticaNeue";
-  src: url('HelveticaNeue.ttf') format('truetype');
+  src: font-url('/assets/HelveticaNeue.ttf') format('truetype');
 }
 
 @font-face {

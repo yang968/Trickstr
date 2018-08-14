@@ -1,6 +1,6 @@
 @font-face {
   font-family: "gibson";
-  src: url("g_font.woff") format('woff');
+  src: font-url("g_font.woff") format('woff');
 }
 
 @font-face {
@@ -10,15 +10,15 @@
 
 @font-face {
   font-family: "HelveticaNeue";
-  src: font-url('/assets/HelveticaNeue.ttf') format('truetype');
+  src: font-url('HelveticaNeue.ttf') format('truetype');
 }
 
 @font-face {
   font-family: "icon-font";
-  src: url('tumblr-icons.woff2') format('woff2');
+  src: font-url('tumblr-icons.woff2') format('woff2');
 }
 
 @font-face {
   font-family: "Averta";
-  src: url('Averta.otf') format('truetype');
+  src: font-url('Averta.otf') format('truetype');
 }

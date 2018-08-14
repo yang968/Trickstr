@@ -14,10 +14,10 @@
  *= require_self
  */
 
-@import "normalize.css";
+@import "normalize.scss";
 @import "fonts.scss";
 @import "base.scss";
 @import "users.scss";
-@import "animate.css";
+@import "animate.scss";
 @import "./posts/posts.scss";
 @import "./posts/postForm.scss";

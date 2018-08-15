@@ -34,10 +34,12 @@ class Footer extends React.Component {
   }
 
   getControls() {
+    // BONUS
+    // let reblog = <i className="control-icon reblog">&#xea8f;</i>;
+    // Each icon is 24px long and 12px apart
     if (this.props.post.user_id === this.props.currentUserId) {
       return (
         <div className="controls-self" >
-          <i className="control-icon reblog">&#xea8f;</i>
           <i className="control-icon gear">&#xea9a;</i>
         </div>
       )
@@ -47,7 +49,6 @@ class Footer extends React.Component {
     return (
       <div className="controls" >
         <i className="control-icon follow">&#xea45;</i>
-        <i className="control-icon reblog">&#xea8f;</i>
         {heart}
       </div>
     )

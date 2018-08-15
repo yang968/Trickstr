@@ -34,6 +34,22 @@ json.currentUser do
   json.likes do
     json.array! @current_user.liked_posts.collect{ |post| post.id }
   end
+
+  if @follows.count > 0
+    json.follows do
+      @follows.each do |follow|
+        json.set! follow.user_id do
+          follow.id
+        end
+      end
+    end
+  else
+    json.follows({})
+  end
+
+  json.followers do
+    json.array! @followers.collect{ |follow| follow.follower_id }
+  end
 end
 
 json.likes do
@@ -42,12 +58,4 @@ json.likes do
       json.extract! like, :id
     end
   end
-end
-
-json.follows do
-  json.array! @follows.collect{ |follow| follow.user_id }
-end
-
-json.followers do
-  json.array! @followers.collect{ |follow| follow.follower_id }
 end

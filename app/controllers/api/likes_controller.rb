@@ -1,5 +1,6 @@
 class Api::LikesController < ApplicationController
   def index
+    @likes = nil
     if (params[:user_id])
       @likes = Like.where(user_id: params[:user_id])
     elsif (params[:post_id])
@@ -14,7 +15,6 @@ class Api::LikesController < ApplicationController
   end
 
   def create
-    # debugger
     @like = Like.new(like_params)
 
     if @like.save

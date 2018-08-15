@@ -1,5 +1,9 @@
 json.follows do
-  json.array! @follows.collect{ |follow| follow.user_id }
+  @follows.each do |follow|
+    json.set! follow.user_id do
+      follow.id
+    end
+  end
 end
 
 json.followers do

@@ -69,7 +69,6 @@ class Footer extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     let notes = this.getNotes();
     let controls = this.getControls();
     return(

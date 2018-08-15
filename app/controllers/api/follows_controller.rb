@@ -1,10 +1,10 @@
 class Api::FollowsController < ApplicationController
   def index
     # Look up user's id in follower_id to find the accounts the user follows
-    @follows = Follow.where(follower_id: follow_params[:follower_id])
+    @follows = current_user.follows
 
     # Look up user's id in user_id to find the accounts that follow the user
-    @followers = Follow.where(user_id: follow_params[:user_id])
+    @followers = current_user.followers
 
     render :index
   end
@@ -13,17 +13,21 @@ class Api::FollowsController < ApplicationController
     @follow = Follow.new(follow_params)
 
     if @follow.save
-      render json: @follow
+      @follows = current_user.follows
+      @followers = current_user.followers
+      render :index
     else
       render json: @follow.errors.full_messages, status: 422
     end
   end
 
   def destroy
-    @follow = Follow.find(params[:id])
+    @follow = Follow.find_by(user_id: params[:id], follower_id: current_user.id)
 
     if @follow && @follow.destroy
-      render json: @follow
+      @follows = current_user.follows
+      @followers = current_user.followers
+      render :index
     else
       render json: @follow.errors.full_messages, status: 422
     end

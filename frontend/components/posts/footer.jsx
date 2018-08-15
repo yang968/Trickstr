@@ -7,6 +7,11 @@ class Footer extends React.Component {
 
     this.getControls = this.getControls.bind(this);
     this.getNotes = this.getNotes.bind(this);
+    this.getHeart = this.getHeart.bind(this);
+
+    this.state = {
+      liked: this.props.like
+    }
   }
 
   getControls() {
@@ -18,13 +23,22 @@ class Footer extends React.Component {
         </div>
       )
     }
+
+    let heart = this.getHeart();
     return (
       <div className="controls" >
         <i className="control-icon follow">&#xea45;</i>
         <i className="control-icon reblog">&#xea8f;</i>
-        <i className="control-icon like">&#xea4e;</i>
+        {heart}
       </div>
     )
+  }
+
+  getHeart() {
+    if (this.state.liked) {
+      return <i className="control-icon like-filled">&#xea4f;</i>;
+    }
+    return <i className="control-icon like">&#xea4e;</i>;
   }
 
   getNotes() {
@@ -44,7 +58,6 @@ class Footer extends React.Component {
         </div>
         {controls}
       </div>
-
     )
   }
 }

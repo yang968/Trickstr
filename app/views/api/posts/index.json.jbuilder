@@ -35,3 +35,11 @@ json.currentUser do
     json.array! @current_user.liked_posts.collect{ |post| post.id }
   end
 end
+
+json.likes do
+  @likes.each do |like|
+    json.set! like.post_id do
+      json.extract! like, :id
+    end
+  end
+end

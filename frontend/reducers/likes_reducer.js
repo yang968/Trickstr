@@ -1,10 +1,14 @@
 import { RECEIVE_ALL_LIKES, RECEIVE_LIKE, REMOVE_LIKE } from '../actions/like_actions';
+import { RECEIVE_ALL_POSTS } from '../actions/post_actions';
 import { merge } from 'lodash';
 
 const LikesReducer = (state={}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
+    case RECEIVE_ALL_POSTS:
+      if (action.payload.likes) return action.payload.likes;
+      return state;
     case RECEIVE_ALL_LIKES:
       return action.likes;
     case RECEIVE_LIKE:

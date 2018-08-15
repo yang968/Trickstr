@@ -1,4 +1,4 @@
-json.extract! @user, :username, :title, :description
+json.extract! @user, :id, :username, :title, :description
 
 json.posts do
   json.array! @user.posts.collect{ |post| post.id }

@@ -2,7 +2,7 @@ export const likePost = (post_id, user_id) => (
   $.ajax({
     method: 'post',
     url: `/api/likes`,
-    data: { post_id, user_id }
+    data: { like: {post_id, user_id } }
   })
 );
 

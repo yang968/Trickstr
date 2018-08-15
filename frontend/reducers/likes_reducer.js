@@ -15,7 +15,8 @@ const LikesReducer = (state={}, action) => {
       // Using post_id of the like as key so when a user is deleting a like,
       // post_id can be used here to find the like_id
       // O(1) look up
-      return merge({}, state, { [action.like.post_id]: action.like.id});
+      let obj = {id: action.like.id};
+      return merge({}, state, { [action.like.post_id]: obj});
     case REMOVE_LIKE:
       let newState = merge({}, state);
       delete newState[action.postId];

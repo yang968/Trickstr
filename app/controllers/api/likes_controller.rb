@@ -14,20 +14,21 @@ class Api::LikesController < ApplicationController
   end
 
   def create
+    # debugger
     @like = Like.new(like_params)
 
     if @like.save
-      render :show
+      render json: @like
     else
       render json: @like.errors.full_messages, status: 422
     end
   end
 
   def destroy
-    @like = Like.find_by_params(like_params[:user_id], like_params[:post_id])
+    @like = Like.find(params[:id])
 
     if @like && @like.destroy
-      render :show
+      render json: @like
     else
       render json: @like.errors.full_messages, status: 422
     end

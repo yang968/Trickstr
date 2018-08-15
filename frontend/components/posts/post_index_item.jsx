@@ -1,10 +1,9 @@
  import React from 'react';
- import Footer from './footer';
+ import FooterContainer from './footer_container';
 
 class PostIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(props);
 
     this.state = { post: this.props.post };
     this.getTitle = this.getTitle.bind(this);
@@ -71,7 +70,7 @@ class PostIndexItem extends React.Component {
           </div>
           <div className="source">
           </div>
-          <Footer post={this.state.post}
+          <FooterContainer post={this.state.post}
             currentUserId={this.props.currentUserId}
             likers={this.props.likers}
             like={this.props.like}/>

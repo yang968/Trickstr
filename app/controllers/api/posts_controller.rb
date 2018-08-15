@@ -1,7 +1,6 @@
 class Api::PostsController < ApplicationController
 
   def index
-    debugger
     @posts = Post.all
     @current_user = current_user
     @likes = Like.where(user_id: @current_user.id)

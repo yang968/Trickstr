@@ -3,14 +3,33 @@ import React from 'react';
 class Footer extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
+
+    this.state = {
+      liked: (this.props.like === null) ? false : true,
+      likers: this.props.likers
+    }
 
     this.getControls = this.getControls.bind(this);
     this.getNotes = this.getNotes.bind(this);
     this.getHeart = this.getHeart.bind(this);
+    this.changeLike = this.changeLike.bind(this);
+  }
 
-    this.state = {
-      liked: this.props.like
+  changeLike() {
+    if (this.state.liked) {
+      this.props.deleteLike(this.props.like.id).then(
+        (response) => {
+          let newLikers = this.state.likers.filter(id => id != this.props.currentUserId)
+          this.setState({liked: false, likers: newLikers })
+        }
+      )
+    } else {
+      this.props.likePost(this.props.post.id, this.props.currentUserId).then(
+        (response) => {
+          let newLikers = this.state.likers.concat(response.like.user_id);
+          this.setState({liked: true, likers: newLikers })
+        }
+      )
     }
   }
 
@@ -36,19 +55,20 @@ class Footer extends React.Component {
 
   getHeart() {
     if (this.state.liked) {
-      return <i className="control-icon like-filled">&#xea4f;</i>;
+      return <i className="control-icon like-filled" onClick={this.changeLike}>&#xea4f;</i>;
     }
-    return <i className="control-icon like">&#xea4e;</i>;
+    return <i className="control-icon like" onClick={this.changeLike}>&#xea4e;</i>;
   }
 
   getNotes() {
-    if (this.props.likers.length > 0){
-      return <span className="notes">{this.props.likers.length} notes</span>;
+    if (this.state.likers.length > 0){
+      return <span className="notes">{this.state.likers.length} notes</span>;
     }
     return null;
   }
 
   render() {
+    console.log(this.state);
     let notes = this.getNotes();
     let controls = this.getControls();
     return(

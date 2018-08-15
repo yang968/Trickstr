@@ -1,5 +1,4 @@
 import React from 'react';
-import { createPost } from '../../../actions/post_actions';
 
 class TextForm extends React.Component {
   constructor(props) {

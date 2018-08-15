@@ -25,7 +25,7 @@ json.users do
 end
 
 json.currentUser do
-  json.extract! @current_user, :username, :title, :description
+  json.extract! @current_user, :id, :username, :title, :description
 
   json.posts do
     json.array! @current_user.posts.collect{ |post| post.id }

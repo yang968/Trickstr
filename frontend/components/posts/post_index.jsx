@@ -15,7 +15,6 @@ class PostIndex extends React.Component {
     this.props.fetchPosts();
 
     this.mainDiv = ReactDOM.findDOMNode(mainDivRef.current);
-    // console.log(this.mainDiv);
   }
 
   render(){
@@ -37,6 +36,8 @@ class PostIndex extends React.Component {
                   <PostIndexItem users={this.props.users}
                     currentUserId={currentUserId}
                     post={post}
+                    likers={post.likers}
+                    like={ (this.props.likes.hasOwnProperty(post.id)) ? true : false }
                     key={post.id} />
                 ))}
               </ol>

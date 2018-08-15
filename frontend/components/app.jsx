@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(window.currentUser);
+    // console.log(window.currentUser);
     return (
       <div>
         <Switch>

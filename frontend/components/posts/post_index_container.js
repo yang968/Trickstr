@@ -5,7 +5,8 @@ import { fetchPosts, updatePost, deletePost } from '../../actions/post_actions';
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
   posts: Object.values(state.entities.posts),
-  users: state.entities.users
+  users: state.entities.users,
+  likes: state.entities.likes
 });
 
 const mapDispatchToProps = dispatch => ({

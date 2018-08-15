@@ -99,10 +99,15 @@ a:hover {
   cursor: pointer;
 }
 
-.username, .tags, .notes, .title, .description, .source, .footer, .caption {
+.username, .tags, , .title, .description, .source, .footer, .caption {
   color: #444;
   font-family: "gibson";
   padding: 0 20px;
+}
+
+.notes {
+  color: #444;
+  font-family: "gibson";
 }
 
 .username a, .tags, .notes {

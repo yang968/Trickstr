@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  resources :follows
   root to: 'static_pages#root'
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:show, :create, :update, :destroy] do
       resources :likes, only: [:index]
+      resources :follows, only: [:index]
     end
 
     resource :session, only: [:new, :create, :destroy]
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
 
     resources :likes, only: [:create, :destroy]
+
+    resources :follows, only: [:create, :destroy]
   end
 
 end

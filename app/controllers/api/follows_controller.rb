@@ -1,19 +1,31 @@
 class Api::FollowsController < ApplicationController
   def index
-    @follows = Follow.all
+    # Look up user's id in follower_id to find the accounts the user follows
+    @follows = Follow.where(follower_id: follow_params[:follower_id])
+
+    # Look up user's id in user_id to find the accounts that follow the user
+    @followers = Follow.where(user_id: follow_params[:user_id])
+
+    render :index
   end
 
   def create
     @follow = Follow.new(follow_params)
 
-
+    if @follow.save
+      render json: @follow
+    else
+      render json: @follow.errors.full_messages, status: 422
+    end
   end
 
   def destroy
-    @follow.destroy
-    respond_to do |format|
-      format.html { redirect_to follows_url, notice: 'Follow was successfully destroyed.' }
-      format.json { head :no_content }
+    @follow = Follow.find(params[:id])
+
+    if @follow && @follow.destroy
+      render json: @follow
+    else
+      render json: @follow.errors.full_messages, status: 422
     end
   end
 

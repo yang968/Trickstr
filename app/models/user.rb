@@ -15,6 +15,14 @@ class User < ApplicationRecord
     through: :likes,
     source: :post
 
+  has_many :follows,
+    foreign_key: :user_id,
+    class_name: 'Follow'
+
+  has_many :followers,
+    foreign_key: :follower_id,
+    class_name: 'Follow'
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email);
     (user && user.is_password?(password)) ? user : nil

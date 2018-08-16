@@ -15,8 +15,6 @@ class PostIndexItem extends React.Component {
     this.editForm = this.editForm.bind(this);
     this.getForm = this.getForm.bind(this);
     this.cancelPost = this.cancelPost.bind(this);
-
-    console.log(this.state);
   }
 
   editForm() {
@@ -71,14 +69,14 @@ class PostIndexItem extends React.Component {
       case "text":
         return <EditTextForm cancelPost={this.cancelPost.bind(this)}
           id={this.state.post.id}
-          username={this.props.users[this.state.post.user_id].username}
+          username={this.props.username}
           userId={this.state.post.user_id}
           title={this.state.post.title}
           description={this.state.post.description} />;
       case "photo":
         return <EditPhotoForm cancelPost={this.cancelPost.bind(this)}
           id={this.state.post.id}
-          username={this.props.users[this.state.post.user_id].username}
+          username={this.props.username}
           userId={this.state.post.user_id}
           description={this.state.post.description}
           contents={this.state.post.contents}
@@ -100,7 +98,7 @@ class PostIndexItem extends React.Component {
       )
     }
     let item = null;
-    if (this.state.post.contents.length > 0) {
+    if (this.state.post.contents && this.state.post.contents.length > 0) {
       item = (<img className="post-image" src={this.state.post.contents[0].url} alt="IMAGE" />)
     }
 
@@ -113,7 +111,7 @@ class PostIndexItem extends React.Component {
         </div>
         <div className="post-content" >
           <div className="username">
-            <a>{this.props.users[this.state.post.user_id].username}</a>
+            <a>{this.props.username}</a>
           </div>
           {
             this.state.post.contents.length > 0 &&

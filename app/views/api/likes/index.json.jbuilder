@@ -1,7 +1,17 @@
-json.likes do
-  @likes.each do |like|
-    json.set! like.post_id do
-      json.extract! like.id
+json.posts do
+  @posts.each do |post|
+    json.set! post.id do
+      json.extract! post, :id, :user_id, :post_type, :title, :description
+
+      json.contents do
+        json.array! post.contents do |content|
+          json.url url_for(content)
+        end
+      end
+
+      json.likers do
+        json.array! post.likers.collect{ |liker| liker.id }
+      end
     end
   end
 end

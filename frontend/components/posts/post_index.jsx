@@ -11,6 +11,8 @@ const mainDivRef = React.createRef();
 class PostIndex extends React.Component {
   constructor(props) {
     super(props);
+
+    this.getLikedPosts = this.getLikedPosts.bind(this);
   }
 
   componentDidMount() {
@@ -19,7 +21,12 @@ class PostIndex extends React.Component {
     this.mainDiv = ReactDOM.findDOMNode(mainDivRef.current);
   }
 
+  getLikedPosts() {
+    this.props.fetchLikedPosts(this.props.currentUser.id);
+  }
+
   render(){
+    console.log(this.props);
     let currentUserId = this.props.currentUser.id;
     let username = this.props.currentUser.username;
 
@@ -35,7 +42,8 @@ class PostIndex extends React.Component {
               <PostFormWithRef ref={mainDivRef}/>
               <ol className="main-posts" >
                 { this.props.posts.map(post => (
-                  <PostIndexItem users={this.props.users}
+                  <PostIndexItem
+                    username={this.props.users[post.user_id].username}
                     currentUserId={currentUserId}
                     post={post}
                     likers={post.likers}
@@ -53,10 +61,10 @@ class PostIndex extends React.Component {
                   {this.props.currentUser.username}
                 </div>
                 <li className='side-list'>
-                  <Link to="#" className="side-link">
+                  <button onClick={this.getLikedPosts} className="side-link">
                     <i className="side-icon">&#xea4f;</i>
                     <span className="side-list-text">Your Likes</span>
-                  </Link>
+                  </button>
                 </li>
                 <li className='side-list'>
                   <Link to="#" className="side-link">

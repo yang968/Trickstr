@@ -27,3 +27,10 @@ export const deletePost = (id) => (
     url: `api/posts/${id}`
   })
 )
+
+export const fetchLikedPosts = (userId) => (
+  $.ajax({
+    method: 'get',
+    url: `/api/users/${userId}/likes`
+  })
+)

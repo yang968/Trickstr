@@ -32,6 +32,7 @@
 }
 
 .side-link {
+  background-color: inherit;
   width: 320px;
   height: 53px;
   cursor: pointer;
@@ -41,6 +42,8 @@
   color: inherit;
   border-bottom: 0;
   text-decoration: none;
+  padding: inherit;
+  border: none;
 }
 
 .side-icon {

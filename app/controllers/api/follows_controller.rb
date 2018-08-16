@@ -1,6 +1,6 @@
 class Api::FollowsController < ApplicationController
   def index
-    Look up user's id in follower_id to find the accounts the user follows
+    # Look up user's id in follower_id to find the accounts the user follows
     @follows = current_user.follows
 
     # Look up user's id in user_id to find the accounts that follow the user

@@ -148,6 +148,7 @@ input:focus, textarea:focus {
   width: 100%;
   min-height: 42px;
   word-wrap: break-word;
+  cursor: text;
 }
 
 .form-title > span {
@@ -167,6 +168,7 @@ input:focus, textarea:focus {
   font-size: 14px;
   color: #444;
   min-height: 80px;
+  cursor: text;
 }
 
 .form-tags {
@@ -216,4 +218,15 @@ input:focus, textarea:focus {
   bottom: 0;
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+[contentEditable=true]:empty:before {
+  content: attr(placeholder);
+  color: #ccc;
+  display: block;
+}
+
+[contentEditable=true]:focus {
+  outline-color: rgba(255, 255, 255, 255);
+  cursor:default;
 }

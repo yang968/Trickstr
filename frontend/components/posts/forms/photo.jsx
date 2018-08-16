@@ -81,8 +81,8 @@ class PhotoForm extends React.Component {
               contentEditable="true"
               suppressContentEditableWarning="true"
               value={this.state.description}
-              onInput={this.updateDescription.bind(this)}>
-              Add a caption, if you like
+              onInput={this.updateDescription.bind(this)}
+              placeholder="Add a caption, if you like">
             </p>
           </div>
           <div className="form-tags">

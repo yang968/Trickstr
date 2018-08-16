@@ -6,13 +6,18 @@ class Footer extends React.Component {
 
     this.state = {
       liked: (this.props.like === null) ? false : true,
-      likers: this.props.likers
+      likers: this.props.likers,
+      edit: false
     }
 
     this.getControls = this.getControls.bind(this);
     this.getNotes = this.getNotes.bind(this);
     this.getHeart = this.getHeart.bind(this);
     this.changeLike = this.changeLike.bind(this);
+    this.setEdit = this.setEdit.bind(this);
+
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   changeLike() {
@@ -33,14 +38,66 @@ class Footer extends React.Component {
     }
   }
 
+  setEdit() {
+    // if (!this.state.edit) this.setState({edit: !this.state.edit});
+    // else this.setState({edit: false});
+    this.setState({edit: !this.state.edit});
+  }
+
+  componentWillMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  setWrapperRef2(node) {
+    this.wrapperRef2 = node;
+  }
+
+  handleClickOutside(e) {
+    if (this.state.edit
+      && (!this.wrapperRef.contains(event.target) && !this.wrapperRef2.contains(event.target))) {
+        console.log("hello");
+      this.setEdit();
+    }
+  }
+
+  showPopUp() {
+    if (this.state.edit) return (
+      <div ref={node => this.setWrapperRef(node)} className="pop-container">
+        <div className="post-popover">
+          <ul className="post-pop-ul">
+            <li className="post-pop-li">
+              <button className="post-pop-button">Edit</button>
+            </li>
+            <li className="post-pop-li">
+              <button className="post-pop-button">Delete</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    );
+    return null;
+  }
+
   getControls() {
     // BONUS
     // let reblog = <i className="control-icon reblog">&#xea8f;</i>;
     // Each icon is 24px long and 12px apart
+    let popup = this.showPopUp();
     if (this.props.post.user_id === this.props.currentUserId) {
       return (
         <div className="controls-self" >
-          <i className="control-icon gear">&#xea9a;</i>
+          <i ref={node => this.setWrapperRef2(node)} className="control-icon gear" onClick={this.setEdit}>
+            &#xea9a;
+          </i>
+          {popup}
         </div>
       )
     }

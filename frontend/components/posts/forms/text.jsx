@@ -58,18 +58,18 @@ class TextForm extends React.Component {
             <span
               contentEditable="true"
               suppressContentEditableWarning="true"
+              placeholder="Title"
               value={this.state.title}
               onInput={this.updateTitle.bind(this)}>
-              Title
             </span>
           </div>
-          <div className="form-desc">
+          <div className="form-desc" >
             <p
               contentEditable="true"
               suppressContentEditableWarning="true"
               value={this.state.description}
-              onInput={this.updateDescription.bind(this)}>
-              Your text here
+              onInput={this.updateDescription.bind(this)}
+              placeholder="Your text here">
             </p>
           </div>
           <div className="form-tags">

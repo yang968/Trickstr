@@ -57,15 +57,6 @@ ol {
   /* border: 1px solid white; */
 }
 
-.right-column {
-  width: 320px;
-  color: white;
-  float: right;
-  height: 500px;
-  border: 1px solid yellow;
-  margin-top: -5px;
-}
-
 .post-avatar {
   /* border: 1px solid red; */
   width: 64px;
@@ -215,4 +206,54 @@ a:hover {
   font-size: 14px;
   margin-top: 15px;
   padding: 0 20px;
+}
+
+.gear {
+  position: relative;
+}
+
+.pop-container {
+  position: absolute;
+}
+
+.post-popover {
+  position: absolute;
+  margin-top: 5px;
+  padding: 1px;
+  top: 32px;
+  left: -53px;
+  border-radius: 3px;
+  width: 130px;
+  height: 76px;
+  background-color: white;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+  // background: rgba(0, 0, 0, 0.1);
+}
+
+.post-pop-ul {
+  width: 128px;
+  height: 74px;
+  padding: 4px 0;
+}
+
+.post-pop-li {
+  list-style: none;
+  width: 100%;
+  height: 35px;
+}
+
+.post-pop-button {
+  padding: 5px 25px 5px 14px;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  background: white;
+  border: none;
+  cursor: pointer;
+  font: normal 14px "Helvetica Neue";
+  color: #3F5265;
+}
+
+.post-pop-button:hover {
+  background-color: #E6EFF7;
 }

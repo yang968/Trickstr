@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import PostIndexItem from './post_index_item';
 import PostForm from './post_form';
 
+import { Link } from 'react-router-dom';
+
 const mainDivRef = React.createRef();
 
 class PostIndex extends React.Component {
@@ -43,7 +45,23 @@ class PostIndex extends React.Component {
               </ol>
             </div>
             <div className="right-column">
-              <p>In Construction</p>
+              <div className="side-panel">
+                <div className="side-header">
+                  {this.props.currentUser.username}
+                </div>
+                <li className='side-list'>
+                  <Link to="#" className="side-link">
+                    <i className="side-icon">&#xea4f;</i>
+                    <span className="side-list-text">Your Likes</span>
+                  </Link>
+                </li>
+                <li className='side-list'>
+                  <Link to="#" className="side-link">
+                    <i className="side-icon">&#xea45;</i>
+                    <span className="side-list-text">Following</span>
+                  </Link>
+                </li>
+              </div>
             </div>
           </div>
         </div>

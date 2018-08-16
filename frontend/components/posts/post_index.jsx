@@ -40,7 +40,10 @@ class PostIndex extends React.Component {
                     post={post}
                     likers={post.likers}
                     like={ (this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
-                    key={post.id} />
+                    key={post.id}
+                    updatePost={this.props.updatePost}
+                    deletePost={this.props.deletePost}
+                    />
                 ))}
               </ol>
             </div>

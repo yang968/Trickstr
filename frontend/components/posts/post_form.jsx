@@ -93,13 +93,3 @@ class PostForm extends React.Component {
 }
 
 export default PostForm;
-
-// <form  >
-//   <input type="text"
-//     value={this.state.title}
-//     onChange={this.handleChange.bind(this)} />
-//   <input type="file" multiple
-//     onChange={this.handleFile.bind(this)} />
-//   {previews}
-//   <button onClick={this.handleSubmit.bind(this)}>Post</button>
-// </form>

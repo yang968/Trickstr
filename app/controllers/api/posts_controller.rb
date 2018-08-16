@@ -24,9 +24,14 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:post][:id])
+    debugger
+    @post = Post.find(params[:id])
 
     if @post.update(post_params)
+      if params[:contents]
+        new_contents = params[:contents].select { |content| content != "[object Object]" }
+        @post.contents.attach(new_contents) 
+      end
       render :show
     else
       render json: @post.errors.full_messages, status: 422

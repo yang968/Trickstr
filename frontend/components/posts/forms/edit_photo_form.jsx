@@ -1,22 +1,18 @@
 import React from 'react';
 
-class PhotoForm extends React.Component {
+class EditPhotoForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({
-      user_id: this.props.userId,
-      description: "",
-      post_type: "photo",
-      contents: [],
-      urls: []
-    })
 
-    this.updateDescription = this.updateDescription.bind(this);
+    this.state = {
+      id: props.id,
+      userId: props.userId,
+      description: props.description,
+      contents: props.contents,
+      urls: props.contents.map(content => content.url)
+    }
+
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  updateDescription(e) {
-    this.setState({description: e.currentTarget.innerHTML});
   }
 
   handleFile(e) {
@@ -39,32 +35,35 @@ class PhotoForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let description = document.getElementById('p').textContent;
+    this.setState({ description }, () => {
+      const formData = new FormData();
+      formData.append('post[user_id]', this.props.userId);
+      formData.append('post[post_type]', "photo");
+      formData.append('post[title]', "");
+      formData.append('post[description]', this.state.description);
+      this.state.contents.forEach(content => formData.append('contents[]', content));
 
-    const formData = new FormData();
-    formData.append('post[user_id]', this.props.userId);
-    formData.append('post[post_type]', "photo");
-    formData.append('post[title]', "");
-    formData.append('post[description]', this.state.description);
-    this.state.contents.forEach(content => formData.append('contents[]', content));
+      $.ajax({
+        method: "patch",
+        url: `/api/posts/${this.state.id}`,
+        data: formData,
+        contentType: false,
+        processData: false
+      }).then(() => {
+        let mainDiv = document.getElementById('mainDiv');
+        mainDiv.classList.remove("mainDiv-show", "fadeIn");
+        window.location.reload();
+      });
+    })
 
-    $.ajax({
-      method: "post",
-      url: "/api/posts",
-      data: formData,
-      contentType: false,
-      processData: false
-    }).then(() => {
-      let mainDiv = document.getElementById('mainDiv');
-      mainDiv.classList.remove("mainDiv-show", "fadeIn");
-      window.location.reload();
-    });
   }
 
   render() {
     const previews = this.state.urls.map((url,idx) => (
       <img className="post-image" src={url} key={idx}/>));
     return (
-      <div className="text-form-container">
+      <div>
         <div className="post-avatar" >
         </div>
         <div className="form-header username">
@@ -78,11 +77,11 @@ class PhotoForm extends React.Component {
         <div className="text-form-content animated fadeIn">
           <div className="form-desc">
             <p
+              id="p"
               contentEditable="true"
               suppressContentEditableWarning="true"
-              value={this.state.description}
-              onInput={this.updateDescription.bind(this)}
-              placeholder="Add a caption, if you like">
+              value={this.state.description}>
+              {this.state.description}
             </p>
           </div>
           <div className="form-tags">
@@ -104,4 +103,4 @@ class PhotoForm extends React.Component {
   }
 }
 
-export default PhotoForm;
+export default EditPhotoForm;

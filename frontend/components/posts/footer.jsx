@@ -39,8 +39,6 @@ class Footer extends React.Component {
   }
 
   setEdit() {
-    // if (!this.state.edit) this.setState({edit: !this.state.edit});
-    // else this.setState({edit: false});
     this.setState({edit: !this.state.edit});
   }
 
@@ -61,9 +59,8 @@ class Footer extends React.Component {
   }
 
   handleClickOutside(e) {
-    if (this.state.edit
-      && (!this.wrapperRef.contains(event.target) && !this.wrapperRef2.contains(event.target))) {
-        console.log("hello");
+    if (this.state.edit && (!this.wrapperRef.contains(event.target)
+                        && !this.wrapperRef2.contains(event.target))) {
       this.setEdit();
     }
   }
@@ -74,10 +71,10 @@ class Footer extends React.Component {
         <div className="post-popover">
           <ul className="post-pop-ul">
             <li className="post-pop-li">
-              <button className="post-pop-button">Edit</button>
+              <button className="post-pop-button" onClick={() => this.props.editForm()}>Edit</button>
             </li>
             <li className="post-pop-li">
-              <button className="post-pop-button">Delete</button>
+              <button className="post-pop-button" onClick={() => this.props.deletePost(this.props.post.id)}>Delete</button>
             </li>
           </ul>
         </div>

@@ -74,7 +74,7 @@ class TextForm extends React.Component {
           </div>
           <div className="form-tags">
             <p>
-              #tags
+              #tags (disabled)
             </p>
           </div>
         </div>

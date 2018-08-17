@@ -1,4 +1,5 @@
 import React from 'react';
+import Dropzone from 'react-dropzone';
 
 class PhotoForm extends React.Component {
   constructor(props) {
@@ -8,34 +9,34 @@ class PhotoForm extends React.Component {
       description: "",
       post_type: "photo",
       contents: [],
-      urls: []
     })
 
     this.updateDescription = this.updateDescription.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.onDrop = this.onDrop.bind(this);
   }
 
   updateDescription(e) {
     this.setState({description: e.currentTarget.innerHTML});
   }
 
-  handleFile(e) {
-    const files = e.currentTarget.files;
-    Object.keys(files).forEach(i => {
-      let contents = this.state.contents;
-      let urls = this.state.urls;
-      const file = files[i];
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        contents.push(file);
-        urls.push(reader.result);
-        this.setState({ contents: contents, urls: urls });
-      }
-      if (file) {
-        reader.readAsDataURL(file);
-      }
-    });
-  }
+  // handleFile(e) {
+  //   const files = e.currentTarget.files;
+  //   Object.keys(files).forEach(i => {
+  //     let contents = this.state.contents;
+  //     let urls = this.state.urls;
+  //     const file = files[i];
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       contents.push(file);
+  //       urls.push(reader.result);
+  //       this.setState({ contents: contents, urls: urls });
+  //     }
+  //     if (file) {
+  //       reader.readAsDataURL(file);
+  //     }
+  //   });
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -60,9 +61,17 @@ class PhotoForm extends React.Component {
     });
   }
 
+  onDrop(files) {
+    console.log(...files);
+    this.setState({
+      contents: this.state.contents.concat(...files)
+    });
+  }
+
   render() {
-    const previews = this.state.urls.map((url,idx) => (
-      <img className="post-image" src={url} key={idx}/>));
+    console.log(this.state);
+    const previews = this.state.contents.map((content,idx) => (
+      <img className="post-image" src={content.preview} key={idx}/>));
     return (
       <div className="text-form-container">
         <div className="post-avatar" >
@@ -70,9 +79,12 @@ class PhotoForm extends React.Component {
         <div className="form-header username">
           <a>{this.props.username}</a>
         </div>
+        <div>
+          <Dropzone accept={"image/*"} onDrop={files => this.onDrop(files)}>
+            <p>Try dropping some files here, or click to select files to upload.</p>
+          </Dropzone>
+        </div>
         <div className="form-title">
-          <input type="file" multiple
-            onChange={this.handleFile.bind(this)} />
           {previews}
         </div>
         <div className="text-form-content animated fadeIn">

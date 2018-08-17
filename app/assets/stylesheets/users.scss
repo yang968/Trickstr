@@ -2,33 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-html {
-  font-family: "HelveticaNeue", "gibson", sans-serif;
-  font-weight: lighter;
-}
-
-h1, h2 {
-  margin: 0 auto;
-  color: white;
-}
-
-h1 {
-  font-size: 75px;
-  height: 35px;
-  padding: 0;
-  text-align: center;
-  font-weight: 700;
-  font-family: "tFont";
-  margin: auto;
-}
-
 .signin {
   margin-bottom: 30px;
-}
-
-h2 {
-  margin-top: 10px;
-  margin-bottom: 16px;
 }
 
 .subheading {

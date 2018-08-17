@@ -56,8 +56,8 @@ class PostIndex extends React.Component {
                       currentUserId={currentUserId}
                       post={post}
                       likers={post.likers}
-                      like={ (this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
-                      follow={ this.props.follows.hasOwnProperty(post.user_id) ? true : false }
+                      like={ (this.props.likes && this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
+                      follow={ (this.props.follows && this.props.follows.hasOwnProperty(post.user_id)) ? true : false }
                       key={post.id}
                       updatePost={this.props.updatePost}
                       deletePost={this.props.deletePost}

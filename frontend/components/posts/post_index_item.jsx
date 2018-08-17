@@ -24,7 +24,6 @@ class PostIndexItem extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    debugger;
     this.setState({
       post: newProps.post,
       follow: newProps.follow

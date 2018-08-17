@@ -13,7 +13,6 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(window.currentUser);
     return (
       <div>
         <Switch>
@@ -21,7 +20,6 @@ class App extends React.Component {
           <AuthRoute exact path="/login" component={SignInContainer} />
           <AuthRoute exact path="/" component={SignUpContainer} />
         </Switch>
-
       </div>
     )
   }
@@ -29,5 +27,4 @@ class App extends React.Component {
 
 export default App;
 
-// <Route path="/" component={NavBarContainer} />
 // <Route exact path="/" render={<div className="background" ></div>} />

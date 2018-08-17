@@ -10,6 +10,7 @@ class Api::FollowsController < ApplicationController
   end
 
   def create
+    debugger
     @follow = Follow.new(follow_params)
 
     if @follow.save
@@ -22,6 +23,7 @@ class Api::FollowsController < ApplicationController
   end
 
   def destroy
+    debugger
     @follow = Follow.find_by(user_id: params[:id], follower_id: current_user.id)
 
     if @follow && @follow.destroy
@@ -33,10 +35,14 @@ class Api::FollowsController < ApplicationController
     end
   end
 
-  def experiment
-    @follows = current_user.follows
-    @followers = current_user.followers
-    render :index
+  def show
+    @follow = Follow.find_by(user_id: params[:id], follower_id: current_user.id)
+
+    if @follow
+      render json: true
+    else
+      render json: false
+    end
   end
 
   private

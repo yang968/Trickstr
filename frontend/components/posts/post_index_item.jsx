@@ -4,7 +4,7 @@ import FooterContainer from './footer_container';
 import EditTextForm from './forms/edit_text_form';
 import EditPhotoForm from './forms/edit_photo_form';
 
-import Popover from 'react-awesome-popover';
+import AvatarPopup from './avatar_popup';
 
 class PostIndexItem extends React.Component {
   constructor(props) {
@@ -20,39 +20,27 @@ class PostIndexItem extends React.Component {
     this.editForm = this.editForm.bind(this);
     this.getForm = this.getForm.bind(this);
     this.cancelPost = this.cancelPost.bind(this);
-
-    this.getUserInfo = this.getUserInfo.bind(this);
     this.changeFollow = this.changeFollow.bind(this);
   }
 
-  editForm() {
-    this.setState({ edit: !this.state.edit });
+  componentWillReceiveProps(newProps) {
+    debugger;
+    this.setState({
+      post: newProps.post,
+      follow: newProps.follow
+    });
   }
 
   changeFollow() {
     if (this.state.follow) {
-      this.props.unfollowUser(this.state.post.user_id).then(
-        response => {
-          this.setState({follow: false});
-        }
-      )
+      this.props.unfollowUser(this.state.post.user_id)
     } else {
-      this.props.followUser(this.state.post.user_id, this.props.currentUserId).then(
-        response => {
-          this.setState({follow: true});
-        }
-      )
+      this.props.followUser(this.state.post.user_id, this.props.currentUserId)
     }
   }
 
-  getUserInfo() {
-    if (this.state.post.user_id != this.props.currentUserId) {
-      if (this.state.follow) {
-        return "Unfollow";
-      }
-      return "Follow";
-    }
-    return "Edit Appearance!"
+  editForm() {
+    this.setState({ edit: !this.state.edit });
   }
 
   getTitle() {
@@ -138,18 +126,16 @@ class PostIndexItem extends React.Component {
 
     let title = this.getTitle();
     let description = this.getDescription();
-    let userInfo = this.getUserInfo();
 
     return (
       <li className='main-post' >
         <div className="post-avatar" >
-          <Popover action="hover" placement="bottom">
-            <div className="avatar" id="ab"></div>
-            <div className="popup" id="popup">
-              The content
-              <button onClick={this.changeFollow}>{userInfo}</button>
-            </div>
-          </Popover>
+          <AvatarPopup
+            follow={this.props.follow }
+            currentUserId={this.props.currentUserId}
+            changeFollow={this.changeFollow}
+            userId={this.state.post.user_id}
+            username={this.props.username}/>
         </div>
         <div className="post-content">
           <div className="username">

@@ -2,6 +2,8 @@
 
 Trickstr is a full-stack web application based on Tumblr. It is built with Ruby on Rails backend, PostgreSQL database, and React + Redux frontend.
 
+![picture](documents/Trickstr_main.png)
+
 ## Features and Implementation
 
 **Users can create, edit, or delete their posts**

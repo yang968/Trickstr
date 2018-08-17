@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostIndexItemContainer from './post_index_item_container';
 import PostForm from './post_form';
 
@@ -39,6 +40,7 @@ class PostIndex extends React.Component {
 
     return (
       <div>
+        <NavBarContainer page="main" />;
         <div className="main-container" >
           <div className="main-content clearfix">
             <div className="left-column" >
@@ -76,10 +78,10 @@ class PostIndex extends React.Component {
                   </button>
                 </li>
                 <li className='side-list'>
-                  <Link to="#" className="side-link">
+                  <button className="side-link">
                     <i className="side-icon">&#xea45;</i>
-                    <span className="side-list-text">Following</span>
-                  </Link>
+                    <span className="side-list-text">Following (Disabled)</span>
+                  </button>
                 </li>
               </div>
             </div>

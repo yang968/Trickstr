@@ -21,10 +21,13 @@ class App extends React.Component {
           <AuthRoute exact path="/login" component={SignInContainer} />
           <AuthRoute exact path="/" component={SignUpContainer} />
         </Switch>
-        <Route path="/" component={NavBarContainer} />
+
       </div>
     )
   }
 }
-// <Route exact path="/" render={<div className="background" ></div>} />
+
 export default App;
+
+// <Route path="/" component={NavBarContainer} />
+// <Route exact path="/" render={<div className="background" ></div>} />

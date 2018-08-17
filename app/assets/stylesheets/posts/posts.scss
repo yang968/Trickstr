@@ -142,13 +142,7 @@ a:hover {
   vertical-align: baseline;
 }
 
-.controls {
-  min-width: 60px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.controls-self {
+.controls, .controls-self {
   min-width: 24px;
   display: flex;
   justify-content: space-between;

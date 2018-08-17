@@ -102,7 +102,6 @@ class Footer extends React.Component {
     let heart = this.getHeart();
     return (
       <div className="controls" >
-        <i className="control-icon follow">&#xea45;</i>
         {heart}
       </div>
     )

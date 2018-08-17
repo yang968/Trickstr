@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavBarContainer from '../nav_bar/nav_bar_container';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -52,47 +53,52 @@ class Signup extends React.Component {
 
     if (this.state.getStarted) {
       return (
-        <div className="user-div" >
-          <h1>trickstr</h1>
-          {catchphrase}
+        <div>
+          <NavBarContainer page="signup"/>
+          <div className="user-div" >
+            <h1>trickstr</h1>
+            {catchphrase}
             <form className="user-form">
               <div className="form-container" >
-              <input type="text"
-                value={this.state.email}
-                onChange={this.handleInput('email')}
-                placeholder="Email"
-                className="user-input top-input animated slideInRight"
-                />
-              <input type="password"
-                value={this.state.password}
-                onChange={this.handleInput('password')}
-                placeholder="Password"
-                className="user-input animated slideInRight"
-                />
-              <input type="text"
-                value={this.state.username}
-                onChange={this.handleInput('username')}
-                placeholder="Username"
-                className="user-input bottom-input animated slideInRight"
-                />
+                <input type="text"
+                  value={this.state.email}
+                  onChange={this.handleInput('email')}
+                  placeholder="Email"
+                  className="user-input top-input animated slideInRight"
+                  />
+                <input type="password"
+                  value={this.state.password}
+                  onChange={this.handleInput('password')}
+                  placeholder="Password"
+                  className="user-input animated slideInRight"
+                  />
+                <input type="text"
+                  value={this.state.username}
+                  onChange={this.handleInput('username')}
+                  placeholder="Username"
+                  className="user-input bottom-input animated slideInRight"
+                  />
               </div>
               <ul className="user-errors" >
                 { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list animated fadeInDown" >{err}</li>)) }
               </ul>
               <button className="button-user button-main animated slideInDown" onClick={this.handleSubmit}>Sign up</button>
             </form>
-
+          </div>
         </div>
       );
     }
     return (
-      <div className="user-div" >
-        <div className="animated fadeInUp delay-1s" >
-          <h1>trickstr</h1>
-          {catchphrase}
-          <button className="button-user button-main" onClick={this.handleGetStarted}>Get Started</button>
-          <Link className="login-link button-user" to="/login">Log In</Link>
-          <button className="button-user button-main" onClick={this.demoLogin}>Demo Login</button>
+      <div>
+        <NavBarContainer page="/" />
+        <div className="user-div" >
+          <div className="animated fadeInUp delay-1s" >
+            <h1>trickstr</h1>
+            {catchphrase}
+            <button className="button-user button-main" onClick={this.handleGetStarted}>Get Started</button>
+            <Link className="login-link button-user" to="/login">Log In</Link>
+            <button className="button-user button-main" onClick={this.demoLogin}>Demo Login</button>
+          </div>
         </div>
       </div>
     )

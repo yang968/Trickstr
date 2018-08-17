@@ -82,7 +82,6 @@ class PostIndexItem extends React.Component {
   }
 
   getForm() {
-    // debugger;
     let mainDiv = document.getElementById('mainDiv');
     mainDiv.classList.add("mainDiv-show", "fadeIn");
 

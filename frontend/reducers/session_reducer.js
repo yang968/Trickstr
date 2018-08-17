@@ -11,7 +11,7 @@ const _nullSession = {
 
 const SessionReducer = (state = _nullSession, action) => {
   Object.freeze(state);
-  
+
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, { currentUser: action.user });
@@ -22,7 +22,6 @@ const SessionReducer = (state = _nullSession, action) => {
     case RECEIVE_FOLLOW:
     case REMOVE_FOLLOW:
       let newState = merge({}, state);
-      console.log(newState);
       newState.currentUser.follows = action.payload.follows;
       newState.currentUser.followers = action.payload.followers;
       return newState;

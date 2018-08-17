@@ -1,6 +1,5 @@
 class Api::LikesController < ApplicationController
   def index
-    debugger
     @likes = nil
     @posts = nil
     if (params[:user_id])

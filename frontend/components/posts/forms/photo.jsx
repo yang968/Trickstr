@@ -62,14 +62,12 @@ class PhotoForm extends React.Component {
   }
 
   onDrop(files) {
-    console.log(...files);
     this.setState({
       contents: this.state.contents.concat(...files)
     });
   }
 
   render() {
-    console.log(this.state);
     const previews = this.state.contents.map((content,idx) => (
       <img className="post-image" src={content.preview} key={idx}/>));
     return (

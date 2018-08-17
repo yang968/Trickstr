@@ -1,24 +1,40 @@
-# README
+# Trickstr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Trickstr is a full-stack web application based on Tumblr. It is built with Ruby on Rails backend, PostgreSQL database, and React + Redux frontend.
 
-Things you may want to cover:
+## Features and Implementation
 
-* Ruby version
+**Users can create, edit, or delete their posts**
 
-* System dependencies
+The current implementation allows users to create either a text or a photo post.
+For text posts, users can submit title and description. If both are empty, they will not be able to submit.
 
-* Configuration
+Users can post multiple images for photo posts. They can drag and drop images. 
 
-* Database creation
+Once a post is submitted, it will be added to the current feed and displayed on top.
+If user is the author of a post, they can edit or delete it by pressing the gear button on the right bottom of the post.
 
-* Database initialization
+Post forms show a smooth transition and does not overlap any of the posts listed above or below.
 
-* How to run the test suite
+**Users can view the feed**
 
-* Services (job queues, cache servers, search engines, etc.)
+When a user is logged in, they can view the feed of posts. Most recent posts appear on top.
+These posts display author's avatar, username, title and description for text posts, caption for photo posts, notes (sum of likes, comments, and reblogs).
 
-* Deployment instructions
+**Users can like a post and see liked posts**
 
-* ...
+A user can like a post if he/she is not the author. They will get direct feedback as the like icon turns red or grey depending on the user's action.
+Like/Dislike directly reflects the number displayed on notes. If a post has zero notes, it will not be displayed. Users can click 'Your Likes' on the right side which will repopulate the feed with any posts the user has liked. If a user did not like any posts, there will be no changes. 
+
+**Users can follow other users**
+
+When a user hovers his cursor over another user's avatar, a popup will appear which allows the user to follow/unfollow the author. The popup button will update based on whether a user is following or unfollowing the post creator. When a user hover's his own avatar, it will display his/her own information.
+
+## Future Implementations
+- Follows/Followers view
+- Infinite Scrolling
+- Tags
+- Reblogs
+- Search
+- Explore
+- Comments

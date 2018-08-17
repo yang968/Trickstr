@@ -131,11 +131,13 @@ class PostIndexItem extends React.Component {
       <li className='main-post' >
         <div className="post-avatar" >
           <AvatarPopup
-            follow={this.props.follow }
+            follow={this.props.follow}
             currentUserId={this.props.currentUserId}
             changeFollow={this.changeFollow}
             userId={this.state.post.user_id}
-            username={this.props.username}/>
+            username={this.props.username}
+            title={this.props.title}
+            description={this.props.description}/>
         </div>
         <div className="post-content">
           <div className="username">

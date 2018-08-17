@@ -30,7 +30,11 @@ class PostIndex extends React.Component {
     let username = this.props.currentUser.username;
 
     const PostFormWithRef = React.forwardRef((props, ref) => (
-      <PostForm mainDiv={this.mainDiv} ref={ref} currentUserId={currentUserId} username={username}/>
+      <PostForm mainDiv={this.mainDiv} ref={ref}
+        currentUserId={currentUserId}
+        username={username}
+        title={this.props.currentUser.title}
+        description={this.props.currentUser.description}/>
     ));
 
     return (
@@ -40,19 +44,24 @@ class PostIndex extends React.Component {
             <div className="left-column" >
               <PostFormWithRef ref={mainDivRef}/>
               <ol className="main-posts" >
-                { this.props.posts.map(post => (
-                  <PostIndexItemContainer
-                    username={this.props.users[post.user_id].username}
-                    currentUserId={currentUserId}
-                    post={post}
-                    likers={post.likers}
-                    like={ (this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
-                    follow={ this.props.follows.hasOwnProperty(post.user_id) ? true : false }
-                    key={post.id}
-                    updatePost={this.props.updatePost}
-                    deletePost={this.props.deletePost}
-                    />
-                ))}
+                { this.props.posts.map(post => {
+                  let user = this.props.users[post.user_id];
+                  return (
+                    <PostIndexItemContainer
+                      username={user.username}
+                      title={user.title}
+                      description={user.description}
+                      currentUserId={currentUserId}
+                      post={post}
+                      likers={post.likers}
+                      like={ (this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
+                      follow={ this.props.follows.hasOwnProperty(post.user_id) ? true : false }
+                      key={post.id}
+                      updatePost={this.props.updatePost}
+                      deletePost={this.props.deletePost}
+                      />
+                  )
+                })}
               </ol>
             </div>
             <div className="right-column">

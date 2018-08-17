@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import TextForm from './forms/text';
 import PhotoForm from './forms/photo';
 
+import AvatarPopup from './avatar_popup';
+
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
@@ -56,6 +58,14 @@ class PostForm extends React.Component {
     return (
       <div className="post-form-container">
         <div className="post-avatar" >
+          <AvatarPopup
+            follow={false}
+            currentUserId={this.props.currentUserId}
+            changeFollow={null}
+            userId={this.props.currentUserId}
+            username={this.props.username}
+            title={this.props.title}
+            description={this.props.description}/>
         </div>
         <div className="new-post-wrapper">
           <a className="post-link one" onClick={this.setPostType(1)}>

@@ -20,6 +20,7 @@ class App extends React.Component {
           <AuthRoute exact path="/login" component={SignInContainer} />
           <AuthRoute exact path="/" component={SignUpContainer} />
         </Switch>
+        <div className="background" id="bgDiv"></div>
       </div>
     )
   }

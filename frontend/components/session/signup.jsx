@@ -19,6 +19,10 @@ class Signup extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   handleGetStarted(e) {
     e.preventDefault();
     this.setState({ getStarted: true });

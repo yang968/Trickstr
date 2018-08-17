@@ -12,6 +12,8 @@ class NavBar extends React.Component {
     }
 
     this.setStyle = this.setStyle.bind(this);
+    this.logout = this.logout.bind(this);
+    let bgDiv = document.getElementById('bgDiv');
   }
 
   setStyle(page) {
@@ -27,11 +29,11 @@ class NavBar extends React.Component {
           });
         break;
       case "main":
-        this.setState({ rightButton: <button className="main-button animated fadeIn" onClick={this.props.logout}>Log out</button>,
+        this.setState({ rightButton: <button className="main-button animated fadeIn" onClick={this.logout}>Log out</button>,
             tabBar: (<button onClick={() => window.location.reload()} className="nav-icon">
                       <i className="side-icon">&#xea4c;</i>
                     </button>),
-            style: { borderBottom: '1px solid #515e71', backgroundColor: '#37465c' }
+            style: { borderBottom: '1px solid #515e71', backgroundColor: '#37465c', zIndex: "10" }
           })
         break;
       default:
@@ -39,13 +41,10 @@ class NavBar extends React.Component {
     }
   }
 
-  // setStyle(pathname) {
-  //   if (pathname === "/login" || pathname === "/") {
-  //     this.setState({ borderBottom: '0px', backgroundColor: 'rgba(0,0,0,0)' });
-  //   } else {
-  //     this.setState({ borderBottom: '1px solid #515e71', backgroundColor: '#37465c' });
-  //   }
-  // }
+  logout(){
+    bgDiv.classList.add("background");
+    this.props.logout();
+  }
 
   componentDidMount() {
     this.setStyle(this.props.page);
@@ -59,7 +58,7 @@ class NavBar extends React.Component {
     return (
       <nav style={this.state.style} className="nav-bar">
         <div className="logo-container">
-          <img className="logo" src={window.images.whiteLogo}></img>
+          <img onClick={() => window.location.reload()} className="logo" src={window.images.whiteLogo}></img>
         </div>
         <div className="nav-div">
           <div className="middle">

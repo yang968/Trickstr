@@ -14,10 +14,12 @@ class PostIndex extends React.Component {
     super(props);
 
     this.getLikedPosts = this.getLikedPosts.bind(this);
+    let bgDiv = document.getElementById('bgDiv');
   }
 
   componentDidMount() {
     this.props.fetchPosts();
+    bgDiv.classList.remove("background");
 
     this.mainDiv = ReactDOM.findDOMNode(mainDivRef.current);
   }

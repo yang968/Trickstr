@@ -15,6 +15,7 @@
   max-width: 990px;
   min-width: 990px;
   z-index: 5;
+  overflow: visible;
 }
 
 .main-content {
@@ -257,3 +258,21 @@ a:hover {
 .post-pop-button:hover {
   background-color: #E6EFF7;
 }
+
+.avatar {
+  width: 64px;
+  height: 64px;
+}
+
+#popup {
+  width: 280px;
+  height: 200px;
+  background-color: white;
+  border-radius: 3px;
+  transition: height 200ms, opacity 200ms;
+}
+
+// #popup:hover {
+//   height: 200px;
+//   opacity: 1;
+// }

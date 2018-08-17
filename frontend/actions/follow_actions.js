@@ -9,24 +9,24 @@ export const receiveAllFollows = (payload) => ({
   payload
 });
 
-export const receiveFollow = (follow) => ({
+export const receiveFollow = (payload) => ({
   type: RECEIVE_FOLLOW,
-  follow
+  payload
 });
 
-export const removeFollow = (userId) => ({
+export const removeFollow = (payload) => ({
   type: REMOVE_FOLLOW,
-  userId
+  payload
 });
 
 export const followUser = (userId, currentUserId) => dispatch => {
-  return FollowAPIUtil.followUser(userId, currentUserId).then(follow => dispatch(receiveFollow(follow)));
+  return FollowAPIUtil.followUser(userId, currentUserId).then(payload => dispatch(receiveFollow(payload)));
 };
 
 export const fetchFollows = (userId) => dispatch => {
-  return FollowAPIUtil.fetchFollowData(userId).then(follows => dispatch(receiveAllFollows(follows)));
+  return FollowAPIUtil.fetchFollowData(userId).then(payload => dispatch(receiveAllFollows(payload)));
 };
 
 export const unfollowUser = (userId) => dispatch => {
-  return FollowAPIUtil.unfollowUser(userId).then(userId => dispatch(removeFollow(userId)));
+  return FollowAPIUtil.unfollowUser(userId).then(payload => dispatch(removeFollow(payload)));
 };

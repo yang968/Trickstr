@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 
+import "react-awesome-popover/dest/react-awesome-popover.css";
+
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById('root');
   let preloadedState = undefined;

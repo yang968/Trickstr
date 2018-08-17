@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import PostIndexItem from './post_index_item';
+import PostIndexItemContainer from './post_index_item_container';
 import PostForm from './post_form';
 
 import { Link } from 'react-router-dom';
@@ -26,7 +26,6 @@ class PostIndex extends React.Component {
   }
 
   render(){
-    console.log(this.props);
     let currentUserId = this.props.currentUser.id;
     let username = this.props.currentUser.username;
 
@@ -42,12 +41,13 @@ class PostIndex extends React.Component {
               <PostFormWithRef ref={mainDivRef}/>
               <ol className="main-posts" >
                 { this.props.posts.map(post => (
-                  <PostIndexItem
+                  <PostIndexItemContainer
                     username={this.props.users[post.user_id].username}
                     currentUserId={currentUserId}
                     post={post}
                     likers={post.likers}
                     like={ (this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
+                    follow={ this.props.follows.hasOwnProperty(post.user_id) ? true : false }
                     key={post.id}
                     updatePost={this.props.updatePost}
                     deletePost={this.props.deletePost}

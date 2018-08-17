@@ -6,7 +6,7 @@ class Api::FollowsController < ApplicationController
     # Look up user's id in user_id to find the accounts that follow the user
     @followers = current_user.followers
 
-    render :index
+    render :show
   end
 
   def create
@@ -15,7 +15,7 @@ class Api::FollowsController < ApplicationController
     if @follow.save
       @follows = current_user.follows
       @followers = current_user.followers
-      render :index
+      render :show
     else
       render json: @follow.errors.full_messages, status: 422
     end
@@ -27,7 +27,7 @@ class Api::FollowsController < ApplicationController
     if @follow && @follow.destroy
       @follows = current_user.follows
       @followers = current_user.followers
-      render :index
+      render :show
     else
       render json: @follow.errors.full_messages, status: 422
     end

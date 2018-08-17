@@ -12,7 +12,8 @@ const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
   posts: Object.values(state.entities.posts),
   users: state.entities.users,
-  likes: state.entities.likes
+  likes: state.entities.likes,
+  follows: state.session.currentUser.follows
 });
 
 const mapDispatchToProps = dispatch => ({

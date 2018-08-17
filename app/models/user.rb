@@ -16,11 +16,11 @@ class User < ApplicationRecord
     source: :post
 
   has_many :follows,
-    foreign_key: :user_id,
+    foreign_key: :follower_id,
     class_name: 'Follow'
 
   has_many :followers,
-    foreign_key: :follower_id,
+    foreign_key: :user_id,
     class_name: 'Follow'
 
   def self.find_by_credentials(email, password)

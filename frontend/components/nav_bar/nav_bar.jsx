@@ -58,7 +58,7 @@ class NavBar extends React.Component {
             tabBar: (<button onClick={() => window.location.reload()} className="nav-icon">
                       <i className="side-icon">&#xea4c;</i>
                     </button>),
-            style: { borderBottom: '1px solid #515e71', backgroundColor: '#37465c', zIndex: "10" }
+            style: { borderBottom: '1px solid #515e71', backgroundColor: '#37465c', zIndex: "200" }
           })
         break;
       default:

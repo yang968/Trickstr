@@ -36,6 +36,8 @@ json.currentUser do
   end
 
   json.partial! '/api/follows/follow', follows: @follows, followers: @followers
+
+  json.avatar url_for(@current_user.avatar) if @current_user.avatar
 end
 
 json.likes do

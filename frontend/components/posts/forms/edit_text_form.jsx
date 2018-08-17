@@ -51,9 +51,14 @@ class EditTextForm extends React.Component {
   }
 
   render() {
+    let avatar = null;
+    if (this.props.avatar) {
+      avatar = (<img className="post-image" src={this.props.avatar} alt="IMAGE" />);
+    }
     return (
       <div>
         <div className="post-avatar" >
+          {avatar}
         </div>
         <div className="form-header username">
           <a>{this.props.username}</a>

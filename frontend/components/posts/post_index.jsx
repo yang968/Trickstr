@@ -35,6 +35,7 @@ class PostIndex extends React.Component {
     const PostFormWithRef = React.forwardRef((props, ref) => (
       <PostForm mainDiv={this.mainDiv} ref={ref}
         currentUserId={currentUserId}
+        avatar={this.props.currentUser.avatar}
         username={username}
         title={this.props.currentUser.title}
         description={this.props.currentUser.description}/>
@@ -52,6 +53,7 @@ class PostIndex extends React.Component {
                   let user = this.props.users[post.user_id];
                   return (
                     <PostIndexItemContainer
+                      avatar={user.avatar}
                       username={user.username}
                       title={user.title}
                       description={user.description}

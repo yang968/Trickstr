@@ -60,11 +60,17 @@ class EditPhotoForm extends React.Component {
   }
 
   render() {
+    let avatar = null;
+    if (this.props.avatar) {
+      avatar = (<img className="post-image" src={this.props.avatar} alt="IMAGE" />);
+    }
+
     const previews = this.state.urls.map((url,idx) => (
       <img className="post-image" src={url} key={idx}/>));
     return (
       <div>
         <div className="post-avatar" >
+          {avatar}
         </div>
         <div className="form-header username">
           <a>{this.props.username}</a>

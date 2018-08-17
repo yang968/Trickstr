@@ -68,11 +68,17 @@ class PhotoForm extends React.Component {
   }
 
   render() {
+    let avatar = null;
+    if (this.props.avatar) {
+      avatar = (<img className="post-image" src={this.props.avatar} alt="IMAGE" />);
+    }
     const previews = this.state.contents.map((content,idx) => (
       <img className="post-image" src={content.preview} key={idx}/>));
+
     return (
       <div className="text-form-container">
         <div className="post-avatar" >
+          {avatar}
         </div>
         <div className="form-header username">
           <a>{this.props.username}</a>

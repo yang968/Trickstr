@@ -28,10 +28,16 @@ class AvatarPopup extends React.Component {
   }
 
   render() {
+    let avatar = null;
+    if (this.props.avatar) {
+      avatar = (<img className="post-image" src={this.props.avatar} alt="IMAGE" />);
+    }
     let title = this.props.title || "Untitled";
     return (
       <Popover action="hover" placement="bottom">
-        <div className="avatar" id="ab" onMouseOver={this.setButton}></div>
+        <div className="avatar" id="ab" onMouseOver={this.setButton}>
+          {avatar}
+        </div>
         <div className="popup" id="popup">
           <div className="popup-header">
             <h4 className="header-username">{this.props.username}</h4>
@@ -40,6 +46,7 @@ class AvatarPopup extends React.Component {
           <div className="popup-body">
             <div className="avatar-img-div">
               <div className="avatar-img">
+                {avatar}
               </div>
             </div>
             <div className="popup-user-info">

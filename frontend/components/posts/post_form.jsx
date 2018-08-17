@@ -38,10 +38,12 @@ class PostForm extends React.Component {
     switch (this.state.post_type) {
       case 1:
         return <TextForm cancelPost={this.cancelPost.bind(this)}
+                  avatar={this.props.avatar}
                   userId={this.props.currentUserId}
                   username={this.props.username}/>;
       case 2:
         return <PhotoForm cancelPost={this.cancelPost.bind(this)}
+                  avatar={this.props.avatar}
                   userId={this.props.currentUserId}
                   username={this.props.username}/>;
       default:
@@ -60,6 +62,8 @@ class PostForm extends React.Component {
         <div className="post-avatar" >
           <AvatarPopup
             follow={false}
+
+            avatar={this.props.avatar}
             currentUserId={this.props.currentUserId}
             changeFollow={null}
             userId={this.props.currentUserId}

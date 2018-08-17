@@ -89,6 +89,7 @@ class PostIndexItem extends React.Component {
       case "text":
         return <EditTextForm cancelPost={this.cancelPost.bind(this)}
           id={this.state.post.id}
+          avatar={this.props.avatar}
           username={this.props.username}
           userId={this.state.post.user_id}
           title={this.state.post.title}
@@ -96,6 +97,7 @@ class PostIndexItem extends React.Component {
       case "photo":
         return <EditPhotoForm cancelPost={this.cancelPost.bind(this)}
           id={this.state.post.id}
+          avatar={this.props.avatar}
           username={this.props.username}
           userId={this.state.post.user_id}
           description={this.state.post.description}
@@ -117,10 +119,6 @@ class PostIndexItem extends React.Component {
         </li>
       )
     }
-    let item = null;
-    if (this.state.post.contents && this.state.post.contents.length > 0) {
-      item = (<img className="post-image" src={this.state.post.contents[0].url} alt="IMAGE" />)
-    }
 
     let title = this.getTitle();
     let description = this.getDescription();
@@ -130,6 +128,7 @@ class PostIndexItem extends React.Component {
         <div className="post-avatar" >
           <AvatarPopup
             follow={this.props.follow}
+            avatar={this.props.avatar}
             currentUserId={this.props.currentUserId}
             changeFollow={this.changeFollow}
             userId={this.state.post.user_id}

@@ -84,13 +84,14 @@ class PhotoForm extends React.Component {
           <a>{this.props.username}</a>
         </div>
         <div>
-          <Dropzone accept={"image/*"} onDrop={files => this.onDrop(files)}>
+          <Dropzone
+            className="drop-photo"
+            accept={"image/*"}
+            onDrop={files => this.onDrop(files)}>
             <p>Try dropping some files here, or click to select files to upload.</p>
           </Dropzone>
         </div>
-        <div className="form-title">
-          {previews}
-        </div>
+        {previews}
         <div className="text-form-content animated fadeIn">
           <div className="form-desc">
             <p

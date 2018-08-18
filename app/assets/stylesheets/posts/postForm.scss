@@ -234,3 +234,20 @@ input:focus, textarea:focus {
 .z1000 {
   z-index: 1000;
 }
+
+.drop-photo {
+  background-color: #F2F2F2;
+  color: #989898;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+  width: 98%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+  vertical-align: baseline;
+}

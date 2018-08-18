@@ -2,9 +2,13 @@
 
 Trickstr is a full-stack web application based on Tumblr. It is built with Ruby on Rails backend, PostgreSQL database, and React + Redux frontend.
 
+![picture](documents/Trickstr_main.png)
+
 ## Features and Implementation
 
 **Users can create, edit, or delete their posts**
+
+![picture](documents/Trickstr_form.png)
 
 The current implementation allows users to create either a text or a photo post.
 For text posts, users can submit title and description. If both are empty, they will not be able to submit.
@@ -22,6 +26,8 @@ When a user is logged in, they can view the feed of posts. Most recent posts app
 These posts display author's avatar, username, title and description for text posts, caption for photo posts, notes (sum of likes, comments, and reblogs).
 
 **Users can like a post and see liked posts**
+
+![picture](documents/post.png)
 
 A user can like a post if he/she is not the author. They will get direct feedback as the like icon turns red or grey depending on the user's action.
 Like/Dislike directly reflects the number displayed on notes. If a post has zero notes, it will not be displayed. Users can click 'Your Likes' on the right side which will repopulate the feed with any posts the user has liked. If a user did not like any posts, there will be no changes. 

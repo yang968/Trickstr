@@ -55,9 +55,10 @@ class NavBar extends React.Component {
       case "main":
         bgDiv.setAttribute("style", `background: ""`);
         this.setState({ rightButton: <button className="main-button animated fadeIn" onClick={this.logout}>Log out</button>,
-            tabBar: (<button onClick={() => window.location.reload()} className="nav-icon">
-                      <i className="side-icon">&#xea4c;</i>
-                    </button>),
+            tabBar: (
+              <button onClick={() => window.location.reload()} className="nav-icon">
+                <i className="side-icon">&#xea4c;</i>
+              </button>),
             style: { borderBottom: '1px solid #515e71', backgroundColor: '#37465c', zIndex: "200" }
           })
         break;
@@ -92,12 +93,20 @@ class NavBar extends React.Component {
         <div className="nav-div">
           <div className="middle">
             <div className="search-div">
-              <input className="search" type="text" placeholder="Search Tumblr" />
+              <input className="search" type="text" placeholder="Search Trickstr" />
             </div>
           </div>
           <div className="right-nav" >
             <div className="nav-icons">
-              {this.state.tabBar}
+              <div className="tabBar">
+                <a target="_blank" href="https://github.com/yang968/Trickstr/" className="nav-icon">
+                  <i class="fa fa-github side-icon" aria-hidden="true"></i>
+                </a>
+                <a target="_blank" href="https://www.linkedin.com/in/yang53" className="nav-icon">
+                  <i class="fa fa-linkedin-square side-icon" aria-hidden="true"></i>
+                </a>
+                {this.state.tabBar}
+              </div>
             </div>
             {this.state.rightButton}
           </div>

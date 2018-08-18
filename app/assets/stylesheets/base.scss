@@ -178,8 +178,14 @@ body {
   border: none;
   color: #9BA2AD;
   cursor: pointer;
+  font-size: 24px;
 }
 
 .nav-icon:visited {
   color: #FFF;
+}
+
+.tabBar {
+  display: flex;
+  align-items: center;
 }

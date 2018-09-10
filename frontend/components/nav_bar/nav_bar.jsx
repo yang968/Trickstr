@@ -93,6 +93,7 @@ class NavBar extends React.Component {
         <div className="nav-div">
           <div className="middle">
             <div className="search-div">
+              <div className="search-icon">&#xea99;</div>
               <input className="search" type="text" placeholder="Search Trickstr" />
             </div>
           </div>

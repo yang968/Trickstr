@@ -166,6 +166,10 @@ body {
   box-sizing: border-box;
 }
 
+.search:hover {
+  cursor: no-drop;
+}
+
 .nav-icons {
   height: 100%;
   display: flex;

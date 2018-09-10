@@ -43,7 +43,7 @@ class PostIndexItem extends React.Component {
   }
 
   getTitle() {
-    if (this.state.post.title !== "") {
+    if (this.state.post.title == "text") {
       return (
         <div className="title">
           {this.state.post.title}

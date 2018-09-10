@@ -43,7 +43,7 @@ class PostIndex extends React.Component {
 
     return (
       <div>
-        <NavBarContainer page="main" />;
+        <NavBarContainer page="main" />
         <div className="main-container" >
           <div className="main-content clearfix">
             <div className="left-column" >

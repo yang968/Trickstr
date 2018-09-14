@@ -30,7 +30,7 @@ class AvatarPopup extends React.Component {
   render() {
     let avatar = null;
     if (this.props.avatar) {
-      avatar = (<img className="post-image" src={this.props.avatar} alt="IMAGE" />);
+      avatar = (<img className="avatar-image" src={this.props.avatar} alt="IMAGE" />);
     }
     let title = this.props.title || "Untitled";
     return (

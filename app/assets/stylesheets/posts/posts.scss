@@ -94,7 +94,7 @@ a:hover {
   cursor: pointer;
 }
 
-.username, .tags, , .title, .description, .source, .footer, .caption {
+.username, .tags, .description, .source, .footer, .caption {
   color: #444;
   font-family: "gibson";
   padding: 0 20px;
@@ -115,8 +115,9 @@ a:hover {
 .title {
   font-size: 20px;
   font-weight: bold;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 0 20px 15px 20px;
+  font-size: 36px;
+  line-height: 47px;
 }
 
 .description {

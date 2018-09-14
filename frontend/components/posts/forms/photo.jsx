@@ -102,9 +102,9 @@ class PhotoForm extends React.Component {
               placeholder="Add a caption, if you like">
             </p>
           </div>
-          <div className="form-tags">
+          <div className="form-tags disabled">
             <p>
-              #tags
+              #tags (disabled)
             </p>
           </div>
         </div>

@@ -90,9 +90,9 @@ class EditPhotoForm extends React.Component {
               {this.state.description}
             </p>
           </div>
-          <div className="form-tags">
+          <div className="form-tags disabled">
             <p>
-              #tags
+              #tags (disabled)
             </p>
           </div>
         </div>

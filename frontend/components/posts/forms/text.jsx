@@ -77,7 +77,7 @@ class TextForm extends React.Component {
               placeholder="Your text here">
             </p>
           </div>
-          <div className="form-tags">
+          <div className="form-tags disabled">
             <p>
               #tags (disabled)
             </p>

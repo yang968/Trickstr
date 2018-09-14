@@ -24,7 +24,7 @@ class AvatarPopup extends React.Component {
       }
       return <button className="app-btn" onClick={this.props.changeFollow}>Follow</button>;
     }
-    return <button className="edit-app-btn">Edit Appearance</button>
+    return <button className="edit-app-btn disabled">Edit Appearance</button>
   }
 
   render() {

@@ -80,23 +80,23 @@ class PostForm extends React.Component {
             <i className="photo-icon icon">&#60019;</i>
             <span className="new-post-span">Photo</span>
           </a>
-          <a className="post-link three">
+          <a className="post-link three disabled">
             <i className="quote-icon icon">&#60021;</i>
             <span className="new-post-span">Quote</span>
           </a>
-          <a className="post-link four">
+          <a className="post-link four disabled">
             <i className="link-icon icon">&#60016;</i>
             <span className="new-post-span">Link</span>
           </a>
-          <a className="post-link five">
+          <a className="post-link five disabled">
             <i className="chat-icon icon">&#60012;</i>
             <span className="new-post-span">Chat</span>
           </a>
-          <a className="post-link six">
+          <a className="post-link six disabled">
             <i className="audio-icon icon">&#60010;</i>
             <span className="new-post-span">Audio</span>
           </a>
-          <a className="post-link seven">
+          <a className="post-link seven disabled">
             <i className="video-icon icon">&#60025;</i>
             <span className="new-post-span">Video</span>
           </a>

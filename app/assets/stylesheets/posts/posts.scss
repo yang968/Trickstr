@@ -295,6 +295,10 @@ a:hover {
   font-size: inherit;
 }
 
+.app-btn:hover {
+  cursor: pointer;
+}
+
 .popup-body {
   height: 150px;
   display: flex;

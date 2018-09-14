@@ -53,6 +53,10 @@
   grid-column: 7;
 }
 
+.disabled:hover {
+  cursor: no-drop;
+}
+
 .icon {
   width: 48px;
   height: 48px;

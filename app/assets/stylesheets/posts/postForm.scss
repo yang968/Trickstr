@@ -128,8 +128,7 @@ input:focus, textarea:focus {
   background-color: white;
   border-radius: 3px;
   margin-bottom: 20px;
-  min-height: 289px;
-  min-width: 540px;
+  width: 540px;
   margin-left: 85px;
 }
 
@@ -210,6 +209,12 @@ input:focus, textarea:focus {
   border: 1px solid #529ecc;
   background-color: #529ecc;
   color: #fff;
+}
+
+.button-disabled {
+  border: 1px solid #529ecc;
+  background-color: #529ecc;
+  color: hsla(0,0%,100%,.5);
 }
 
 .glass {

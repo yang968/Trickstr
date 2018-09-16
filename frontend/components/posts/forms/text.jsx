@@ -47,9 +47,13 @@ class TextForm extends React.Component {
 
   render() {
     let avatar = null;
+    let button = null;
     if (this.props.avatar) {
-      avatar = (<img className="post-image" src={this.props.avatar} alt="IMAGE" />);
+      avatar = (<img className="avatar-image" src={this.props.avatar} alt="IMAGE" />);
     }
+    if (!this.state.title && !this.state.description) button = <button className="form-button button-disabled">Post</button>;
+    else button = <button onClick={this.handleSubmit} className="form-button post-button">Post</button>;
+
     return (
       <div className="text-form-container">
         <div className="post-avatar" >
@@ -77,18 +81,15 @@ class TextForm extends React.Component {
               placeholder="Your text here">
             </p>
           </div>
-          <div className="form-tags disabled">
-            <p>
-              #tags (disabled)
-            </p>
-          </div>
+          {/*<div className="form-tags disabled">
+          </div>*/}
         </div>
         <div className="form-footer">
           <div className="form-close">
             <button onClick={this.props.cancelPost()} className="form-button close-button">Close</button>
           </div>
           <div className="form-post">
-            <button disabled={!this.state.title || !this.state.description} onClick={this.handleSubmit} className="form-button post-button">Post</button>
+            {button}
           </div>
         </div>
       </div>

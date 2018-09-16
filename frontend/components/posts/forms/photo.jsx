@@ -20,24 +20,6 @@ class PhotoForm extends React.Component {
     this.setState({description: e.currentTarget.innerHTML});
   }
 
-  // handleFile(e) {
-  //   const files = e.currentTarget.files;
-  //   Object.keys(files).forEach(i => {
-  //     let contents = this.state.contents;
-  //     let urls = this.state.urls;
-  //     const file = files[i];
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       contents.push(file);
-  //       urls.push(reader.result);
-  //       this.setState({ contents: contents, urls: urls });
-  //     }
-  //     if (file) {
-  //       reader.readAsDataURL(file);
-  //     }
-  //   });
-  // }
-
   handleSubmit(e) {
     e.preventDefault();
 
@@ -69,11 +51,15 @@ class PhotoForm extends React.Component {
 
   render() {
     let avatar = null;
+    let button = null;
     if (this.props.avatar) {
-      avatar = (<img className="post-image" src={this.props.avatar} alt="IMAGE" />);
+      avatar = (<img className="avatar-image" src={this.props.avatar} alt="IMAGE" />);
     }
     const previews = this.state.contents.map((content,idx) => (
       <img className="post-image" src={content.preview} key={idx}/>));
+
+    if (this.state.contents.length === 0) button = <button className="form-button button-disabled">Post</button>;
+    else button = <button onClick={this.handleSubmit} className="form-button post-button">Post</button>;
 
     return (
       <div className="text-form-container">
@@ -102,18 +88,15 @@ class PhotoForm extends React.Component {
               placeholder="Add a caption, if you like">
             </p>
           </div>
-          <div className="form-tags disabled">
-            <p>
-              #tags (disabled)
-            </p>
-          </div>
+          {/*<div className="form-tags disabled">
+          </div>*/}
         </div>
         <div className="form-footer">
           <div className="form-close">
             <button onClick={this.props.cancelPost()} className="form-button close-button">Close</button>
           </div>
           <div className="form-post">
-            <button disabled={this.state.contents.length === 0} onClick={this.handleSubmit} className="form-button post-button">Post</button>
+            {button}
           </div>
         </div>
       </div>

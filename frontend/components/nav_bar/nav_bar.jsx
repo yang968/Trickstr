@@ -94,17 +94,17 @@ class NavBar extends React.Component {
           <div className="middle">
             <div className="search-div">
               <div className="search-icon">&#xea99;</div>
-              <input className="search" type="text" placeholder="Search Trickstr" />
+              <input className="search" type="text" placeholder="Search Trickstr (Not Implemented)" />
             </div>
           </div>
           <div className="right-nav" >
             <div className="nav-icons">
               <div className="tabBar">
                 <a target="_blank" href="https://github.com/yang968/Trickstr/" className="nav-icon">
-                  <i class="fa fa-github side-icon" aria-hidden="true"></i>
+                  <i className="fa fa-github side-icon" aria-hidden="true"></i>
                 </a>
                 <a target="_blank" href="https://www.linkedin.com/in/yang53" className="nav-icon">
-                  <i class="fa fa-linkedin-square side-icon" aria-hidden="true"></i>
+                  <i className="fa fa-linkedin-square side-icon" aria-hidden="true"></i>
                 </a>
                 {this.state.tabBar}
               </div>

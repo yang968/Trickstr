@@ -34,3 +34,10 @@ export const fetchLikedPosts = (userId) => (
     url: `/api/users/${userId}/likes`
   })
 )
+
+export const fetchOwnPosts = (userId) => (
+  $.ajax({
+    method: 'get',
+    url: `/api/users/${userId}/posts`
+  })
+)

@@ -5,7 +5,8 @@ import {
   fetchPosts,
   updatePost,
   deletePost,
-  fetchLikedPosts
+  fetchLikedPosts,
+  fetchOwnPosts
 } from '../../actions/post_actions';
 
 const mapStateToProps = state => ({
@@ -20,7 +21,8 @@ const mapDispatchToProps = dispatch => ({
   fetchPosts: () => dispatch(fetchPosts()),
   updatePost: (post) => dispatch(updatePost(post)),
   deletePost: (id) => dispatch(deletePost(id)),
-  fetchLikedPosts: (userId) => dispatch(fetchLikedPosts(userId))
+  fetchLikedPosts: (userId) => dispatch(fetchLikedPosts(userId)),
+  fetchOwnPosts: (userId) => dispatch(fetchOwnPosts(userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostIndex);

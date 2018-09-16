@@ -1,7 +1,12 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = nil
+    if (params[:user_id])
+      @posts = current_user.posts
+    else
+      @posts = Post.all
+    end
     @current_user = current_user
     @likes = Like.where(user_id: @current_user.id)
     @follows = @current_user.follows

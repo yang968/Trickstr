@@ -14,6 +14,7 @@ class PostIndex extends React.Component {
     super(props);
 
     this.getLikedPosts = this.getLikedPosts.bind(this);
+    this.getOwnPosts = this.getOwnPosts.bind(this);
     let bgDiv = document.getElementById('bgDiv');
   }
 
@@ -26,6 +27,10 @@ class PostIndex extends React.Component {
 
   getLikedPosts() {
     this.props.fetchLikedPosts(this.props.currentUser.id);
+  }
+
+  getOwnPosts() {
+    this.props.fetchOwnPosts(this.props.currentUser.id);
   }
 
   render(){
@@ -82,9 +87,15 @@ class PostIndex extends React.Component {
                   </button>
                 </li>
                 <li className='side-list'>
+                  <button onClick={this.getOwnPosts} className="side-link">
+                    <i className="side-icon">&#xea66;</i>
+                    <span className="side-list-text">Your Posts</span>
+                  </button>
+                </li>
+                <li className='side-list'>
                   <button className="side-link">
                     <i className="side-icon">&#xea45;</i>
-                    <span className="side-list-text">Following (Disabled)</span>
+                    <span className="side-list-text">Following & Followers</span>
                   </button>
                 </li>
               </div>

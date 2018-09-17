@@ -74,7 +74,12 @@ class PostIndex extends React.Component {
                 <ul className="follow-list">
                   {this.props.follows.map(user => (
                     <li key={user.id} className="follow-list-item">
-                      {user.username}
+                      <div className="follow-list-item-div">
+                        <img className="follow-avatar" src={user.avatar} alt="avatar" />
+                        <div className="follow-info">
+                          {user.username}
+                        </div>
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -83,7 +88,12 @@ class PostIndex extends React.Component {
                 <ul className="follow-list">
                   {this.props.followers.map(user => (
                     <li key={user.id} className="follow-list-item">
-                      {user.username}
+                      <div className="follow-list-item-div">
+                        <img className="follow-avatar" src={user.avatar} alt="avatar" />
+                        <div className="follow-info">
+                          {user.username}
+                        </div>
+                      </div>
                     </li>
                   ))}
                 </ul>

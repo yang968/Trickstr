@@ -10,9 +10,13 @@ require 'open-uri'
 
 User.destroy_all
 Post.destroy_all
+Like.destroy_all
+Follow.destroy_all
 
 ApplicationRecord.connection.reset_pk_sequence!('users')
 ApplicationRecord.connection.reset_pk_sequence!('posts')
+ApplicationRecord.connection.reset_pk_sequence!('likes')
+ApplicationRecord.connection.reset_pk_sequence!('follows')
 
 guest = User.create(username: "guest", password: "guestguest", email: "guest@guest.com", title: "Demo Account", description: "Play Around!")
 
@@ -113,32 +117,41 @@ post3 = Post.create(user_id: 4, post_type: "photo", description: "The First Pain
 file = EzDownload.open('https://78.media.tumblr.com/0100ef0d3b5f33aa96a4b2ef9148cde1/tumblr_pcr3y08BV61v2z03bo1_1280.png')
 post3.contents.attach(io: file, filename: 'tumblr_pcr3y08BV61v2z03bo1_1280.png')
 
-like = Like.create(user_id: 1, post_id: 15)
-like = Like.create(user_id: 1, post_id: 12)
-like = Like.create(user_id: 1, post_id: 2)
-like = Like.create(user_id: 1, post_id: 5)
+Like.create(user_id: 1, post_id: 13)
+Like.create(user_id: 1, post_id: 12)
+Like.create(user_id: 1, post_id: 2)
+Like.create(user_id: 1, post_id: 5)
 
-like = Like.create(user_id: 2, post_id: 13)
-like = Like.create(user_id: 2, post_id: 11)
-like = Like.create(user_id: 2, post_id: 8)
-like = Like.create(user_id: 2, post_id: 1)
+Like.create(user_id: 2, post_id: 13)
+Like.create(user_id: 2, post_id: 11)
+Like.create(user_id: 2, post_id: 8)
+Like.create(user_id: 2, post_id: 1)
 
-like = Like.create(user_id: 3, post_id: 13)
-like = Like.create(user_id: 3, post_id: 11)
-like = Like.create(user_id: 3, post_id: 8)
-like = Like.create(user_id: 3, post_id: 1)
+Like.create(user_id: 3, post_id: 13)
+Like.create(user_id: 3, post_id: 11)
+Like.create(user_id: 3, post_id: 8)
+Like.create(user_id: 3, post_id: 1)
 
-like = Like.create(user_id: 4, post_id: 13)
-like = Like.create(user_id: 4, post_id: 11)
-like = Like.create(user_id: 4, post_id: 8)
-like = Like.create(user_id: 4, post_id: 1)
+Like.create(user_id: 4, post_id: 13)
+Like.create(user_id: 4, post_id: 11)
+Like.create(user_id: 4, post_id: 8)
+Like.create(user_id: 4, post_id: 1)
 
-like = Like.create(user_id: 5, post_id: 13)
-like = Like.create(user_id: 5, post_id: 11)
-like = Like.create(user_id: 5, post_id: 8)
-like = Like.create(user_id: 5, post_id: 1)
+Like.create(user_id: 5, post_id: 13)
+Like.create(user_id: 5, post_id: 11)
+Like.create(user_id: 5, post_id: 8)
+Like.create(user_id: 5, post_id: 1)
 
-like = Like.create(user_id: 6, post_id: 13)
-like = Like.create(user_id: 6, post_id: 11)
-like = Like.create(user_id: 6, post_id: 8)
-like = Like.create(user_id: 6, post_id: 1)
+Like.create(user_id: 6, post_id: 13)
+Like.create(user_id: 6, post_id: 11)
+Like.create(user_id: 6, post_id: 8)
+Like.create(user_id: 6, post_id: 1)
+
+Follow.create(user_id: 1, follower_id: 2)
+Follow.create(user_id: 1, follower_id: 3)
+Follow.create(user_id: 1, follower_id: 4)
+Follow.create(user_id: 1, follower_id: 5)
+
+Follow.create(user_id: 6, follower_id: 1)
+Follow.create(user_id: 3, follower_id: 1)
+Follow.create(user_id: 4, follower_id: 1)

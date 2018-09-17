@@ -36,3 +36,23 @@
   margin-bottom: 1px;
   box-sizing: border-box;
 }
+
+.follow-list-item-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.follow-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 3px;
+}
+
+.follow-info {
+  // width: 400px;
+  // text-align: left;
+  margin: auto;
+  font-size: 14px;
+  font-weight: 700;
+}

@@ -100,8 +100,9 @@ a:hover {
 }
 
 .notes {
-  color: #444;
+  color: #8f8f8f;
   font-family: "gibson";
+  vertical-align: baseline;
 }
 
 .username a, .tags, .notes {
@@ -139,10 +140,6 @@ a:hover {
   line-height: 45px;
   font-weight: bold;
   color: #8f8f8f;
-}
-
-.notes {
-  vertical-align: baseline;
 }
 
 .controls, .controls-self {

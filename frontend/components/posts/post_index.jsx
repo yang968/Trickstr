@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostIndexItemContainer from './post_index_item_container';
 import PostForm from './post_form';
-
 import { Link } from 'react-router-dom';
+import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
+import 'react-web-tabs/dist/react-web-tabs.css';
 
 const mainDivRef = React.createRef();
 
@@ -13,9 +13,14 @@ class PostIndex extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      follows: false
+    }
+
+    let bgDiv = document.getElementById('bgDiv');
     this.getLikedPosts = this.getLikedPosts.bind(this);
     this.getOwnPosts = this.getOwnPosts.bind(this);
-    let bgDiv = document.getElementById('bgDiv');
+    this.getFollows = this.getFollows.bind(this);
   }
 
   componentDidMount() {
@@ -26,11 +31,19 @@ class PostIndex extends React.Component {
   }
 
   getLikedPosts() {
+    this.state.follows = false;
     this.props.fetchLikedPosts(this.props.currentUser.id);
   }
 
   getOwnPosts() {
+    this.state.follows = false;
     this.props.fetchOwnPosts(this.props.currentUser.id);
+  }
+
+  getFollows() {
+    this.setState({follows: true}, () => {
+      this.props.fetchFollows(this.props.currentUser.id);
+    });
   }
 
   render(){
@@ -46,35 +59,74 @@ class PostIndex extends React.Component {
         description={this.props.currentUser.description}/>
     ));
 
+    let content = null;
+    if (this.state.follows) {
+      content = (
+      <div className="left-column">
+        <div className="follows-div">
+          <div className="follows-wrapper">
+            <Tabs defaultTab="one">
+              <TabList>
+                <Tab tabFor="one">Following</Tab>
+                <Tab tabFor="two">Followers</Tab>
+              </TabList>
+              <TabPanel tabId="one">
+                <ul className="follow-list">
+                  {this.props.follows.map(user => (
+                    <li key={user.id} className="follow-list-item">
+                      {user.username}
+                    </li>
+                  ))}
+                </ul>
+              </TabPanel>
+              <TabPanel tabId="two">
+                <ul className="follow-list">
+                  {this.props.followers.map(user => (
+                    <li key={user.id} className="follow-list-item">
+                      {user.username}
+                    </li>
+                  ))}
+                </ul>
+              </TabPanel>
+            </Tabs>
+          </div>
+        </div>
+      </div>);
+    } else {
+      content = (
+      <div className="left-column" >
+        <PostFormWithRef ref={mainDivRef}/>
+        <ol className="main-posts" >
+          { this.props.posts.map(post => {
+            let user = this.props.users[post.user_id];
+            return (
+              <PostIndexItemContainer
+                avatar={user.avatar}
+                username={user.username}
+                title={user.title}
+                description={user.description}
+                currentUserId={currentUserId}
+                post={post}
+                likers={post.likers}
+                like={ (this.props.likes && this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
+                follow={ (this.props.follows && this.props.follows.hasOwnProperty(post.user_id)) ? true : false }
+                key={post.id}
+                updatePost={this.props.updatePost}
+                deletePost={this.props.deletePost}
+                />
+            )
+          })}
+        </ol>
+      </div>
+      );
+    }
+
     return (
       <div>
         <NavBarContainer page="main" />
         <div className="main-container" >
           <div className="main-content clearfix">
-            <div className="left-column" >
-              <PostFormWithRef ref={mainDivRef}/>
-              <ol className="main-posts" >
-                { this.props.posts.map(post => {
-                  let user = this.props.users[post.user_id];
-                  return (
-                    <PostIndexItemContainer
-                      avatar={user.avatar}
-                      username={user.username}
-                      title={user.title}
-                      description={user.description}
-                      currentUserId={currentUserId}
-                      post={post}
-                      likers={post.likers}
-                      like={ (this.props.likes && this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
-                      follow={ (this.props.follows && this.props.follows.hasOwnProperty(post.user_id)) ? true : false }
-                      key={post.id}
-                      updatePost={this.props.updatePost}
-                      deletePost={this.props.deletePost}
-                      />
-                  )
-                })}
-              </ol>
-            </div>
+            {content}
             <div className="right-column">
               <div className="side-panel">
                 <div className="side-header">
@@ -93,7 +145,7 @@ class PostIndex extends React.Component {
                   </button>
                 </li>
                 <li className='side-list'>
-                  <button className="side-link">
+                  <button onClick={this.getFollows} className="side-link">
                     <i className="side-icon">&#xea45;</i>
                     <span className="side-list-text">Following & Followers</span>
                   </button>

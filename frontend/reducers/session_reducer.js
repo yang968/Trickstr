@@ -18,13 +18,6 @@ const SessionReducer = (state = _nullSession, action) => {
     case RECEIVE_ALL_POSTS:
       if (action.payload.currentUser) return Object.assign({}, { currentUser: action.payload.currentUser });
       return state;
-    case RECEIVE_ALL_FOLLOWS:
-    case RECEIVE_FOLLOW:
-    case REMOVE_FOLLOW:
-      let newState = merge({}, state);
-      newState.currentUser.follows = action.payload.follows;
-      newState.currentUser.followers = action.payload.followers;
-      return newState;
     case LOGOUT_CURRENT_USER:
       return _nullSession;
     default:

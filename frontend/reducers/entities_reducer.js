@@ -9,6 +9,6 @@ export default combineReducers({
   posts: PostsReducer,
   users: UsersReducer,
   likes: LikesReducer,
-  // follows: FollowsReducer,
-  // followers: FollowersReducer
+  follows: FollowsReducer,
+  followers: FollowersReducer
 })

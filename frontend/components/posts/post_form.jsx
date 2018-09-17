@@ -62,7 +62,6 @@ class PostForm extends React.Component {
         <div className="post-avatar" >
           <AvatarPopup
             follow={false}
-
             avatar={this.props.avatar}
             currentUserId={this.props.currentUserId}
             changeFollow={null}

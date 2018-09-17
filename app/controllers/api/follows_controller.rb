@@ -1,12 +1,14 @@
 class Api::FollowsController < ApplicationController
   def index
     # Look up user's id in follower_id to find the accounts the user follows
-    @follows = current_user.follows
+    follow_ids = current_user.follows.map { |e| e.user_id }
+    @follows = User.where("id IN (?)", follow_ids)
 
     # Look up user's id in user_id to find the accounts that follow the user
-    @followers = current_user.followers
+    follower_ids = current_user.followers.map { |e| e.follower_id }
+    @followers = User.where("id IN (?)", follower_ids)
 
-    render :show
+    render :index
   end
 
   def create

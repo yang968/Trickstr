@@ -35,8 +35,6 @@ json.currentUser do
     json.array! @current_user.liked_posts.collect{ |post| post.id }
   end
 
-  json.partial! '/api/follows/follow', follows: @follows, followers: @followers
-
   json.avatar url_for(@current_user.avatar) if @current_user.avatar
 end
 

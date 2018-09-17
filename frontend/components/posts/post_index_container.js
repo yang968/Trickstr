@@ -9,12 +9,15 @@ import {
   fetchOwnPosts
 } from '../../actions/post_actions';
 
+import { fetchFollows } from '../../actions/follow_actions';
+
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
   posts: Object.values(state.entities.posts),
   users: state.entities.users,
   likes: state.entities.likes,
-  follows: state.session.currentUser.follows
+  follows: state.entities.follows,
+  followers: state.entities.followers
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -22,7 +25,8 @@ const mapDispatchToProps = dispatch => ({
   updatePost: (post) => dispatch(updatePost(post)),
   deletePost: (id) => dispatch(deletePost(id)),
   fetchLikedPosts: (userId) => dispatch(fetchLikedPosts(userId)),
-  fetchOwnPosts: (userId) => dispatch(fetchOwnPosts(userId))
+  fetchOwnPosts: (userId) => dispatch(fetchOwnPosts(userId)),
+  fetchFollows: (userId) => dispatch(fetchFollows(userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostIndex);

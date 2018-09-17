@@ -2,7 +2,7 @@ import { RECEIVE_ALL_FOLLOWS, RECEIVE_FOLLOW, REMOVE_FOLLOW } from '../actions/f
 import { RECEIVE_ALL_POSTS } from '../actions/post_actions';
 import { merge } from 'lodash';
 
-const FollowersReducer = (state={}, action) => {
+const FollowersReducer = (state=[], action) => {
   Object.freeze(state);
 
   switch (action.type) {
@@ -10,7 +10,7 @@ const FollowersReducer = (state={}, action) => {
       if (action.payload.followers) return action.payload.followers;
       return state;
     case RECEIVE_ALL_FOLLOWS || RECEIVE_FOLLOW || REMOVE_FOLLOW:
-      return action.follow.followers;
+      return action.payload.followers;
     default:
       return state;
   }

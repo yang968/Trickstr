@@ -1,15 +1,7 @@
-if follows.count > 0
-  json.follows do
-    follows.each do |follow|
-      json.set! follow.user_id do
-        json.id follow.id
-      end
-    end
-  end
-else
-  json.follows({})
+json.follows do
+  json.array! follows, :id, :username, :avatar
 end
 
 json.followers do
-  json.array! followers.collect{ |follow| follow.follower_id }
+  json.array! followers, :id, :username, :avatar
 end

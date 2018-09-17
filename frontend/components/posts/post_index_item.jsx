@@ -109,8 +109,6 @@ class PostIndexItem extends React.Component {
   }
 
   render() {
-    // let user
-    // if !user return null (or loading component)
     if (this.state.edit) {
       let form = this.getForm();
       return (

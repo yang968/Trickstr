@@ -9,6 +9,10 @@ class Api::PostsController < ApplicationController
     end
     @current_user = current_user
     @likes = Like.where(user_id: @current_user.id)
+    follow_ids = current_user.follows.map { |e| e.user_id }
+    @follows = User.where("id IN (?)", follow_ids)
+    follower_ids = current_user.followers.map { |e| e.follower_id }
+    @followers = User.where("id IN (?)", follower_ids)
     render :index
   end
 

@@ -109,6 +109,9 @@ class PostIndex extends React.Component {
         <ol className="main-posts" >
           { this.props.posts.map(post => {
             let user = this.props.users[post.user_id];
+            // console.log(this.props.follows.some(follower => {
+            //   return follower.id == post.user_id;
+            // }));
             return (
               <PostIndexItemContainer
                 avatar={user.avatar}
@@ -119,7 +122,7 @@ class PostIndex extends React.Component {
                 post={post}
                 likers={post.likers}
                 like={ (this.props.likes && this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
-                follow={ (this.props.follows && this.props.follows.hasOwnProperty(post.user_id)) ? true : false }
+                follow={ (this.props.follows && this.props.follows.some(follower => (follower.id == post.user_id))) }
                 key={post.id}
                 updatePost={this.props.updatePost}
                 deletePost={this.props.deletePost}

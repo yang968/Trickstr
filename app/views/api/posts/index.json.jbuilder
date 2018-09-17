@@ -38,6 +38,8 @@ json.currentUser do
   json.avatar url_for(@current_user.avatar) if @current_user.avatar
 end
 
+json.partial! '/api/follows/follow', follows: @follows, followers: @followers
+
 json.likes do
   @likes.each do |like|
     json.set! like.post_id do

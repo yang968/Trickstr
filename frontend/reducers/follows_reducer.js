@@ -9,7 +9,11 @@ const FollowsReducer = (state=[], action) => {
     case RECEIVE_ALL_POSTS:
       if (action.payload.follows) return action.payload.follows;
       return state;
-    case RECEIVE_ALL_FOLLOWS || RECEIVE_FOLLOW || REMOVE_FOLLOW:
+    case RECEIVE_ALL_FOLLOWS:
+      return action.payload.follows;
+    case RECEIVE_FOLLOW:
+      return action.payload.follows;
+    case REMOVE_FOLLOW:
       return action.payload.follows;
     default:
       return state;

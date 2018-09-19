@@ -95,7 +95,7 @@ a:hover {
 
 .username, .tags, .description, .source, .footer, .caption {
   color: #444;
-  font-family: "gibson";
+  font-family: "Helvetica Neue";
   padding: 0 20px;
 }
 
@@ -122,6 +122,8 @@ a:hover {
 
 .description {
   font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
 }
 
 .tags {
@@ -142,8 +144,8 @@ a:hover {
   color: #8f8f8f;
 }
 
-.controls, .controls-self {
-  min-width: 24px;
+.controls {
+  width: 60px;
   display: flex;
   justify-content: space-between;
 }
@@ -199,8 +201,10 @@ a:hover {
 
 .caption {
   font-size: 14px;
+  font-weight: 400;
   margin-top: 15px;
   padding: 0 20px;
+  line-height: 21px;
 }
 
 .gear {

@@ -85,12 +85,13 @@ class Footer extends React.Component {
 
   getControls() {
     // BONUS
-    // let reblog = <i className="control-icon reblog">&#xea8f;</i>;
+    let reblog = <i className="control-icon reblog">&#xea8f;</i>;
     // Each icon is 24px long and 12px apart
     let popup = this.showPopUp();
     if (this.props.post.user_id === this.props.currentUserId) {
       return (
-        <div className="controls-self" >
+        <div className="controls">
+          {reblog}
           <i ref={node => this.setWrapperRef2(node)} className="control-icon gear" onClick={this.setEdit}>
             &#xea9a;
           </i>
@@ -102,6 +103,7 @@ class Footer extends React.Component {
     let heart = this.getHeart();
     return (
       <div className="controls" >
+        {reblog}
         {heart}
       </div>
     )

@@ -7,7 +7,8 @@ class Footer extends React.Component {
     this.state = {
       liked: (this.props.like === null) ? false : true,
       likers: this.props.likers,
-      edit: false
+      edit: false,
+      reblog: false
     }
 
     this.getControls = this.getControls.bind(this);
@@ -15,6 +16,7 @@ class Footer extends React.Component {
     this.getHeart = this.getHeart.bind(this);
     this.changeLike = this.changeLike.bind(this);
     this.setEdit = this.setEdit.bind(this);
+    // this.setReblog = this.setReblog.bind(this);
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -41,6 +43,10 @@ class Footer extends React.Component {
   setEdit() {
     this.setState({edit: !this.state.edit});
   }
+
+  // setReblog() {
+  //   this.setState({reblog: !this.state.reblog});
+  // }
 
   componentWillMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
@@ -85,7 +91,7 @@ class Footer extends React.Component {
 
   getControls() {
     // BONUS
-    let reblog = <i className="control-icon reblog">&#xea8f;</i>;
+    let reblog = <i className="control-icon reblog" onClick={() => this.props.reblogForm()}>&#xea8f;</i>;
     // Each icon is 24px long and 12px apart
     let popup = this.showPopUp();
     if (this.props.post.user_id === this.props.currentUserId) {

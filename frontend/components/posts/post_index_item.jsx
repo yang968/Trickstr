@@ -4,6 +4,8 @@ import FooterContainer from './footer_container';
 import EditTextForm from './forms/edit_text_form';
 import EditPhotoForm from './forms/edit_photo_form';
 
+import ReblogTextForm from './forms/reblog_text_form';
+
 import AvatarPopup from './avatar_popup';
 
 class PostIndexItem extends React.Component {
@@ -13,7 +15,8 @@ class PostIndexItem extends React.Component {
     this.state = {
       post: this.props.post,
       edit: false,
-      follow: this.props.follow
+      follow: this.props.follow,
+      reblog: false
     };
     this.getTitle = this.getTitle.bind(this);
     this.getDescription = this.getDescription.bind(this);
@@ -21,6 +24,7 @@ class PostIndexItem extends React.Component {
     this.getForm = this.getForm.bind(this);
     this.cancelPost = this.cancelPost.bind(this);
     this.changeFollow = this.changeFollow.bind(this);
+    this.reblogForm = this.reblogForm.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -36,6 +40,10 @@ class PostIndexItem extends React.Component {
     } else {
       this.props.followUser(this.state.post.user_id, this.props.currentUserId)
     }
+  }
+
+  reblogForm() {
+    this.setState({ reblog: !this.state.reblog });
   }
 
   editForm() {
@@ -77,7 +85,8 @@ class PostIndexItem extends React.Component {
     return (e) => {
       let mainDiv = document.getElementById('mainDiv');
       mainDiv.classList.remove("mainDiv-show", "fadeIn");
-      this.editForm();
+      if (this.state.edit) this.editForm();
+      if (this.state.reblog) this.reblogForm();
     };
   }
 
@@ -108,15 +117,37 @@ class PostIndexItem extends React.Component {
     }
   }
 
-  render() {
-    if (this.state.edit) {
-      let form = this.getForm();
-      return (
-        <li className='main-post z1000' >
-          {form}
-        </li>
-      )
+  getReblogForm() {
+    let mainDiv = document.getElementById('mainDiv');
+    mainDiv.classList.add("mainDiv-show", "fadeIn");
+
+    switch (this.state.post.post_type) {
+      case "text":
+        return <ReblogTextForm cancelPost={this.cancelPost.bind(this)}
+          currentUser={this.props.currentUser}
+          post={this.state.post}
+          id={this.state.post.id}
+          avatar={this.props.avatar}
+          username={this.props.username}/>;
+      case "photo":
+        return <EditPhotoForm cancelPost={this.cancelPost.bind(this)}
+          id={this.state.post.id}
+          avatar={this.props.avatar}
+          username={this.props.username}
+          userId={this.state.post.user_id}
+          description={this.state.post.description}
+          contents={this.state.post.contents}
+          />;
+      default:
+        return null;
     }
+  }
+
+  render() {
+    let form = null;
+    if (this.state.edit) form = this.getForm();
+    else if (this.state.reblog) form = this.getReblogForm();
+    if (form) return <li className='main-post z1000'>{form}</li>
 
     let title = this.getTitle();
     let description = this.getDescription();
@@ -154,6 +185,7 @@ class PostIndexItem extends React.Component {
             like={this.props.like}
             deletePost={this.props.deletePost}
             editForm={this.editForm}
+            reblogForm={this.reblogForm}
             />
         </div>
       </li>

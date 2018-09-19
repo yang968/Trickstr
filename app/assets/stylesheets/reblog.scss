@@ -1,0 +1,81 @@
+.reblog-form-header {
+  border-bottom: 1px solid #e7e7e7;
+  height: 45px;
+  margin: 0;
+  padding: 15px 15px 13px 20px;
+  box-sizing: border-box;
+}
+
+.reblog-form-header a {
+  color: #444;
+  font-family: "Helvetica Neue";
+  font-weight: 700;
+}
+
+.reblog-icon {
+  font-family: "icon-font";
+  font-style: normal;
+  vertical-align: -3px;
+  color: #8f8f8f;
+  font-size: 24px;
+  line-height: 15px;
+  opacity: 0.5;
+}
+
+.reblog-author {
+  font-family: Helvetica Neue,HelveticaNeue,Helvetica,Arial,sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #8f8f8f;
+  opacity: 0.5;
+}
+
+.reblog-list-item {
+  box-sizing: border-box;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.reblog-avatar {
+  border-radius: 2px;
+  width: 25px;
+  height: 25px;
+}
+
+.reblog-avatar-image {
+  border-radius: 2px;
+  width: 25px;
+  height: 25px;
+}
+
+.reblog-header {
+  display: flex;
+  line-height: 25px;
+  margin-bottom: 10px;
+}
+
+.reblog-header-username {
+  font-size: 13px;
+  font-family: "Helvetica Neue";
+  font-weight: 700;
+  color: #444;
+  word-wrap: normal;
+  white-space: nowrap;
+  vertical-align: top;
+  margin-left: 10px;
+}
+
+.reblog-title {
+  font-weight: 400;
+  padding-bottom: 15px;
+  font-size: 36px;
+  line-height: 47px;
+}
+
+.reblog-description {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #444;
+  font-family: "Helvetica Neue";
+}

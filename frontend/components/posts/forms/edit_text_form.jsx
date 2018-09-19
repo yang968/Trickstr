@@ -81,7 +81,7 @@ class EditTextForm extends React.Component {
             <Editor editorState={this.state.titleEditorState} onChange={this.updateTitle} />
           </div>
           <div className="form-desc" >
-            <Editor editorState={this.state.descEditorState} onChange={this.updateDescription} />
+            <Editor className="editor" editorState={this.state.descEditorState} onChange={this.updateDescription} />
           </div>
           {/*<div className="form-tags disabled">
           </div>*/}

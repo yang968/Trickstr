@@ -152,12 +152,7 @@ input:focus, textarea:focus {
   min-height: 42px;
   word-wrap: break-word;
   cursor: text;
-}
-
-.form-title > span {
-  min-height: 47px;
-  color: #444;
-  box-sizing: border-box;
+  padding-bottom: 15px;
 }
 
 .form-desc {

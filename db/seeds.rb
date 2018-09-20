@@ -40,14 +40,6 @@ user5 = User.create(username: "kaimyo", password: "kaimyokaimyo", email: "kaimyo
 file = EzDownload.open('https://api.tumblr.com/v2/blog/kaimyo.tumblr.com/avatar/512')
 user5.avatar.attach(io: file, filename: '512')
 
-user6 = User.create(username: "sian-draws", password: "sian-drawssian-draws", email: "sian-draws@trickstr.com", title: "Time to do an art!", description: "Buy Me a Coffee")
-file = EzDownload.open('https://api.tumblr.com/v2/blog/sian-draws.tumblr.com/avatar/512')
-user5.avatar.attach(io: file, filename: '512')
-
-user7 = User.create(username: "bokehm0n", password: "bokehm0nbokehm0n", email: "bokehm0n@trickstr.com", title: "Landscape and Travel Photography", description: "Based in Germany")
-file = EzDownload.open('https://api.tumblr.com/v2/blog/bokehm0n.tumblr.com/avatar/512')
-user5.avatar.attach(io: file, filename: '512')
-
 # id: 1
 post1 = Post.create(user_id: 5, post_type: "photo", description: "Hey guys! check out my new Ball Python!")
 file = EzDownload.open('https://78.media.tumblr.com/c9a915a1217eb5e010cd09c8ca54e0ff/tumblr_pdj0g7rIST1r8wa9zo3_640.jpg')

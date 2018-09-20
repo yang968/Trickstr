@@ -21,14 +21,14 @@ export const removePost = (id) => ({
   postId: id
 });
 
-export const receiveLikedPosts = (posts) => ({
+export const receiveLikedPosts = (payload) => ({
   type: RECEIVE_LIKED_POSTS,
-  posts
+  payload
 });
 
-export const receiveOwnPosts = (posts) => ({
+export const receiveOwnPosts = (payload) => ({
   type: RECEIVE_OWN_POSTS,
-  posts
+  payload
 });
 
 export const fetchPosts = () => dispatch => {

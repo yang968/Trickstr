@@ -57,6 +57,12 @@ class PostIndexItem extends React.Component {
   getTitle() {
     if (this.props.post.post_type == "photo" && this.props.post.reblog_id == null) return;
     if (this.props.post.reblog_id != null) {
+      let title = null;
+      if (this.props.post.post_type == "text") title = (
+        <div className="reblog-title">
+          {this.props.original.title}
+        </div>
+      )
       return (
         <div className="reblog-list-item">
           <div className="reblog-header">
@@ -67,9 +73,7 @@ class PostIndexItem extends React.Component {
               {this.props.author.username}
             </a>
           </div>
-          <div className="reblog-title">
-            {this.props.original.title}
-          </div>
+          {title}
           <div className="reblog-description">
             {this.props.original.description}
           </div>

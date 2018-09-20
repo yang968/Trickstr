@@ -1,12 +1,8 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = nil
-    if (params[:user_id])
-      @posts = current_user.posts
-    else
-      @posts = Post.all
-    end
+    # debugger
+    @posts = Post.all
     @current_user = current_user
     @reblogs = {}
     @posts.each do |post|

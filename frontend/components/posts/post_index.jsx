@@ -14,7 +14,8 @@ class PostIndex extends React.Component {
     super(props);
 
     this.state = {
-      follows: false
+      follows: false,
+      showMyPosts: false
     }
 
     let bgDiv = document.getElementById('bgDiv');
@@ -31,17 +32,25 @@ class PostIndex extends React.Component {
   }
 
   getLikedPosts() {
-    this.state.follows = false;
-    this.props.fetchLikedPosts(this.props.currentUser.id);
+    this.setState({
+      follows: false,
+      showMyPosts: false
+    }, () => {
+      this.props.fetchLikedPosts(this.props.currentUser.id);
+    })
   }
 
   getOwnPosts() {
-    this.state.follows = false;
-    this.props.fetchOwnPosts(this.props.currentUser.id);
+    this.setState({
+      follows: false,
+      showMyPosts: true
+    }, () => {
+      this.props.fetchOwnPosts(this.props.currentUser.id);
+    });
   }
 
   getFollows() {
-    this.setState({follows: true}, () => {
+    this.setState({follows: true, showMyPosts: false}, () => {
       this.props.fetchFollows(this.props.currentUser.id);
     });
   }
@@ -103,11 +112,12 @@ class PostIndex extends React.Component {
         </div>
       </div>);
     } else {
+      let posts = (this.state.showMyPosts) ? Object.values(this.props.posts).filter(post => post.user_id == this.props.currentUser.id) : Object.values(this.props.posts)
       content = (
       <div className="left-column" >
         <PostFormWithRef ref={mainDivRef}/>
         <ol className="main-posts" >
-          { Object.values(this.props.posts).map(post => {
+          { posts.map(post => {
             let user = this.props.users[post.user_id];
             let original = this.props.posts[post.reblog_id];
             let like = (original) ? this.props.likes[original.id] : this.props.likes[post.id];
@@ -123,7 +133,7 @@ class PostIndex extends React.Component {
                 deletePost={this.props.deletePost}
                 original={original}
                 author={(original != null) ? this.props.users[original.user_id] : null}
-                />
+              />
             )
           })}
         </ol>

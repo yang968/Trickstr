@@ -15,10 +15,10 @@ const PostsReducer = (state={}, action) => {
       if (action.payload.posts) return action.payload.posts;
       return state;
     case RECEIVE_LIKED_POSTS:
-      if (action.posts.posts) return action.posts.posts;
+      if (action.payload.posts) return action.payload.posts;
       return state;
     case RECEIVE_OWN_POSTS:
-      if (action.posts.posts) return action.posts.posts;
+      if (action.payload.posts) return action.payload.posts;
       return state;
     case RECEIVE_POST:
       return merge({}, state, { [action.post.id]: action.post });

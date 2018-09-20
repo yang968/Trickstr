@@ -5,7 +5,8 @@ import { followUser, unfollowUser } from '../../actions/follow_actions';
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
   posts: state.entities.posts,
-  users: state.entities.users
+  users: state.entities.users,
+  reblogs: state.entities.reblogs
 })
 
 const mapDispatchToProps = dispatch => ({

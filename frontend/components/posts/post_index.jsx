@@ -110,13 +110,13 @@ class PostIndex extends React.Component {
           { Object.values(this.props.posts).map(post => {
             let user = this.props.users[post.user_id];
             let original = this.props.posts[post.reblog_id];
+            let like = (original) ? this.props.likes[original.id] : this.props.likes[post.id];
             return (
               <PostIndexItemContainer
                 user={user}
                 currentUserId={currentUserId}
                 post={post}
-                likers={post.likers}
-                like={ (this.props.likes && this.props.likes.hasOwnProperty(post.id)) ? this.props.likes[post.id] : null }
+                like={like}
                 follow={ (this.props.follows && this.props.follows.some(follower => (follower.id == post.user_id))) }
                 key={post.id}
                 updatePost={this.props.updatePost}

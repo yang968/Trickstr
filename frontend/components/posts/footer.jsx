@@ -5,8 +5,8 @@ class Footer extends React.Component {
     super(props);
 
     this.state = {
-      liked: (this.props.like === null) ? false : true,
-      likers: this.props.likers,
+      liked: (props.like === undefined || props.like === null) ? false : true,
+      likers: (props.original) ? props.original.likers : this.props.likers,
       edit: false,
       reblog: false
     }
@@ -16,7 +16,6 @@ class Footer extends React.Component {
     this.getHeart = this.getHeart.bind(this);
     this.changeLike = this.changeLike.bind(this);
     this.setEdit = this.setEdit.bind(this);
-    // this.setReblog = this.setReblog.bind(this);
 
     this.setWrapperRef = this.setWrapperRef.bind(this);
     this.handleClickOutside = this.handleClickOutside.bind(this);
@@ -31,7 +30,8 @@ class Footer extends React.Component {
         }
       )
     } else {
-      this.props.likePost(this.props.post.id, this.props.currentUserId).then(
+      let postId = (this.props.original) ? this.props.original.id : this.props.post.id;
+      this.props.likePost(postId, this.props.currentUserId).then(
         (response) => {
           let newLikers = this.state.likers.concat(response.like.user_id);
           this.setState({liked: true, likers: newLikers })
@@ -43,10 +43,6 @@ class Footer extends React.Component {
   setEdit() {
     this.setState({edit: !this.state.edit});
   }
-
-  // setReblog() {
-  //   this.setState({reblog: !this.state.reblog});
-  // }
 
   componentWillMount() {
     document.addEventListener('mousedown', this.handleClickOutside);
@@ -123,8 +119,11 @@ class Footer extends React.Component {
   }
 
   getNotes() {
-    if (this.state.likers.length > 0){
-      return <span className="notes">{this.state.likers.length} notes</span>;
+    let reblogs = 0;
+    if (this.props.original != null) reblogs = this.props.reblogs[this.props.original.id];
+    else reblogs = this.props.reblogs[this.props.post.id];
+    if (reblogs > 0 || this.state.likers.length > 0){
+      return <span className="notes">{reblogs + this.state.likers.length} notes</span>;
     }
     return null;
   }

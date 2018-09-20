@@ -237,11 +237,13 @@ class PostIndexItem extends React.Component {
           </div>
           <FooterContainer post={this.state.post}
             currentUserId={this.props.currentUserId}
-            likers={this.props.likers}
+            likers={this.props.post.likers}
             like={this.props.like}
             deletePost={this.props.deletePost}
             editForm={this.editForm}
             reblogForm={this.reblogForm}
+            reblogs={this.props.reblogs}
+            original={this.props.original}
             />
         </div>
       </li>

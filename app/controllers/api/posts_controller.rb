@@ -8,6 +8,10 @@ class Api::PostsController < ApplicationController
       @posts = Post.all
     end
     @current_user = current_user
+    @reblogs = {}
+    @posts.each do |post|
+      @reblogs[post.id] = Post.where(reblog_id: post.id).count
+    end
     @likes = Like.where(user_id: @current_user.id)
     follow_ids = current_user.follows.map { |e| e.user_id }
     @follows = User.where("id IN (?)", follow_ids)

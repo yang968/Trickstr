@@ -16,6 +16,8 @@ json.posts do
   end
 end
 
+json.reblogs @reblogs
+
 json.users do
   @posts.each do |post|
     json.set! post.user.id do

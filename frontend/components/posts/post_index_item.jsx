@@ -19,8 +19,11 @@ class PostIndexItem extends React.Component {
       follow: this.props.follow,
       reblog: false
     };
+
     this.getTitle = this.getTitle.bind(this);
     this.getDescription = this.getDescription.bind(this);
+    this.getPreview = this.getPreview.bind(this);
+
     this.editForm = this.editForm.bind(this);
     this.getForm = this.getForm.bind(this);
     this.cancelPost = this.cancelPost.bind(this);
@@ -52,34 +55,35 @@ class PostIndexItem extends React.Component {
   }
 
   getTitle() {
-    if (this.state.post.post_type == "text") {
-      if (this.props.post.reblog_id != null) {
-        return (
-          <div className="reblog-list-item">
-            <div className="reblog-header">
-              <a className="reblog-avatar">
-                <img className="reblog-avatar-image" src={this.props.author.avatar} alt="avatar" />
-              </a>
-              <a className="reblog-header-username">
-                {this.props.author.username}
-              </a>
-            </div>
-            <div className="reblog-title">
-              {this.props.original.title}
-            </div>
-            <div className="reblog-description">
-              {this.props.original.description}
-            </div>
-          </div>
-        );
-      }
+    if (this.props.post.post_type == "photo" && this.props.post.reblog_id == null) return;
+    if (this.props.post.reblog_id != null) {
       return (
-        <div className="title">
-          {this.state.post.title}
+        <div className="reblog-list-item">
+          <div className="reblog-header">
+            <a className="reblog-avatar">
+              <img className="reblog-avatar-image" src={this.props.author.avatar} alt="avatar" />
+            </a>
+            <a className="reblog-header-username">
+              {this.props.author.username}
+            </a>
+          </div>
+          <div className="reblog-title">
+            {this.props.original.title}
+          </div>
+          <div className="reblog-description">
+            {this.props.original.description}
+          </div>
         </div>
       );
     }
-    return null;
+    return (
+      <div className="title">
+        {this.state.post.title}
+      </div>
+    );
+    // if (this.state.post.post_type == "text") {
+    // }
+    // return null;
   }
 
   getDescription() {
@@ -109,6 +113,23 @@ class PostIndexItem extends React.Component {
             </div>
           );
         case "photo":
+          if (this.props.post.reblog_id != null) {
+            return (
+              <div className="reblog-post-content">
+                <div className="reblog-header">
+                  <a className="reblog-avatar sub-icon-reblog">
+                    <img className="reblog-avatar-image" src={this.props.user.avatar} alt="avatar" />
+                  </a>
+                  <a className="reblog-header-username">
+                    {this.props.user.username}
+                  </a>
+                </div>
+                <div className="reblog-post-description">
+                  {this.state.post.description}
+                </div>
+              </div>
+            )
+          }
           return (
             <div className="caption">
               {this.state.post.description}
@@ -117,6 +138,14 @@ class PostIndexItem extends React.Component {
       }
     }
     return null;
+  }
+
+  getPreview() {
+    if (this.props.post.post_type != "photo") return null;
+    if (this.props.post.reblog_id != null) {
+      return this.props.original.contents.map((file, idx) => <img key={idx} className="post-image" src={file.url} alt="IMAGE" />)
+    }
+    return this.state.post.contents.map((file, idx) => <img key={idx} className="post-image" src={file.url} alt="IMAGE" />);
   }
 
   cancelPost() {
@@ -209,6 +238,7 @@ class PostIndexItem extends React.Component {
 
     let title = this.getTitle();
     let description = this.getDescription();
+    let preview = this.getPreview();
 
     return (
       <li className='main-post' >
@@ -225,10 +255,7 @@ class PostIndexItem extends React.Component {
         </div>
         <div className="post-content">
           {header}
-          {
-            this.state.post.contents.length > 0 &&
-            this.state.post.contents.map((file, idx) => <img key={idx} className="post-image" src={file.url} alt="IMAGE" />)
-          }
+          {preview}
           { title }
           { description }
           <div className="tags">

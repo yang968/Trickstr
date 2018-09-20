@@ -6,7 +6,7 @@ class ReblogPhotoForm extends React.Component {
     super(props);
 
     this.state = {
-      description: props.description,
+      description: "",
       contents: props.contents,
       urls: props.contents.map(content => content.url)
     }

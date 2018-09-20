@@ -67,7 +67,7 @@ class ReblogPhotoForm extends React.Component {
               <img className="reblog-avatar-image" src={this.props.avatar} alt="avatar" />
             </a>
             <a className="reblog-header-username">
-              {this.props.currentUser.username}
+              {this.props.username}
             </a>
           </div>
           <div className="reblog-description">

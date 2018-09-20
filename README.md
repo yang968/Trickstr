@@ -22,10 +22,16 @@ If user is the author of a post, they can edit or delete it by pressing the gear
 
 Post forms show a smooth transition and does not overlap any of the posts listed above or below.
 
-**Users can view the feed**
+**Users reblog posts**
+
+Users can reblog their own or other's posts by clicking on the reblog button on the footer of the post. Reblogging a post will increment `notes` counter.
+
+**Users can view the feed and see their own posts**
 
 When a user is logged in, they can view the feed of posts. Most recent posts appear on top.
-These posts display author's avatar, username, title and description for text posts, caption for photo posts, notes (sum of likes, comments, and reblogs).
+These posts display author's avatar, username, title and description for text posts, caption for photo posts, notes (sum of likes and reblogs).
+
+Users can also click on `Your Posts` and see a list of their own posts and reblogs.
 
 **Users can like a post and see liked posts**
 
@@ -36,13 +42,8 @@ Like/Dislike directly reflects the number displayed on notes. If a post has zero
 
 **Users can follow other users**
 
-When a user hovers his cursor over another user's avatar, a popup will appear which allows the user to follow/unfollow the author. The popup button will update based on whether a user is following or unfollowing the post creator. When a user hover's his own avatar, it will display his/her own information.
+When a user hovers his cursor over another user's avatar, a popup will appear which allows the user to follow/unfollow the author. The popup button will update based on whether a user is following or unfollowing the post creator. When a user hover's his own avatar, it will display his/her own information. Users can click on `Following & Followers` link on the sidebar to see a list of his/her follows and followers.
 
 ## Future Implementations
-- Follows/Followers view
 - Infinite Scrolling
 - Tags
-- Reblogs
-- Search
-- Explore
-- Comments

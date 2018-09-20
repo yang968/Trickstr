@@ -107,17 +107,12 @@ class PostIndex extends React.Component {
       <div className="left-column" >
         <PostFormWithRef ref={mainDivRef}/>
         <ol className="main-posts" >
-          { this.props.posts.map(post => {
+          { Object.values(this.props.posts).map(post => {
             let user = this.props.users[post.user_id];
-            // console.log(this.props.follows.some(follower => {
-            //   return follower.id == post.user_id;
-            // }));
+            let original = this.props.posts[post.reblog_id];
             return (
               <PostIndexItemContainer
-                avatar={user.avatar}
-                username={user.username}
-                title={user.title}
-                description={user.description}
+                user={user}
                 currentUserId={currentUserId}
                 post={post}
                 likers={post.likers}
@@ -126,6 +121,8 @@ class PostIndex extends React.Component {
                 key={post.id}
                 updatePost={this.props.updatePost}
                 deletePost={this.props.deletePost}
+                original={original}
+                author={(original != null) ? this.props.users[original.user_id] : null}
                 />
             )
           })}

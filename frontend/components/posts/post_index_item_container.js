@@ -3,7 +3,9 @@ import PostIndexItem from './post_index_item';
 import { followUser, unfollowUser } from '../../actions/follow_actions';
 
 const mapStateToProps = state => ({
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  posts: state.entities.posts,
+  users: state.entities.users
 })
 
 const mapDispatchToProps = dispatch => ({

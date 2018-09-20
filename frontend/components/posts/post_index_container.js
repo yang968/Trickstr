@@ -13,7 +13,7 @@ import { fetchFollows } from '../../actions/follow_actions';
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser,
-  posts: Object.values(state.entities.posts),
+  posts: state.entities.posts,
   users: state.entities.users,
   likes: state.entities.likes,
   follows: state.entities.follows,

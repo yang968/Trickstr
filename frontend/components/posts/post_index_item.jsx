@@ -5,6 +5,7 @@ import EditTextForm from './forms/edit_text_form';
 import EditPhotoForm from './forms/edit_photo_form';
 
 import ReblogTextForm from './forms/reblog_text_form';
+import ReblogPhotoForm from './forms/reblog_photo_form';
 
 import AvatarPopup from './avatar_popup';
 
@@ -52,6 +53,26 @@ class PostIndexItem extends React.Component {
 
   getTitle() {
     if (this.state.post.post_type == "text") {
+      if (this.props.post.reblog_id != null) {
+        return (
+          <div className="reblog-list-item">
+            <div className="reblog-header">
+              <a className="reblog-avatar">
+                <img className="reblog-avatar-image" src={this.props.author.avatar} alt="avatar" />
+              </a>
+              <a className="reblog-header-username">
+                {this.props.author.username}
+              </a>
+            </div>
+            <div className="reblog-title">
+              {this.props.original.title}
+            </div>
+            <div className="reblog-description">
+              {this.props.original.description}
+            </div>
+          </div>
+        );
+      }
       return (
         <div className="title">
           {this.state.post.title}
@@ -65,6 +86,23 @@ class PostIndexItem extends React.Component {
     if (this.state.post.description !== "") {
       switch (this.props.post.post_type) {
         case "text":
+          if (this.props.post.reblog_id != null) {
+            return (
+              <div className="reblog-post-content">
+                <div className="reblog-header">
+                  <a className="reblog-avatar sub-icon-reblog">
+                    <img className="reblog-avatar-image" src={this.props.user.avatar} alt="avatar" />
+                  </a>
+                  <a className="reblog-header-username">
+                    {this.props.user.username}
+                  </a>
+                </div>
+                <div className="reblog-post-description">
+                  {this.state.post.description}
+                </div>
+              </div>
+            )
+          }
           return (
             <div className="description">
               {this.state.post.description}
@@ -98,16 +136,16 @@ class PostIndexItem extends React.Component {
       case "text":
         return <EditTextForm cancelPost={this.cancelPost.bind(this)}
           id={this.state.post.id}
-          avatar={this.props.avatar}
-          username={this.props.username}
+          avatar={this.props.user.avatar}
+          username={this.props.user.username}
           userId={this.state.post.user_id}
           title={this.state.post.title}
           description={this.state.post.description} />;
       case "photo":
         return <EditPhotoForm cancelPost={this.cancelPost.bind(this)}
           id={this.state.post.id}
-          avatar={this.props.avatar}
-          username={this.props.username}
+          avatar={this.props.user.avatar}
+          username={this.props.user.username}
           userId={this.state.post.user_id}
           description={this.state.post.description}
           contents={this.state.post.contents}
@@ -126,14 +164,15 @@ class PostIndexItem extends React.Component {
         return <ReblogTextForm cancelPost={this.cancelPost.bind(this)}
           currentUser={this.props.currentUser}
           post={this.state.post}
-          id={this.state.post.id}
-          avatar={this.props.avatar}
-          username={this.props.username}/>;
+          avatar={this.props.user.avatar}
+          username={this.props.user.username}/>;
       case "photo":
-        return <EditPhotoForm cancelPost={this.cancelPost.bind(this)}
+        return <ReblogPhotoForm cancelPost={this.cancelPost.bind(this)}
+          currentUser={this.props.currentUser}
+          post={this.state.post}
+          avatar={this.props.user.avatar}
+          username={this.props.user.username}
           id={this.state.post.id}
-          avatar={this.props.avatar}
-          username={this.props.username}
           userId={this.state.post.user_id}
           description={this.state.post.description}
           contents={this.state.post.contents}
@@ -143,7 +182,26 @@ class PostIndexItem extends React.Component {
     }
   }
 
+  generateHeader() {
+    if (this.props.post.reblog_id != null) {
+      return (
+        <div className="reblog-form-header">
+          <a>{this.props.user.username}</a>
+          <i className="reblog-icon">&#xea92;</i>
+          <span className="reblog-author">{this.props.author.username}</span>
+        </div>
+      );
+    }
+    return (
+      <div className="username">
+        <a>{this.props.user.username}</a>
+      </div>
+    );
+  }
+
   render() {
+    let header = this.generateHeader();
+
     let form = null;
     if (this.state.edit) form = this.getForm();
     else if (this.state.reblog) form = this.getReblogForm();
@@ -157,18 +215,16 @@ class PostIndexItem extends React.Component {
         <div className="post-avatar" >
           <AvatarPopup
             follow={this.props.follow}
-            avatar={this.props.avatar}
+            avatar={this.props.user.avatar}
             currentUserId={this.props.currentUserId}
             changeFollow={this.changeFollow}
             userId={this.state.post.user_id}
-            username={this.props.username}
-            title={this.props.title}
-            description={this.props.description}/>
+            username={this.props.user.username}
+            title={this.props.user.title}
+            description={this.props.user.description}/>
         </div>
         <div className="post-content">
-          <div className="username">
-            <a>{this.props.username}</a>
-          </div>
+          {header}
           {
             this.state.post.contents.length > 0 &&
             this.state.post.contents.map((file, idx) => <img key={idx} className="post-image" src={file.url} alt="IMAGE" />)

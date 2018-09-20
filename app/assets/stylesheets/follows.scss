@@ -35,6 +35,12 @@
   padding: 10px;
   margin-bottom: 1px;
   box-sizing: border-box;
+  border-bottom: 1px solid #ddd;
+  color: #444;
+}
+
+.follow-list-item:nth-of-type(2n) {
+  background-color: #f8f8f8;
 }
 
 .follow-list-item-div {

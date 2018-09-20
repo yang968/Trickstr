@@ -1,10 +1,15 @@
 import React from 'react';
+import {Editor, EditorState, ContentState} from 'draft-js';
 
-class ReblogTextForm extends React.Component {
+class ReblogPhotoForm extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { description: "" }
+    this.state = {
+      description: props.description,
+      contents: props.contents,
+      urls: props.contents.map(content => content.url)
+    }
 
     this.updateDescription = this.updateDescription.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,9 +25,10 @@ class ReblogTextForm extends React.Component {
     const formData = new FormData();
     formData.append('post[user_id]', this.props.currentUser.id);
     formData.append('post[reblog_id]', this.props.post.id);
-    formData.append('post[post_type]', "text");
-    formData.append('post[title]', this.props.post.title);
+    formData.append('post[post_type]', "photo");
+    formData.append('post[title]', "");
     formData.append('post[description]', this.state.description);
+    // this.state.contents.forEach(content => formData.append('contents[]', content));
 
     $.ajax({
       method: "post",
@@ -41,9 +47,12 @@ class ReblogTextForm extends React.Component {
     let avatar = <img className="avatar-image" src={this.props.currentUser.avatar} alt="IMAGE" />
     let button = <button onClick={this.handleSubmit} className="form-button post-button">Reblog</button>;
 
+    const previews = this.state.urls.map((url,idx) => (
+      <img className="post-image" src={url} key={idx}/>));
+
     return (
       <div>
-        <div className="post-avatar">
+        <div className="post-avatar" >
           {avatar}
         </div>
         <div className="reblog-form-header">
@@ -51,6 +60,7 @@ class ReblogTextForm extends React.Component {
           <i className="reblog-icon">&#xea92;</i>
           <span className="reblog-author">{this.props.username}</span>
         </div>
+        {previews}
         <div className="reblog-list-item">
           <div className="reblog-header">
             <a className="reblog-avatar">
@@ -59,9 +69,6 @@ class ReblogTextForm extends React.Component {
             <a className="reblog-header-username">
               {this.props.currentUser.username}
             </a>
-          </div>
-          <div className="reblog-title">
-            {this.props.post.title}
           </div>
           <div className="reblog-description">
             {this.props.post.description}
@@ -73,8 +80,8 @@ class ReblogTextForm extends React.Component {
               contentEditable="true"
               suppressContentEditableWarning="true"
               value={this.state.description}
-              onInput={this.updateDescription.bind(this)}
-              placeholder="Your text here">
+              onInput={this.updateDescription}
+              placeholder="Add a caption, if you like">
             </p>
           </div>
           {/*<div className="form-tags disabled">
@@ -89,8 +96,8 @@ class ReblogTextForm extends React.Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default ReblogTextForm;
+export default ReblogPhotoForm;

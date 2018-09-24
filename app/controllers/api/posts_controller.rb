@@ -1,7 +1,6 @@
 class Api::PostsController < ApplicationController
 
   def index
-    # debugger
     @posts = Post.all
     @current_user = current_user
     @reblogs = {}
@@ -21,6 +20,7 @@ class Api::PostsController < ApplicationController
   #  end
 
   def create
+    debugger
     @post = Post.new(post_params)
     if @post.save
       @post.contents.attach(params[:contents]) if params[:contents]

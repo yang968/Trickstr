@@ -176,12 +176,11 @@ class PostIndexItem extends React.Component {
           description={this.state.post.description} />;
       case "photo":
         return <EditPhotoForm cancelPost={this.cancelPost.bind(this)}
-          id={this.state.post.id}
+          post={this.state.post}
           avatar={this.props.user.avatar}
           username={this.props.user.username}
-          userId={this.state.post.user_id}
-          description={this.state.post.description}
-          contents={this.state.post.contents}
+          original={this.props.original}
+          author={this.props.author}
           />;
       default:
         return null;

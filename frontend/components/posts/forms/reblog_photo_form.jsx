@@ -8,7 +8,7 @@ class ReblogPhotoForm extends React.Component {
     this.state = {
       description: "",
       contents: props.contents,
-      urls: props.contents.map(content => content.url)
+      urls: props.contents.map(content => content.url),
     }
 
     this.updateDescription = this.updateDescription.bind(this);
@@ -28,7 +28,7 @@ class ReblogPhotoForm extends React.Component {
     formData.append('post[post_type]', "photo");
     formData.append('post[title]', "");
     formData.append('post[description]', this.state.description);
-    // this.state.contents.forEach(content => formData.append('contents[]', content));
+    // this.props.contents.forEach(content => formData.append('contents[]', content));
 
     $.ajax({
       method: "post",

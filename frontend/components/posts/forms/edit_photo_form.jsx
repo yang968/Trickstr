@@ -60,7 +60,7 @@ class EditPhotoForm extends React.Component {
     if (this.props.post.reblog_id != null) {
       return this.props.original.contents.map((file, idx) => <img key={idx} className="post-image" src={file.url} alt="IMAGE" />)
     }
-    return this.props.post.contents.map((file, idx) => <img key={idx} className="post-image" src={file.url} alt="IMAGE" />);
+    return this.state.contents.map((file, idx) => <img key={idx} className="post-image" src={(file.url) ? file.url : file.preview} alt="IMAGE" />);
   }
 
   getTitle() {
@@ -89,10 +89,11 @@ class EditPhotoForm extends React.Component {
       return (
         <div>
           <Dropzone
-            className="drop-photo"
+            className="drop-photo-small"
             accept={"image/*"}
             onDrop={files => this.onDrop(files)}>
-            <p>Try dropping some files here, or click to select files to upload.</p>
+            <i className="drop-photo-icon icon-small">&#xea65;</i>
+            <p>Add another</p>
           </Dropzone>
         </div>
       );
@@ -118,8 +119,8 @@ class EditPhotoForm extends React.Component {
         <div className="form-header username">
           <a>{this.props.username}</a>
         </div>
-        {dropzone}
         {previews}
+        {dropzone}
         {title}
         <div className="text-form-content animated fadeIn">
           <div className="form-desc">

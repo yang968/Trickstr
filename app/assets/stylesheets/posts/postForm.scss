@@ -161,6 +161,10 @@ input:focus, textarea:focus {
   word-wrap: break-word;
   width: 500px;
   padding-top: 10px;
+
+  p:hover {
+    cursor: text;
+  }
 }
 
 .form-tags {
@@ -251,6 +255,29 @@ input:focus, textarea:focus {
   justify-content: flex-end;
 }
 
+.drop-photo-small {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: #F2F2F2;
+  color: #989898;
+  position: relative;
+  border-top: 2px dashed #989898;
+  border-bottom: 2px dashed #989898;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  text-align: center;
+  vertical-align: baseline;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
+  p {
+    line-height: 13px;
+    margin: auto 5px;
+  }
+}
+
 .drop-photo-icon {
   color: #989898;
 }
@@ -258,4 +285,12 @@ input:focus, textarea:focus {
 .drop-photo-smile {
   color: #989898;
   font-size: 24px;
+}
+
+.icon-small {
+  margin: 5px;
+  font-size: 24px;
+  font-family: "icon-font";
+  font-style: normal;
+  line-height: 24px;
 }

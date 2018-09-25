@@ -14,6 +14,9 @@ class PhotoForm extends React.Component {
     this.updateDescription = this.updateDescription.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onDrop = this.onDrop.bind(this);
+    this.getDropzone = this.getDropzone.bind(this);
+    this.getButton = this.getButton.bind(this);
+    this.getDescForm = this.getDescForm.bind(this);
   }
 
   updateDescription(e) {
@@ -49,27 +52,9 @@ class PhotoForm extends React.Component {
     });
   }
 
-  render() {
-    let avatar = null;
-    let button = null;
-    if (this.props.avatar) {
-      avatar = (<img className="avatar-image" src={this.props.avatar} alt="IMAGE" />);
-    }
-    const previews = this.state.contents.map((content,idx) => (
-      <img className="post-image" src={content.preview} key={idx}/>));
-
-    if (this.state.contents.length === 0) button = <button className="form-button button-disabled">Post</button>;
-    else button = <button onClick={this.handleSubmit} className="form-button post-button">Post</button>;
-
-    return (
-      <div className="text-form-container">
-        <div className="post-avatar" >
-          {avatar}
-        </div>
-        <div className="form-header username">
-          <a>{this.props.username}</a>
-        </div>
-        {previews}
+  getDropzone() {
+    if (this.state.contents.length === 0) {
+      return (
         <div>
           <Dropzone
             className="drop-photo"
@@ -80,6 +65,29 @@ class PhotoForm extends React.Component {
             <i className="drop-photo-smile icon">&#xea88;</i>
           </Dropzone>
         </div>
+      );
+    }
+    return (
+      <div>
+        <Dropzone
+          className="drop-photo-small"
+          accept={"image/*"}
+          onDrop={files => this.onDrop(files)}>
+          <i className="drop-photo-icon icon-small">&#xea65;</i>
+          <p>Add another</p>
+        </Dropzone>
+      </div>
+    )
+  }
+
+  getButton() {
+    if (this.state.contents.length === 0) return <button className="form-button button-disabled">Post</button>;
+    return <button onClick={this.handleSubmit} className="form-button post-button">Post</button>;
+  }
+
+  getDescForm() {
+    if (this.state.contents.length > 0) {
+      return (
         <div className="text-form-content animated fadeIn">
           <div className="form-desc">
             <p
@@ -90,9 +98,35 @@ class PhotoForm extends React.Component {
               placeholder="Add a caption, if you like">
             </p>
           </div>
-          {/*<div className="form-tags disabled">
-          </div>*/}
         </div>
+      );
+    }
+    return null;
+  }
+
+  render() {
+    let avatar = null;
+    let button = this.getButton();
+    let dropzone = this.getDropzone();
+    let descForm = this.getDescForm();
+
+    if (this.props.avatar) {
+      avatar = (<img className="avatar-image" src={this.props.avatar} alt="IMAGE" />);
+    }
+    const previews = this.state.contents.map((content,idx) => (
+      <img className="post-image" src={content.preview} key={idx}/>));
+
+    return (
+      <div className="text-form-container">
+        <div className="post-avatar" >
+          {avatar}
+        </div>
+        <div className="form-header username">
+          <a>{this.props.username}</a>
+        </div>
+        {previews}
+        {dropzone}
+        {descForm}
         <div className="form-footer">
           <div className="form-close">
             <button onClick={this.props.cancelPost()} className="form-button close-button">Close</button>

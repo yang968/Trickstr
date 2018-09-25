@@ -234,18 +234,28 @@ input:focus, textarea:focus {
 }
 
 .drop-photo {
+  width: 100%;
+  box-sizing: border-box;
   background-color: #F2F2F2;
   color: #989898;
   position: relative;
-  width: 200px;
   height: 200px;
-  border-width: 2px;
-  border-color: rgb(102, 102, 102);
-  border-style: dashed;
-  border-radius: 5px;
-  width: 98%;
+  border-top: 2px dashed #989898;
+  border-bottom: 2px dashed #989898;
   margin: 0 auto;
   margin-bottom: 10px;
   text-align: center;
   vertical-align: baseline;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.drop-photo-icon {
+  color: #989898;
+}
+
+.drop-photo-smile {
+  color: #989898;
+  font-size: 24px;
 }

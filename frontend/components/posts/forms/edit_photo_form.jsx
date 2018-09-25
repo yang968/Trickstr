@@ -84,6 +84,22 @@ class EditPhotoForm extends React.Component {
     return null;
   }
 
+  getDropzone() {
+    if (this.props.post.reblog_id == null) {
+      return (
+        <div>
+          <Dropzone
+            className="drop-photo"
+            accept={"image/*"}
+            onDrop={files => this.onDrop(files)}>
+            <p>Try dropping some files here, or click to select files to upload.</p>
+          </Dropzone>
+        </div>
+      );
+    }
+    return null;
+  }
+
   render() {
     let avatar = null;
     if (this.props.avatar) {
@@ -92,6 +108,7 @@ class EditPhotoForm extends React.Component {
 
     let previews = this.getPreview();
     let title = this.getTitle();
+    let dropzone = this.getDropzone();
 
     return (
       <div>
@@ -101,14 +118,7 @@ class EditPhotoForm extends React.Component {
         <div className="form-header username">
           <a>{this.props.username}</a>
         </div>
-        <div>
-          <Dropzone
-            className="drop-photo"
-            accept={"image/*"}
-            onDrop={files => this.onDrop(files)}>
-            <p>Try dropping some files here, or click to select files to upload.</p>
-          </Dropzone>
-        </div>
+        {dropzone}
         {previews}
         {title}
         <div className="text-form-content animated fadeIn">

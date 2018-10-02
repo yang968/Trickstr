@@ -11,9 +11,6 @@
   line-height: 22px;
   margin-top: 10px;
   margin-bottom: 28px;
-  text-align: center;
-  font-family: "HelveticaNeue";
-  font-weight: lighter;
 }
 
 input {
@@ -41,17 +38,12 @@ input {
 }
 
 .user-form {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   display: block;
-  box-sizing: border-box;
 }
 
 .user-input {
   width: inherit;
-  box-sizing: border-box;
-  font-weight: lighter;
   padding: 11px 10px 11px 13px;
   margin: 0;
   border: none;
@@ -59,14 +51,10 @@ input {
 }
 
 .top-input {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
   border-bottom: 1px solid #ddd;
 }
 
 .bottom-input {
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
   border-top: 1px solid #ddd;
 }
 
@@ -76,32 +64,21 @@ input {
   width: 300px;
   height: 45px;
   padding: 10px 0;
-  border-radius: 2px;
   margin-top: 12px;
   font-weight: bold;
-  font-family: "HelveticaNeue";
   vertical-align: baseline;
   cursor: pointer;
 }
 
 .button-main {
   background-color: #559FCA;
-  color: #FFF;
   border: 1px solid #529ecc;
 }
 
 .login-link {
-  background-color: #FFF;
   color: #444444;
   text-decoration: none;
-  text-align: center;
-  box-sizing: border-box;
   padding-top: 12px;
-}
-
-.login-link:hover {
-  background-color: #FFF;
-  color: #444444;
 }
 
 .user-errors {
@@ -112,11 +89,34 @@ input {
 
 .user-errors-list {
   font-size: 14px;
-  border-radius: 2px;
   padding: 14px 15px;
   list-style: none;
   color: #FEFEFE;
   background-color: rgba(45, 45, 45, 0.3);
-  text-align: center;
   margin-bottom: 10px;
+}
+
+.user-form, .user-input, .login-link {
+  box-sizing: border-box;
+}
+
+.top-input, .bottom-input {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.subheading, .button-user {
+  font-family: "HelveticaNeue";
+}
+
+.subheading, .user-input {
+  font-weight: lighter;
+}
+
+.subheading, .login-link, .user-errors-list {
+  text-align: center;
+}
+
+.button-user, .user-errors-list {
+  border-radius: 2px;
 }

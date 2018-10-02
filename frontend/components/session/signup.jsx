@@ -86,7 +86,7 @@ class Signup extends React.Component {
               <ul className="user-errors" >
                 { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list animated fadeInDown" >{err}</li>)) }
               </ul>
-              <button className="button-user button-main animated slideInDown" onClick={this.handleSubmit}>Sign up</button>
+              <button className="button-user button-main fff animated slideInDown" onClick={this.handleSubmit}>Sign up</button>
             </form>
           </div>
         </div>
@@ -99,9 +99,9 @@ class Signup extends React.Component {
           <div className="animated fadeInUp delay-1s" >
             <h1>trickstr</h1>
             {catchphrase}
-            <button className="button-user button-main" onClick={this.handleGetStarted}>Get Started</button>
-            <Link className="login-link button-user" to="/login">Log In</Link>
-            <button className="button-user button-main" onClick={this.demoLogin}>Demo Login</button>
+            <button className="button-user button-main fff" onClick={this.handleGetStarted}>Get Started</button>
+            <Link className="login-link bgFFF button-user" to="/login">Log In</Link>
+            <button className="button-user button-main fff" onClick={this.demoLogin}>Demo Login</button>
           </div>
         </div>
       </div>

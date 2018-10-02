@@ -7,16 +7,12 @@
 }
 
 .side-panel {
-  width: 320px;
   border-radius: 2px;
-  // border: 1px solid yellow;
   color: hsla(0,0%,100%,.6);
 }
 
 .side-header {
-  font-size: 14px;
   font-weight: 700;
-  font-style: normal;
   line-height: 25px;
   width: 280px;
   padding: 0 20px;
@@ -26,21 +22,15 @@
 .side-list {
   list-style: none;
   width: 100%;
-  height: 53px;
   border-bottom: 1px solid hsla(0,0%,100%,.13);
-  color: inherit;
 }
 
 .side-link {
   background-color: inherit;
-  width: 320px;
-  height: 53px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: inherit;
-  border-bottom: 0;
   text-decoration: none;
   padding: inherit;
   border: none;
@@ -48,25 +38,40 @@
 
 .side-icon {
   font-family: "icon-font";
-  font-style: normal;
   font-weight: lighter;
   font-size: 24px;
   width: 24px;
   height: 24px;
   line-height: 24px;
-  color: inherit;
   margin: 8px;
 }
 
 .side-list-text {
   width: 270px;
-  color: inherit;
-  height: 53px;
   line-height: 53px;
   text-align: left;
   vertical-align: baseline;
-  font-size: 14px;
   font-family: "Helvetica Neue";
   font-weight: 400;
   font-stretch: 100%;
+}
+
+.side-list, .side-link, .side-icon, .side-list-text {
+  color: inherit;
+}
+
+.side_panel, .side-link {
+  width: 320px;
+}
+
+.side-header, .side-list-text {
+  font-size: 14px;
+}
+
+.side-header, .side-icon {
+  font-style: normal;
+}
+
+.side-list, .side-link, .side-list-text {
+  height: 53px;
 }

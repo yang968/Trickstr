@@ -45,13 +45,13 @@ class NavBar extends React.Component {
         bgDiv.setAttribute("style", `background-image: url(${BACKGROUND_LINKS[this.getRandomIndex()]})`);
         break;
       case "signup":
-        this.setState({ rightButton: <Link className="signup-button animated fadeIn" to="/login">Log In</Link>,
+        this.setState({ rightButton: <Link className="signup-button fff animated fadeIn" to="/login">Log In</Link>,
             style: { borderBottom: '0px', backgroundColor: 'rgba(0,0,0,0)' }
           });
         break;
       case "signin":
         bgDiv.setAttribute("style", `background-image: url(${BACKGROUND_LINKS[this.getRandomIndex()]})`);
-        this.setState({ rightButton: <Link className="signin-button animated fadeIn" to="/">Sign Up</Link>,
+        this.setState({ rightButton: <Link className="signin-button bgFFF animated fadeIn" to="/">Sign Up</Link>,
             style: { borderBottom: '0px', backgroundColor: 'rgba(0,0,0,0)' }
           });
         break;

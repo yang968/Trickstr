@@ -131,10 +131,10 @@ class EditPhotoForm extends React.Component {
         </div>
         <div className="form-footer">
           <div className="form-close">
-            <button onClick={this.props.cancelPost()} className="form-button close-button">Close</button>
+            <button onClick={this.props.cancelPost()} className="form-button close-button fff">Close</button>
           </div>
           <div className="form-post">
-            <button onClick={this.handleSubmit} className="form-button post-button">Post</button>
+            <button onClick={this.handleSubmit} className="form-button post-button fff">Post</button>
           </div>
         </div>
       </div>

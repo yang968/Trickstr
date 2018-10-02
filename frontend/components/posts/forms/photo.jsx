@@ -82,7 +82,7 @@ class PhotoForm extends React.Component {
 
   getButton() {
     if (this.state.contents.length === 0) return <button className="form-button button-disabled">Post</button>;
-    return <button onClick={this.handleSubmit} className="form-button post-button">Post</button>;
+    return <button onClick={this.handleSubmit} className="form-button post-button fff">Post</button>;
   }
 
   getDescForm() {
@@ -129,7 +129,7 @@ class PhotoForm extends React.Component {
         {descForm}
         <div className="form-footer">
           <div className="form-close">
-            <button onClick={this.props.cancelPost()} className="form-button close-button">Close</button>
+            <button onClick={this.props.cancelPost()} className="form-button close-button fff">Close</button>
           </div>
           <div className="form-post">
             {button}

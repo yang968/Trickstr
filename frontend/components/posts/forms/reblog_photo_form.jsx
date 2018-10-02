@@ -45,7 +45,7 @@ class ReblogPhotoForm extends React.Component {
 
   render() {
     let avatar = <img className="avatar-image" src={this.props.currentUser.avatar} alt="IMAGE" />
-    let button = <button onClick={this.handleSubmit} className="form-button post-button">Reblog</button>;
+    let button = <button onClick={this.handleSubmit} className="form-button post-button fff">Reblog</button>;
 
     const previews = this.state.urls.map((url,idx) => (
       <img className="post-image" src={url} key={idx}/>));
@@ -89,7 +89,7 @@ class ReblogPhotoForm extends React.Component {
         </div>
         <div className="form-footer">
           <div className="form-close">
-            <button onClick={this.props.cancelPost()} className="form-button close-button">Close</button>
+            <button onClick={this.props.cancelPost()} className="form-button close-button fff">Close</button>
           </div>
           <div className="form-post">
             {button}

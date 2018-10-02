@@ -59,7 +59,7 @@ class NavBar extends React.Component {
         bgDiv.setAttribute("style", `background: ""`);
         this.setState({ rightButton: <button className="main-button animated fadeIn" onClick={this.logout}>Log out</button>,
             tabBar: (
-              <button onClick={() => window.location.reload()} className="nav-icon">
+              <button onClick={() => window.location.reload()} className="nav-icon cursorPointer">
                 <i className="side-icon">&#xea4c;</i>
               </button>),
             style: { borderBottom: '1px solid #515e71', backgroundColor: '#37465c', zIndex: "200" }
@@ -91,7 +91,7 @@ class NavBar extends React.Component {
     return (
       <nav style={this.state.style} className="nav-bar">
         <div className="logo-container">
-          <img onClick={() => window.location.reload()} className="logo" src={window.images.whiteLogo}></img>
+          <img onClick={() => window.location.reload()} className="logo cursorPointer" src={window.images.whiteLogo}></img>
         </div>
         <div className="nav-div">
           <div className="middle">
@@ -103,10 +103,10 @@ class NavBar extends React.Component {
           <div className="right-nav" >
             <div className="nav-icons">
               <div className="tabBar">
-                <a target="_blank" href="https://github.com/yang968/Trickstr/" className="nav-icon">
+                <a target="_blank" href="https://github.com/yang968/Trickstr/" className="nav-icon cursorPointer">
                   <i className="fa fa-github side-icon" aria-hidden="true"></i>
                 </a>
-                <a target="_blank" href="https://www.linkedin.com/in/yang53" className="nav-icon">
+                <a target="_blank" href="https://www.linkedin.com/in/yang53" className="nav-icon cursorPointer">
                   <i className="fa fa-linkedin-square side-icon" aria-hidden="true"></i>
                 </a>
                 {this.state.tabBar}

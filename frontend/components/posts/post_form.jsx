@@ -71,31 +71,31 @@ class PostForm extends React.Component {
             description={this.props.description}/>
         </div>
         <div className="new-post-wrapper">
-          <a className="post-link one" onClick={this.setPostType(1)}>
+          <a className="post-link one cursorPointer" onClick={this.setPostType(1)}>
             <i className="text-icon icon">&#60023;</i>
             <span className="new-post-span">Text</span>
           </a>
-          <a className="post-link two" onClick={this.setPostType(2)}>
+          <a className="post-link two cursorPointer" onClick={this.setPostType(2)}>
             <i className="photo-icon icon">&#60019;</i>
             <span className="new-post-span">Photo</span>
           </a>
-          <a className="post-link three disabled">
+          <a className="post-link three disabled cursorPointer">
             <i className="quote-icon icon">&#60021;</i>
             <span className="new-post-span">Quote</span>
           </a>
-          <a className="post-link four disabled">
+          <a className="post-link four disabled cursorPointer">
             <i className="link-icon icon">&#60016;</i>
             <span className="new-post-span">Link</span>
           </a>
-          <a className="post-link five disabled">
+          <a className="post-link five disabled cursorPointer">
             <i className="chat-icon icon">&#60012;</i>
             <span className="new-post-span">Chat</span>
           </a>
-          <a className="post-link six disabled">
+          <a className="post-link six disabled cursorPointer">
             <i className="audio-icon icon">&#60010;</i>
             <span className="new-post-span">Audio</span>
           </a>
-          <a className="post-link seven disabled">
+          <a className="post-link seven disabled cursorPointer">
             <i className="video-icon icon">&#60025;</i>
             <span className="new-post-span">Video</span>
           </a>

@@ -49,7 +49,7 @@ class ReblogTextForm extends React.Component {
         <div className="reblog-form-header">
           <a>{this.props.currentUser.username}</a>
           <i className="reblog-icon">&#xea92;</i>
-          <span className="reblog-author">{this.props.username}</span>
+          <span className="reblog-author HelveticaNeue">{this.props.username}</span>
         </div>
         <div className="reblog-list-item">
           <div className="reblog-header">

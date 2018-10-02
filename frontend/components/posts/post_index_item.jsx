@@ -220,7 +220,7 @@ class PostIndexItem extends React.Component {
         <div className="reblog-form-header">
           <a>{this.props.user.username}</a>
           <i className="reblog-icon">&#xea92;</i>
-          <span className="reblog-author">{this.props.author.username}</span>
+          <span className="reblog-author HelveticaNeue">{this.props.author.username}</span>
         </div>
       );
     }

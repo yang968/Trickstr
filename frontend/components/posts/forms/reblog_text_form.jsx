@@ -7,7 +7,6 @@ class ReblogTextForm extends React.Component {
     super(props);
 
     this.state = { description: "" }
-
     this.updateDescription = this.updateDescription.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -77,8 +76,6 @@ class ReblogTextForm extends React.Component {
               placeholder="Your text here">
             </p>
           </div>
-          {/*<div className="form-tags disabled">
-          </div>*/}
         </div>
         <FormFooter cancelPost={this.props.cancelPost} button={button}/>
       </div>

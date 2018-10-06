@@ -84,8 +84,6 @@ class ReblogPhotoForm extends React.Component {
               placeholder="Add a caption, if you like">
             </p>
           </div>
-          {/*<div className="form-tags disabled">
-          </div>*/}
         </div>
         <FormFooter cancelPost={this.props.cancelPost} button={button}/>
       </div>

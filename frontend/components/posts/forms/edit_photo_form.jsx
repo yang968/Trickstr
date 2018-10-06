@@ -3,6 +3,7 @@ import Dropzone from 'react-dropzone';
 import {Editor, EditorState, ContentState} from 'draft-js';
 import FormFooter from './form_footer';
 import FormAvatar from './form_avatar';
+import FormHeader from './form_header';
 
 class EditPhotoForm extends React.Component {
   constructor(props) {
@@ -104,11 +105,7 @@ class EditPhotoForm extends React.Component {
   }
 
   render() {
-    let avatar = null;
-    if (this.props.avatar) {
-      avatar = (<img className="avatar-image" src={this.props.avatar} alt="IMAGE" />);
-    }
-
+    let avatar = <img className="avatar-image" src={this.props.avatar} alt="IMAGE" />;
     let button = <button onClick={this.handleSubmit} className="form-button post-button fff">Post</button>;
 
     let previews = this.getPreview();
@@ -118,9 +115,7 @@ class EditPhotoForm extends React.Component {
     return (
       <div>
         <FormAvatar avatar={avatar} />
-        <div className="form-header username">
-          <a>{this.props.username}</a>
-        </div>
+        <FormHeader username={this.props.username} />
         {previews}
         {dropzone}
         {title}
@@ -128,8 +123,6 @@ class EditPhotoForm extends React.Component {
           <div className="form-desc">
             <Editor editorState={this.state.descEditorState} onChange={this.updateDescription} />
           </div>
-          {/*<div className="form-tags disabled">
-          </div>*/}
         </div>
         <FormFooter cancelPost={this.props.cancelPost} button={button}/>
       </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import FormFooter from './form_footer';
 import FormAvatar from './form_avatar';
+import FormHeader from './form_header';
 
 class PhotoForm extends React.Component {
   constructor(props) {
@@ -107,23 +108,18 @@ class PhotoForm extends React.Component {
   }
 
   render() {
-    let avatar = null;
+    let avatar = <img className="avatar-image" src={this.props.avatar} alt="IMAGE" />;
     let button = this.getButton();
     let dropzone = this.getDropzone();
     let descForm = this.getDescForm();
 
-    if (this.props.avatar) {
-      avatar = (<img className="avatar-image" src={this.props.avatar} alt="IMAGE" />);
-    }
     const previews = this.state.contents.map((content,idx) => (
       <img className="post-image" src={content.preview} key={idx}/>));
 
     return (
       <div className="text-form-container">
         <FormAvatar avatar={avatar} />
-        <div className="form-header username">
-          <a>{this.props.username}</a>
-        </div>
+        <FormHeader username={this.props.username} />
         {previews}
         {dropzone}
         {descForm}

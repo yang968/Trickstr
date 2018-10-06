@@ -2,6 +2,7 @@ import React from 'react';
 import {Editor, EditorState, ContentState} from 'draft-js';
 import FormFooter from './form_footer';
 import FormAvatar from './form_avatar';
+import FormHeader from './form_header';
 
 class EditTextForm extends React.Component {
   constructor(props) {
@@ -61,10 +62,7 @@ class EditTextForm extends React.Component {
   }
 
   render() {
-    let avatar = null;
-    if (this.props.avatar) {
-      avatar = (<img className="avatar-image" src={this.props.avatar} alt="IMAGE" />);
-    }
+    let avatar = <img className="avatar-image" src={this.props.avatar} alt="IMAGE" />;
 
     let button = null;
     if (this.state.title == "" && this.state.description == "") button = <button className="form-button button-disabled">Post</button>;
@@ -73,9 +71,7 @@ class EditTextForm extends React.Component {
     return (
       <div>
         <FormAvatar avatar={avatar} />
-        <div className="form-header username">
-          <a>{this.props.username}</a>
-        </div>
+        <FormHeader username={this.props.username} />
         <div className="text-form-content animated fadeIn">
           <div className="form-title">
             <Editor editorState={this.state.titleEditorState} onChange={this.updateTitle} />
@@ -83,8 +79,6 @@ class EditTextForm extends React.Component {
           <div className="form-desc" >
             <Editor className="editor" editorState={this.state.descEditorState} onChange={this.updateDescription} />
           </div>
-          {/*<div className="form-tags disabled">
-          </div>*/}
         </div>
         <FormFooter cancelPost={this.props.cancelPost} button={button}/>
       </div>

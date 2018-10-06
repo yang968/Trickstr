@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import {Editor, EditorState, ContentState} from 'draft-js';
+import FormFooter from './form_footer';
 
 class EditPhotoForm extends React.Component {
   constructor(props) {
@@ -107,6 +108,8 @@ class EditPhotoForm extends React.Component {
       avatar = (<img className="avatar-image" src={this.props.avatar} alt="IMAGE" />);
     }
 
+    let button = <button onClick={this.handleSubmit} className="form-button post-button fff">Post</button>;
+
     let previews = this.getPreview();
     let title = this.getTitle();
     let dropzone = this.getDropzone();
@@ -129,14 +132,7 @@ class EditPhotoForm extends React.Component {
           {/*<div className="form-tags disabled">
           </div>*/}
         </div>
-        <div className="form-footer">
-          <div className="form-close">
-            <button onClick={this.props.cancelPost()} className="form-button close-button fff">Close</button>
-          </div>
-          <div className="form-post">
-            <button onClick={this.handleSubmit} className="form-button post-button fff">Post</button>
-          </div>
-        </div>
+        <FormFooter cancelPost={this.props.cancelPost} button={button}/>
       </div>
     );
   }

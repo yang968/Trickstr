@@ -1,4 +1,5 @@
 import React from 'react';
+import FormFooter from './form_footer';
 
 class TextForm extends React.Component {
   constructor(props) {
@@ -84,14 +85,7 @@ class TextForm extends React.Component {
           {/*<div className="form-tags disabled">
           </div>*/}
         </div>
-        <div className="form-footer">
-          <div className="form-close">
-            <button onClick={this.props.cancelPost()} className="form-button close-button fff">Close</button>
-          </div>
-          <div className="form-post">
-            {button}
-          </div>
-        </div>
+        <FormFooter cancelPost={this.props.cancelPost} button={button}/>
       </div>
     )
   }

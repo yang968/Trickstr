@@ -1,5 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
+import FormFooter from './form_footer';
 
 class PhotoForm extends React.Component {
   constructor(props) {
@@ -127,14 +128,7 @@ class PhotoForm extends React.Component {
         {previews}
         {dropzone}
         {descForm}
-        <div className="form-footer">
-          <div className="form-close">
-            <button onClick={this.props.cancelPost()} className="form-button close-button fff">Close</button>
-          </div>
-          <div className="form-post">
-            {button}
-          </div>
-        </div>
+        <FormFooter cancelPost={this.props.cancelPost} button={button}/>
       </div>
     );
   }

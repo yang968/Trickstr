@@ -1,5 +1,6 @@
 import React from 'react';
 import {Editor, EditorState, ContentState} from 'draft-js';
+import FormFooter from './form_footer';
 
 class ReblogPhotoForm extends React.Component {
   constructor(props) {
@@ -87,14 +88,7 @@ class ReblogPhotoForm extends React.Component {
           {/*<div className="form-tags disabled">
           </div>*/}
         </div>
-        <div className="form-footer">
-          <div className="form-close">
-            <button onClick={this.props.cancelPost()} className="form-button close-button fff">Close</button>
-          </div>
-          <div className="form-post">
-            {button}
-          </div>
-        </div>
+        <FormFooter cancelPost={this.props.cancelPost} button={button}/>
       </div>
     );
   }

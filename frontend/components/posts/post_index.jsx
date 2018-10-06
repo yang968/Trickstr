@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostIndexItemContainer from './post_index_item_container';
 import PostForm from './post_form';
+import RightColumn from './right_column';
 import { Link } from 'react-router-dom';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 import 'react-web-tabs/dist/react-web-tabs.css';
@@ -147,31 +148,11 @@ class PostIndex extends React.Component {
         <div className="main-container" >
           <div className="main-content clearfix">
             {content}
-            <div className="right-column">
-              <div className="side-panel">
-                <div className="side-header">
-                  {this.props.currentUser.username}
-                </div>
-                <li className='side-list'>
-                  <button onClick={this.getLikedPosts} className="side-link">
-                    <i className="side-icon">&#xea4f;</i>
-                    <span className="side-list-text">Your Likes</span>
-                  </button>
-                </li>
-                <li className='side-list'>
-                  <button onClick={this.getOwnPosts} className="side-link">
-                    <i className="side-icon">&#xea66;</i>
-                    <span className="side-list-text">Your Posts</span>
-                  </button>
-                </li>
-                <li className='side-list'>
-                  <button onClick={this.getFollows} className="side-link">
-                    <i className="side-icon">&#xea45;</i>
-                    <span className="side-list-text">Following & Followers</span>
-                  </button>
-                </li>
-              </div>
-            </div>
+            <RightColumn username={this.props.currentUser.username}
+              getLikedPosts={this.getLikedPosts}
+              getOwnPosts={this.getOwnPosts}
+              getFollows={this.getFollows}
+            />
           </div>
         </div>
         <div ref={mainDivRef} className="mainDiv animated" id="mainDiv"></div>

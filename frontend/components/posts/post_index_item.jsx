@@ -85,9 +85,6 @@ class PostIndexItem extends React.Component {
         {this.state.post.title}
       </div>
     );
-    // if (this.state.post.post_type == "text") {
-    // }
-    // return null;
   }
 
   getDescription() {

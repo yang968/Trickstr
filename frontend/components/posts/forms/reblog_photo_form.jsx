@@ -2,6 +2,7 @@ import React from 'react';
 import {Editor, EditorState, ContentState} from 'draft-js';
 import FormFooter from './form_footer';
 import FormAvatar from './form_avatar';
+import ReblogFormHeader from './reblog_form_header';
 
 class ReblogPhotoForm extends React.Component {
   constructor(props) {
@@ -55,11 +56,7 @@ class ReblogPhotoForm extends React.Component {
     return (
       <div>
         <FormAvatar avatar={avatar} />
-        <div className="reblog-form-header">
-          <a>{this.props.currentUser.username}</a>
-          <i className="reblog-icon">&#xea92;</i>
-          <span className="reblog-author HelveticaNeue">{this.props.username}</span>
-        </div>
+        <ReblogFormHeader username={this.props.currentUser.username} author={this.props.username} />
         {previews}
         <div className="reblog-list-item">
           <div className="reblog-header">

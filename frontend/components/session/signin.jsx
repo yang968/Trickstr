@@ -14,6 +14,7 @@ class Signin extends React.Component {
     this.handleEmail = this.handleEmail.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getErrors = this.getErrors.bind(this);
   }
 
   componentWillUnmount() {
@@ -38,8 +39,17 @@ class Signin extends React.Component {
       .then(() => this.props.history.replace('/posts'))
   }
 
+  getErrors() {
+    return (
+      <ul className="user-errors" >
+        { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list animated fadeInDown" >{err}</li>)) }
+      </ul>
+    );
+  }
+
   render() {
     let navBar = <NavBarContainer page="signin" />;
+    let errors = this.getErrors();
     if (this.state.validEmail) {
       return (
         <div>
@@ -60,9 +70,7 @@ class Signin extends React.Component {
                   placeholder="Password"
                   className="user-input bottom-input animated fadeInDown"
                   />
-                <ul className="user-errors" >
-                  { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list animated fadeInDown" >{err}</li>)) }
-                </ul>
+                {errors}
                 <button className="button-user button-main fff HelveticaNeue animated fadeInDown" onClick={this.handleSubmit}>Log In</button>
               </form>
             </div>
@@ -85,9 +93,7 @@ class Signin extends React.Component {
                   className="user-input"
                   style={{borderRadius: '2px'}}
                   />
-                <ul className="user-errors" >
-                  { this.props.errors && this.props.errors.map((err) => (<li className="user-errors-list animated fadeInDown" >{err}</li>)) }
-                </ul>
+                {errors}
                 <button className="button-user button-main fff HelveticaNeue" onClick={this.handleEmail}>Next</button>
               </form>
             </div>

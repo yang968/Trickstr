@@ -2,6 +2,7 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import {Editor, EditorState, ContentState} from 'draft-js';
 import FormFooter from './form_footer';
+import FormAvatar from './form_avatar';
 
 class EditPhotoForm extends React.Component {
   constructor(props) {
@@ -116,9 +117,7 @@ class EditPhotoForm extends React.Component {
 
     return (
       <div>
-        <div className="post-avatar" >
-          {avatar}
-        </div>
+        <FormAvatar avatar={avatar} />
         <div className="form-header username">
           <a>{this.props.username}</a>
         </div>

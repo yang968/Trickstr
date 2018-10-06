@@ -1,5 +1,6 @@
 import React from 'react';
 import FormFooter from './form_footer';
+import FormAvatar from './form_avatar';
 
 class TextForm extends React.Component {
   constructor(props) {
@@ -57,9 +58,7 @@ class TextForm extends React.Component {
 
     return (
       <div className="text-form-container">
-        <div className="post-avatar" >
-          {avatar}
-        </div>
+        <FormAvatar avatar={avatar} />
         <div className="form-header username">
           <a>{this.props.username}</a>
         </div>

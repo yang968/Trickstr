@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FormFooter = ({ cancelPost, button}) => {
+const FormFooter = ({ cancelPost, button }) => {
   return (
     <div className="form-footer">
       <div className="form-close">

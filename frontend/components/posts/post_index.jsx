@@ -4,8 +4,8 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 import PostIndexItemContainer from './post_index_item_container';
 import PostForm from './post_form';
 import RightColumn from './right_column';
+import Follows from './follows';
 import { Link } from 'react-router-dom';
-import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 import 'react-web-tabs/dist/react-web-tabs.css';
 
 const mainDivRef = React.createRef();
@@ -23,12 +23,12 @@ class PostIndex extends React.Component {
     this.getLikedPosts = this.getLikedPosts.bind(this);
     this.getOwnPosts = this.getOwnPosts.bind(this);
     this.getFollows = this.getFollows.bind(this);
+    this.getContents = this.getContents.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchPosts();
     bgDiv.classList.remove("background");
-
     this.mainDiv = ReactDOM.findDOMNode(mainDivRef.current);
   }
 
@@ -56,10 +56,14 @@ class PostIndex extends React.Component {
     });
   }
 
-  render(){
-    let currentUserId = this.props.currentUser.id;
-    let username = this.props.currentUser.username;
-
+  getContents(currentUserId, username) {
+    if (this.state.follows) {
+      return (
+        <div className="left-column" >
+          <Follows follows={this.props.follows} followers={this.props.followers} />
+        </div>
+      );
+    }
     const PostFormWithRef = React.forwardRef((props, ref) => (
       <PostForm mainDiv={this.mainDiv} ref={ref}
         currentUserId={currentUserId}
@@ -69,65 +73,19 @@ class PostIndex extends React.Component {
         description={this.props.currentUser.description}/>
     ));
 
-    let content = null;
-    if (this.state.follows) {
-      content = (
-      <div className="left-column">
-        <div className="follows-div">
-          <div className="follows-wrapper">
-            <Tabs defaultTab="one">
-              <TabList>
-                <Tab tabFor="one">Following</Tab>
-                <Tab tabFor="two">Followers</Tab>
-              </TabList>
-              <TabPanel tabId="one">
-                <ul className="follow-list">
-                  {this.props.follows.map(user => (
-                    <li key={user.id} className="follow-list-item">
-                      <div className="follow-list-item-div">
-                        <img className="follow-avatar" src={user.avatar} alt="avatar" />
-                        <div className="follow-info">
-                          {user.username}
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </TabPanel>
-              <TabPanel tabId="two">
-                <ul className="follow-list">
-                  {this.props.followers.map(user => (
-                    <li key={user.id} className="follow-list-item">
-                      <div className="follow-list-item-div">
-                        <img className="follow-avatar" src={user.avatar} alt="avatar" />
-                        <div className="follow-info">
-                          {user.username}
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </TabPanel>
-            </Tabs>
-          </div>
-        </div>
-      </div>);
-    } else {
-      let posts = (this.state.showMyPosts) ? Object.values(this.props.posts).filter(post => post.user_id == this.props.currentUser.id) : Object.values(this.props.posts)
-      content = (
+    let posts = (this.state.showMyPosts) ? Object.values(this.props.posts).filter(post => post.user_id == this.props.currentUser.id) : Object.values(this.props.posts)
+    return (
       <div className="left-column" >
         <PostFormWithRef ref={mainDivRef}/>
         <ol className="main-posts" >
           { posts.map(post => {
-            let user = this.props.users[post.user_id];
             let original = this.props.posts[post.reblog_id];
-            let like = (original) ? this.props.likes[original.id] : this.props.likes[post.id];
             return (
               <PostIndexItemContainer
-                user={user}
+                user={this.props.users[post.user_id]}
                 currentUserId={currentUserId}
                 post={post}
-                like={like}
+                like={(original) ? this.props.likes[original.id] : this.props.likes[post.id]}
                 follow={ (this.props.follows && this.props.follows.some(follower => (follower.id == post.user_id))) }
                 key={post.id}
                 updatePost={this.props.updatePost}
@@ -139,8 +97,13 @@ class PostIndex extends React.Component {
           })}
         </ol>
       </div>
-      );
-    }
+    );
+  }
+
+  render(){
+    let currentUserId = this.props.currentUser.id;
+    let username = this.props.currentUser.username;
+    let content = this.getContents(currentUserId, username);
 
     return (
       <div>

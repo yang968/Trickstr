@@ -1,13 +1,13 @@
 import React from 'react';
 import FooterContainer from './footer_container';
-
 import EditTextForm from './forms/edit_text_form';
 import EditPhotoForm from './forms/edit_photo_form';
-
+import AvatarPopup from './avatar_popup';
 import ReblogTextForm from './forms/reblog_text_form';
 import ReblogPhotoForm from './forms/reblog_photo_form';
-
-import AvatarPopup from './avatar_popup';
+import ReblogFormHeader from './forms/reblog_form_header';
+import ReblogPostContent from './reblog_post_content';
+import ReblogListItem from './reblog_list_item';
 
 class PostIndexItem extends React.Component {
   constructor(props) {
@@ -23,7 +23,6 @@ class PostIndexItem extends React.Component {
     this.getTitle = this.getTitle.bind(this);
     this.getDescription = this.getDescription.bind(this);
     this.getPreview = this.getPreview.bind(this);
-
     this.editForm = this.editForm.bind(this);
     this.getForm = this.getForm.bind(this);
     this.cancelPost = this.cancelPost.bind(this);
@@ -39,11 +38,8 @@ class PostIndexItem extends React.Component {
   }
 
   changeFollow() {
-    if (this.state.follow) {
-      this.props.unfollowUser(this.state.post.user_id)
-    } else {
-      this.props.followUser(this.state.post.user_id, this.props.currentUserId)
-    }
+    if (this.state.follow) this.props.unfollowUser(this.state.post.user_id);
+    else this.props.followUser(this.state.post.user_id, this.props.currentUserId);
   }
 
   reblogForm() {
@@ -56,30 +52,8 @@ class PostIndexItem extends React.Component {
 
   getTitle() {
     if (this.props.post.post_type == "photo" && this.props.post.reblog_id == null) return;
-    if (this.props.post.reblog_id != null) {
-      let title = null;
-      if (this.props.post.post_type == "text") title = (
-        <div className="reblog-title">
-          {this.props.original.title}
-        </div>
-      )
-      return (
-        <div className="reblog-list-item">
-          <div className="reblog-header">
-            <a className="reblog-avatar">
-              <img className="reblog-avatar-image" src={this.props.author.avatar} alt="avatar" />
-            </a>
-            <a className="reblog-header-username">
-              {this.props.author.username}
-            </a>
-          </div>
-          {title}
-          <div className="reblog-description">
-            {this.props.original.description}
-          </div>
-        </div>
-      );
-    }
+    if (this.props.post.reblog_id != null) return <ReblogListItem avatar={this.props.author.avatar} username={this.props.author.username} original={this.props.original} />;
+
     return (
       <div className="title">
         {this.state.post.title}
@@ -89,53 +63,26 @@ class PostIndexItem extends React.Component {
 
   getDescription() {
     if (this.state.post.description !== "") {
-      switch (this.props.post.post_type) {
-        case "text":
-          if (this.props.post.reblog_id != null) {
-            return (
-              <div className="reblog-post-content">
-                <div className="reblog-header">
-                  <a className="reblog-avatar sub-icon-reblog">
-                    <img className="reblog-avatar-image" src={this.props.user.avatar} alt="avatar" />
-                  </a>
-                  <a className="reblog-header-username">
-                    {this.props.user.username}
-                  </a>
-                </div>
-                <div className="reblog-post-description">
-                  {this.state.post.description}
-                </div>
-              </div>
-            )
-          }
-          return (
-            <div className="description">
-              {this.state.post.description}
-            </div>
-          );
-        case "photo":
-          if (this.props.post.reblog_id != null) {
-            return (
-              <div className="reblog-post-content">
-                <div className="reblog-header">
-                  <a className="reblog-avatar sub-icon-reblog">
-                    <img className="reblog-avatar-image" src={this.props.user.avatar} alt="avatar" />
-                  </a>
-                  <a className="reblog-header-username">
-                    {this.props.user.username}
-                  </a>
-                </div>
-                <div className="reblog-post-description">
-                  {this.state.post.description}
-                </div>
-              </div>
-            )
-          }
-          return (
-            <div className="caption">
-              {this.state.post.description}
-            </div>
-          );
+      if (this.props.post.reblog_id != null) {
+        return (
+          <ReblogPostContent user={this.props.user}
+            description={this.state.post.description}
+          />
+        );
+      }
+
+      if (this.props.post.post_type == "text") {
+        return (
+          <div className="description">
+            {this.state.post.description}
+          </div>
+        );
+      } else {
+        return (
+          <div className="caption">
+            {this.state.post.description}
+          </div>
+        );
       }
     }
     return null;
@@ -143,9 +90,8 @@ class PostIndexItem extends React.Component {
 
   getPreview() {
     if (this.props.post.post_type != "photo") return null;
-    if (this.props.post.reblog_id != null) {
-      return this.props.original.contents.map((file, idx) => <img key={idx} className="post-image" src={file.url} alt="IMAGE" />)
-    }
+    if (this.props.post.reblog_id != null) return this.props.original.contents.map((file, idx) => <img key={idx} className="post-image" src={file.url} alt="IMAGE" />);
+
     return this.state.post.contents.map((file, idx) => <img key={idx} className="post-image" src={file.url} alt="IMAGE" />);
   }
 
@@ -213,13 +159,7 @@ class PostIndexItem extends React.Component {
 
   generateHeader() {
     if (this.props.post.reblog_id != null) {
-      return (
-        <div className="reblog-form-header">
-          <a>{this.props.user.username}</a>
-          <i className="reblog-icon">&#xea92;</i>
-          <span className="reblog-author HelveticaNeue">{this.props.author.username}</span>
-        </div>
-      );
+      return (<ReblogFormHeader username={this.props.user.username} author={this.props.author.username} />);
     }
     return (
       <div className="username">
@@ -243,9 +183,8 @@ class PostIndexItem extends React.Component {
     return (
       <li className='main-post' >
         <div className="post-avatar" >
-          <AvatarPopup
+          <AvatarPopup avatar={this.props.user.avatar}
             follow={this.props.follow}
-            avatar={this.props.user.avatar}
             currentUserId={this.props.currentUserId}
             changeFollow={this.changeFollow}
             userId={this.state.post.user_id}
@@ -254,14 +193,10 @@ class PostIndexItem extends React.Component {
             description={this.props.user.description}/>
         </div>
         <div className="post-content">
-          {header}
-          {preview}
+          { header }
+          { preview }
           { title }
           { description }
-          <div className="tags">
-          </div>
-          <div className="source">
-          </div>
           <FooterContainer post={this.state.post}
             currentUserId={this.props.currentUserId}
             likers={this.props.post.likers}

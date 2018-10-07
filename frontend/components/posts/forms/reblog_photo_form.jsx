@@ -3,6 +3,7 @@ import {Editor, EditorState, ContentState} from 'draft-js';
 import FormFooter from './form_footer';
 import FormAvatar from './form_avatar';
 import ReblogFormHeader from './reblog_form_header';
+import ReblogListItem from '../reblog_list_item';
 
 class ReblogPhotoForm extends React.Component {
   constructor(props) {
@@ -58,19 +59,7 @@ class ReblogPhotoForm extends React.Component {
         <FormAvatar avatar={avatar} />
         <ReblogFormHeader username={this.props.currentUser.username} author={this.props.username} />
         {previews}
-        <div className="reblog-list-item">
-          <div className="reblog-header">
-            <a className="reblog-avatar">
-              <img className="reblog-avatar-image" src={this.props.avatar} alt="avatar" />
-            </a>
-            <a className="reblog-header-username">
-              {this.props.username}
-            </a>
-          </div>
-          <div className="reblog-description">
-            {this.props.post.description}
-          </div>
-        </div>
+        <ReblogListItem avatar={this.props.avatar} username={this.props.username} original={this.props.post} />
         <div className="text-form-content animated fadeIn">
           <div className="form-desc">
             <p

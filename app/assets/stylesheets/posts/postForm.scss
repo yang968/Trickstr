@@ -135,6 +135,7 @@ input:focus, textarea:focus {
   position: relative;
   padding: 0px 20px;
   width: 500px;
+  font-weight: 400;
 }
 
 .form-header {
@@ -151,7 +152,7 @@ input:focus, textarea:focus {
   min-height: 42px;
   word-wrap: break-word;
   cursor: text;
-  padding-bottom: 15px;
+  // padding-bottom: 15px;
 }
 
 .form-desc {
@@ -159,7 +160,6 @@ input:focus, textarea:focus {
   line-height: 21px;
   word-wrap: break-word;
   width: 500px;
-  padding-top: 10px;
 
   p:hover {
     cursor: text;
